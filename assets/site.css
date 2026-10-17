@@ -180,3 +180,4 @@ h2{text-wrap:balance}.hero h1{max-width:12.5em}
 .fld select{appearance:none;-webkit-appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2302505A' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") right 12px center/18px no-repeat;padding-right:40px}
 .chat-opts{max-height:42%;overflow-y:auto;flex:none}.chat-log{min-height:140px}
 @media (max-width:560px){.chat-opts button{font-size:.84rem;padding:6px 10px;min-height:34px}}
+.hero h1{font-size:clamp(2.4rem,5vw,3.8rem);max-width:none}
