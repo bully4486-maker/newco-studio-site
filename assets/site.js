@@ -2,8 +2,8 @@
 (function(){var c=document.getElementById('chat');if(!c)return;var fab=c.querySelector('.chat-fab'),p=c.querySelector('.chat-panel'),log=c.querySelector('.chat-log'),opts=c.querySelector('.chat-opts'),started=false;
 var Q='<a href="#quote" data-close>Open the quote form</a>',UP='https://www.upwork.com/freelancers/~014d64a617a26f8854';
 var A={
-prices:['How much does it cost?','Fixed prices, agreed in writing first. One-page website or landing page from $130. Multi-page website from $330 (extra pages from $55). Spreadsheet, script or website fixes from $40. Those are totals. '+Q+' for an exact figure.'],
-time:['How long does it take?','Small fixes: often a day or two. One-page site: usually a few days. Multi-page: a little longer. Your quote gives a firm delivery date, and a faster option is available from $35.'],
+prices:['How much does it cost?','Fixed prices, agreed in writing first. One-page website or landing page from £99 (~$130). Multi-page website from £249 (~$330) (extra pages from £41 (~$55)). Spreadsheet, script or website fixes from £29 (~$40). Those are totals. '+Q+' for an exact figure.'],
+time:['How long does it take?','Small fixes: often a day or two. One-page site: usually a few days. Multi-page: a little longer. Your quote gives a firm delivery date, and a faster option is available from £26 (~$35).'],
 process:['How does it work?','1. Send a short written brief. 2. Get a fixed quote within 24 hours. 3. We build and send a preview. 4. Agreed revisions, then you get every file. '+Q+'.'],
 calls:['Can we have a call?','We work in writing only. It keeps a clear record of what was agreed, you reply when it suits you, and small jobs scope faster that way. Every question gets a written answer, usually the same day.'],
 what:['What do you build?','Websites and landing pages, Python scripts and automations, Excel and Google Sheets work, HTML/CSS/JS bug fixes and HTML email templates. Have a look at the <a href="#work" data-close>live demos</a>.'],
