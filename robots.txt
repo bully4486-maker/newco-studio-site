@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /demos/
 
 Sitemap: https://studio.newcopacks.co.uk/sitemap.xml
