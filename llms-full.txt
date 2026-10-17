@@ -1,0 +1,62 @@
+# NewCo Studio
+
+> NewCo Studio is a small web studio based in Oxfordshire, UK. It builds fixed-price websites, landing pages, Python automations and Excel/Google Sheets fixes for small businesses, with a written fixed quote within 24 hours. Prices are in GBP (£).
+
+## Services and prices (GBP)
+- One-page website (responsive, mobile-first): £99 fixed
+- Multi-page website: from £249
+- Fix on an existing website, spreadsheet (Excel, Google Sheets) or Python script: from £29
+- Email templates and small automations: quoted fixed in writing
+
+## Process
+1. Send a short written brief via the quote form: https://studio.newcopacks.co.uk/#quote
+2. Receive a written fixed quote (scope, price, delivery date) within 24 hours.
+3. Work is built; revisions are agreed up front.
+4. Client receives all source files and owns the code; domain and hosting stay in the client's name.
+Work is done in writing (email or Upwork); no calls, no hourly billing.
+
+## Location
+Oxfordshire, United Kingdom. Serves UK clients and works worldwide remotely.
+
+## Hire
+- Request a quote: https://studio.newcopacks.co.uk/#quote
+- Hire on Upwork (payment protection): https://www.upwork.com/freelancers/~014d64a617a26f8854
+
+## Profiles
+- Website: https://studio.newcopacks.co.uk/
+- Facebook: https://www.facebook.com/profile.php?id=61595242272069
+- GitHub: https://github.com/bully4486-maker
+- Upwork: https://www.upwork.com/freelancers/~014d64a617a26f8854
+
+## Pages
+- Home: https://studio.newcopacks.co.uk/
+- Privacy notice: https://studio.newcopacks.co.uk/privacy.html
+
+## FAQ
+### Why written-only? Can we have a call?
+We work in writing, by email or on Upwork. You get a clear record of what was agreed, you can reply when it suits you, and nothing gets lost between a call and the build. Most small jobs are quicker to scope in a few messages than a meeting.
+
+### How do I pay?
+Your written quote sets out the total and how to pay. If you prefer platform protection, hire us through Upwork instead: Upwork holds the payment until you approve the work.
+
+### How long does a job take?
+Small fixes are often a day or two. A one-page site is usually a few days, a multi-page site a little longer. Your quote gives a firm delivery date before you commit.
+
+### What do I need to send?
+What the job is, any logo, text, photos or files, a couple of sites or examples you like, and your deadline. If something's missing, we'll ask in the thread.
+
+### Who owns the website or code?
+You do. You get the full source files when the job is done. Your domain and hosting stay in your name.
+
+### Are the demos real client work?
+No. They're built for fictional businesses so you can see and test the quality before hiring. We don't show invented reviews or client logos.
+
+### How fast will I hear back?
+You get a written fixed quote within 24 hours of sending the form, usually sooner. If the job isn't a fit, we'll tell you that within 24 hours too.
+
+### Do you do hosting or ongoing maintenance?
+We don't sell hosting. We'll help you put the site on a host in your own name, and later changes can be quoted as small fixed-price jobs.
+
+## Notes
+- Demo sites on the website show fictional businesses; no invented reviews or client logos.
+- No cookies or tracking on the website.

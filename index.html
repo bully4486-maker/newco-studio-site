@@ -6,7 +6,7 @@
 <title>NewCo Studio · Fixed-price websites, scripts &amp; spreadsheet fixes</title>
 <meta name="description" content="A small UK web studio. Fast, accessible websites from £99 and Python, Excel and Google Sheets fixes from £29. Fixed price agreed in writing before we start. Hire us on Upwork.">
 <link rel="canonical" href="https://studio.newcopacks.co.uk/">
-<meta name="robots" content="index,follow">
+<!--ROBOTS-->
 <meta name="theme-color" content="#00292D">
 <link rel="preload" href="assets/jakarta.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/inter.woff2" as="font" type="font/woff2" crossorigin>
@@ -26,19 +26,201 @@
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[
-{"@type":"ProfessionalService","@id":"https://studio.newcopacks.co.uk/#studio","name":"NewCo Studio","url":"https://studio.newcopacks.co.uk/","logo":"https://studio.newcopacks.co.uk/assets/icon-512.png","image":"https://studio.newcopacks.co.uk/assets/og.png","description":"Small UK web studio building fixed-price websites, landing pages, Python automations and Excel/Google Sheets fixes.","address":{"@type":"PostalAddress","addressRegion":"Oxfordshire","addressCountry":"GB"},"areaServed":["GB","Worldwide"],"priceRange":"£29–£249","sameAs":["https://www.upwork.com/freelancers/~014d64a617a26f8854","https://github.com/bully4486-maker"],
-"makesOffer":[
-{"@type":"Offer","name":"One-page website","price":"99","priceCurrency":"GBP","url":"https://www.upwork.com/freelancers/~014d64a617a26f8854","itemOffered":{"@type":"Service","name":"Responsive one-page website"}},
-{"@type":"Offer","name":"Multi-page website","price":"249","priceCurrency":"GBP","url":"https://www.upwork.com/freelancers/~014d64a617a26f8854","itemOffered":{"@type":"Service","name":"Responsive multi-page website"}},
-{"@type":"Offer","name":"Spreadsheet or script fix","price":"29","priceCurrency":"GBP","url":"https://www.upwork.com/freelancers/~014d64a617a26f8854","itemOffered":{"@type":"Service","name":"Excel, Google Sheets or Python script fix"}}]},
-{"@type":"WebSite","@id":"https://studio.newcopacks.co.uk/#site","url":"https://studio.newcopacks.co.uk/","name":"NewCo Studio","inLanguage":"en-GB","publisher":{"@id":"https://studio.newcopacks.co.uk/#studio"}},
-{"@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Why written-only? Can we have a call?","acceptedAnswer":{"@type":"Answer","text":"We work in writing, by email or on Upwork. You get a clear record of what was agreed, you can reply when it suits you, and nothing gets lost between a call and the build. Most small jobs are quicker to scope in a few messages than a meeting."}},
-{"@type":"Question","name":"How do I pay?","acceptedAnswer":{"@type":"Answer","text":"Your written quote sets out the total and how to pay. For platform protection you can hire us through Upwork, which holds payment until you approve the work."}},
-{"@type":"Question","name":"Who owns the website or code?","acceptedAnswer":{"@type":"Answer","text":"You do. You get the full source files when the job is done. Your domain and hosting stay in your name."}}]}
-]}
+{
+"@context": "https://schema.org",
+"@graph": [
+{
+"@type": "Organization",
+"@id": "https://studio.newcopacks.co.uk/#org",
+"name": "NewCo Studio",
+"url": "https://studio.newcopacks.co.uk/",
+"logo": {
+"@type": "ImageObject",
+"url": "https://studio.newcopacks.co.uk/assets/icon-512.png",
+"width": 512,
+"height": 512
+},
+"description": "NewCo Studio is a small web studio in Oxfordshire, UK, building fixed-price websites, landing pages, Python automations and Excel/Google Sheets fixes for small businesses.",
+"address": {
+"@type": "PostalAddress",
+"addressRegion": "Oxfordshire",
+"addressCountry": "GB"
+},
+"areaServed": {
+"@type": "Country",
+"name": "United Kingdom",
+"identifier": "GB"
+},
+"sameAs": [
+"https://www.facebook.com/profile.php?id=61595242272069",
+"https://www.upwork.com/freelancers/~014d64a617a26f8854",
+"https://github.com/bully4486-maker"
+]
+},
+{
+"@type": "ProfessionalService",
+"@id": "https://studio.newcopacks.co.uk/#studio",
+"name": "NewCo Studio",
+"url": "https://studio.newcopacks.co.uk/",
+"parentOrganization": {
+"@id": "https://studio.newcopacks.co.uk/#org"
+},
+"logo": "https://studio.newcopacks.co.uk/assets/icon-512.png",
+"image": "https://studio.newcopacks.co.uk/assets/og.png",
+"description": "Fixed-price websites from £99, multi-page sites from £249 and spreadsheet or script fixes from £29, quoted in writing within 24 hours.",
+"address": {
+"@type": "PostalAddress",
+"addressRegion": "Oxfordshire",
+"addressCountry": "GB"
+},
+"areaServed": {
+"@type": "Country",
+"name": "United Kingdom",
+"identifier": "GB"
+},
+"currenciesAccepted": "GBP",
+"priceRange": "£29–£249",
+"sameAs": [
+"https://www.facebook.com/profile.php?id=61595242272069",
+"https://www.upwork.com/freelancers/~014d64a617a26f8854",
+"https://github.com/bully4486-maker"
+],
+"hasOfferCatalog": {
+"@type": "OfferCatalog",
+"name": "NewCo Studio services",
+"itemListElement": [
+{
+"@type": "Offer",
+"name": "One-page website",
+"price": "99",
+"priceCurrency": "GBP",
+"areaServed": "GB",
+"url": "https://studio.newcopacks.co.uk/#pricing",
+"itemOffered": {
+"@type": "Service",
+"name": "Responsive one-page website",
+"provider": {
+"@id": "https://studio.newcopacks.co.uk/#org"
+}
+}
+},
+{
+"@type": "Offer",
+"name": "Multi-page website",
+"price": "249",
+"priceCurrency": "GBP",
+"areaServed": "GB",
+"url": "https://studio.newcopacks.co.uk/#pricing",
+"itemOffered": {
+"@type": "Service",
+"name": "Responsive multi-page website",
+"provider": {
+"@id": "https://studio.newcopacks.co.uk/#org"
+}
+}
+},
+{
+"@type": "Offer",
+"name": "Spreadsheet or script fix",
+"price": "29",
+"priceCurrency": "GBP",
+"areaServed": "GB",
+"url": "https://studio.newcopacks.co.uk/#pricing",
+"itemOffered": {
+"@type": "Service",
+"name": "Excel, Google Sheets or Python script fix",
+"provider": {
+"@id": "https://studio.newcopacks.co.uk/#org"
+}
+}
+}
+]
+}
+},
+{
+"@type": "WebSite",
+"@id": "https://studio.newcopacks.co.uk/#site",
+"url": "https://studio.newcopacks.co.uk/",
+"name": "NewCo Studio",
+"inLanguage": "en-GB",
+"publisher": {
+"@id": "https://studio.newcopacks.co.uk/#org"
+}
+},
+{
+"@type": "FAQPage",
+"@id": "https://studio.newcopacks.co.uk/#faq",
+"mainEntity": [
+{
+"@type": "Question",
+"name": "Why written-only? Can we have a call?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "We work in writing, by email or on Upwork. You get a clear record of what was agreed, you can reply when it suits you, and nothing gets lost between a call and the build. Most small jobs are quicker to scope in a few messages than a meeting."
+}
+},
+{
+"@type": "Question",
+"name": "How do I pay?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "Your written quote sets out the total and how to pay. If you prefer platform protection, hire us through Upwork instead: Upwork holds the payment until you approve the work."
+}
+},
+{
+"@type": "Question",
+"name": "How long does a job take?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "Small fixes are often a day or two. A one-page site is usually a few days, a multi-page site a little longer. Your quote gives a firm delivery date before you commit."
+}
+},
+{
+"@type": "Question",
+"name": "What do I need to send?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "What the job is, any logo, text, photos or files, a couple of sites or examples you like, and your deadline. If something's missing, we'll ask in the thread."
+}
+},
+{
+"@type": "Question",
+"name": "Who owns the website or code?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "You do. You get the full source files when the job is done. Your domain and hosting stay in your name."
+}
+},
+{
+"@type": "Question",
+"name": "Are the demos real client work?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "No. They're built for fictional businesses so you can see and test the quality before hiring. We don't show invented reviews or client logos."
+}
+},
+{
+"@type": "Question",
+"name": "How fast will I hear back?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "You get a written fixed quote within 24 hours of sending the form, usually sooner. If the job isn't a fit, we'll tell you that within 24 hours too."
+}
+},
+{
+"@type": "Question",
+"name": "Do you do hosting or ongoing maintenance?",
+"acceptedAnswer": {
+"@type": "Answer",
+"text": "We don't sell hosting. We'll help you put the site on a host in your own name, and later changes can be quoted as small fixed-price jobs."
+}
+}
+]
+}
+]
+}
 </script>
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM summary">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -146,7 +328,7 @@
 <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span><div><b>Used only to quote</b><span>Your details are used to reply to you, nothing else. <a href="privacy.html">Privacy</a>.</span></div></li>
 <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></span><div><b>Prefer platform protection?</b><span><a href="https://www.upwork.com/freelancers/~014d64a617a26f8854" rel="noopener">Hire us on Upwork</a>, where payment is held until you approve.</span></div></li>
 </ul></div>
-<form class="qform" action="https://formsubmit.co/keith@newcopacks.co.uk" method="POST">
+<form class="qform" action="https://formsubmit.co/c14e05d5a0bc18dfa07c285f9413164d" method="POST">
 <input type="hidden" name="_subject" value="New quote request · NewCo Studio site">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_captcha" value="false">
@@ -165,6 +347,8 @@
 </form>
 </div></section>
 
+<section class="sec" aria-labelledby="about-h" style="padding-bottom:0"><div class="wrap"><div class="sec-head"><span class="eyebrow">About</span><h2 id="about-h">NewCo Studio at a glance</h2></div>
+<p class="lead" style="max-width:44em">NewCo Studio is a small web studio based in Oxfordshire, UK. We build fixed-price websites, landing pages, Python automations and Excel or Google Sheets fixes for small businesses. A one-page website costs £99, a multi-page website from £249, and a spreadsheet, script or website fix from £29. Every job gets a written fixed quote within 24 hours, clients own all code and files, and work can be booked directly or through Upwork.</p></div></section>
 <section class="sec" id="faq" aria-labelledby="faq-h"><div class="wrap">
 <div class="sec-head"><span class="eyebrow">FAQ</span><h2 id="faq-h">Good questions, straight answers.</h2></div>
 <div class="faq">
@@ -186,9 +370,9 @@
 </main>
 
 <footer class="ftr"><div class="wrap">
-<div><a class="brand" href="./" aria-label="NewCo Studio home"><img src="assets/mark.png" width="34" height="34" alt=""><span>NewCo <b>Studio</b></span></a><p style="margin-top:14px;max-width:30em">Small, fixed-price web and automation jobs for small businesses. Based in Oxfordshire, UK. Working worldwide, by email or through Upwork.</p></div>
+<div><a class="brand" href="./" aria-label="NewCo Studio home"><img src="assets/mark.png" width="34" height="34" alt=""><span>NewCo <b>Studio</b></span></a><p style="margin-top:14px;max-width:30em">Small, fixed-price web and automation jobs for small businesses. Based in Oxfordshire, UK. Working worldwide, by email or through Upwork.</p><div class="follow"><span>Follow</span><a class="soc" href="https://www.facebook.com/profile.php?id=61595242272069" rel="noopener me" aria-label="NewCo Studio on Facebook" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg></a><a class="soc" href="https://github.com/bully4486-maker" rel="noopener me" aria-label="NewCo Studio on GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 2.9.8.1-.7.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 015 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0012 2z"/></svg></a><a class="soc" href="https://www.upwork.com/freelancers/~014d64a617a26f8854" rel="noopener me" aria-label="NewCo Studio on Upwork" title="Upwork"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 6.5a4.6 4.6 0 00-4.5 3.7 13 13 0 01-2-4H8.6v5.6a2 2 0 01-4 0V6.2H2.2v5.6a4.4 4.4 0 008.8.1v-1a12 12 0 001.2 2L11 19h2.5l.8-3.9a5 5 0 003.2 1.1 4.9 4.9 0 000-9.7zm0 7.3a3.4 3.4 0 01-2.4-1l.3-1c.2-1.2.8-3 2.1-3a2.5 2.5 0 010 5z"/></svg></a></div></div>
 <div><h3>Studio</h3><ul><li><a href="#work">Live demos</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#process">How it works</a></li><li><a href="#faq">FAQ</a></li><li><a href="#quote">Request a quote</a></li></ul></div>
-<div><h3>Find us</h3><ul><li><a href="https://www.upwork.com/freelancers/~014d64a617a26f8854" rel="noopener">Upwork</a></li><li><a href="https://github.com/bully4486-maker" rel="noopener">GitHub</a></li><li><a href="privacy.html">Privacy</a></li></ul></div>
+<div><h3>Find us</h3><ul><li><a href="https://www.facebook.com/profile.php?id=61595242272069" rel="noopener">Facebook</a></li><li><a href="https://www.upwork.com/freelancers/~014d64a617a26f8854" rel="noopener">Upwork</a></li><li><a href="https://github.com/bully4486-maker" rel="noopener">GitHub</a></li><li><a href="privacy.html">Privacy</a></li></ul></div>
 <div class="legal"><span>© 2026 NewCo Studio</span><span>Demos show fictional businesses. No cookies, no tracking.</span></div>
 </div></footer>
 <div class="chat" id="chat"><button class="chat-fab" aria-label="Questions? Open quick answers" aria-expanded="false" aria-controls="chat-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1-4.6A8 8 0 1121 12z"/></svg><span>Questions?</span></button>

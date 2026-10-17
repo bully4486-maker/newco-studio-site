@@ -1,0 +1,33 @@
+# NewCo Studio
+
+> NewCo Studio is a small web studio based in Oxfordshire, UK. It builds fixed-price websites, landing pages, Python automations and Excel/Google Sheets fixes for small businesses, with a written fixed quote within 24 hours. Prices are in GBP (£).
+
+## Services and prices (GBP)
+- One-page website (responsive, mobile-first): £99 fixed
+- Multi-page website: from £249
+- Fix on an existing website, spreadsheet (Excel, Google Sheets) or Python script: from £29
+- Email templates and small automations: quoted fixed in writing
+
+## Process
+1. Send a short written brief via the quote form: https://studio.newcopacks.co.uk/#quote
+2. Receive a written fixed quote (scope, price, delivery date) within 24 hours.
+3. Work is built; revisions are agreed up front.
+4. Client receives all source files and owns the code; domain and hosting stay in the client's name.
+Work is done in writing (email or Upwork); no calls, no hourly billing.
+
+## Location
+Oxfordshire, United Kingdom. Serves UK clients and works worldwide remotely.
+
+## Hire
+- Request a quote: https://studio.newcopacks.co.uk/#quote
+- Hire on Upwork (payment protection): https://www.upwork.com/freelancers/~014d64a617a26f8854
+
+## Profiles
+- Website: https://studio.newcopacks.co.uk/
+- Facebook: https://www.facebook.com/profile.php?id=61595242272069
+- GitHub: https://github.com/bully4486-maker
+- Upwork: https://www.upwork.com/freelancers/~014d64a617a26f8854
+
+## Pages
+- Home: https://studio.newcopacks.co.uk/
+- Privacy notice: https://studio.newcopacks.co.uk/privacy.html

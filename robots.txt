@@ -1,4 +1,41 @@
+User-agent: GPTBot
+Allow: /
+Disallow: /demos/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /demos/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /demos/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /demos/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /demos/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /demos/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /demos/
+
+User-agent: CCBot
+Allow: /
+Disallow: /demos/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /demos/
+
 User-agent: *
 Allow: /
+Disallow: /demos/
 
 Sitemap: https://studio.newcopacks.co.uk/sitemap.xml
