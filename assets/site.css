@@ -184,6 +184,6 @@ h2{text-wrap:balance}.hero h1{max-width:12.5em}
 .hero h1{font-size:clamp(2.4rem,5vw,3.8rem);max-width:none}
 @media (min-width:901px){.hero .wrap{grid-template-columns:1.35fr .8fr;gap:40px}}
 
-.quote-card{transform:none!important}.usd{font-size:.45em;font-weight:500;opacity:.75;margin-left:.25em}
+.quote-card{transform:none!important}
 footer{padding-bottom:96px!important}
 .nav .btn-cta{color:#00292D}.btn-cta{border:1.5px solid #02505A}.hero .btn-cta,.final .btn-cta,.price.feat .btn-cta{border-color:var(--cta)}
