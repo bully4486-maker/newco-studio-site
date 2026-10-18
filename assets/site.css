@@ -189,3 +189,5 @@ footer{padding-bottom:96px!important}
 .nav .btn-cta{color:#00292D}.btn-cta{border:1.5px solid #02505A}.hero .btn-cta,.final .btn-cta,.price.feat .btn-cta{border-color:var(--cta)}
 
 .follow{display:flex;align-items:center;gap:10px;margin-top:16px}.follow span{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--deep);font-weight:700}.soc{display:inline-flex;width:36px;height:36px;border-radius:50%;align-items:center;justify-content:center;background:var(--deep,#00292D);color:#fff!important;transition:background .2s}.soc:hover{background:var(--teal,#02505A)}.soc svg{width:18px;height:18px}
+
+.fbar{margin:0;background:#C2410C;color:#fff;text-align:center;font-size:14px;line-height:1.4;padding:8px 16px}.fbar a{color:#fff;font-weight:700;text-decoration:underline;margin-left:6px}.fbar a:focus-visible{outline:2px solid #fff;outline-offset:2px}

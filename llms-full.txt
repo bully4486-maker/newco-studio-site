@@ -5,7 +5,7 @@
 ## Services and prices (GBP)
 - One-page website (responsive, mobile-first): £99 fixed
 - Multi-page website: from £249
-- Fix on an existing website, spreadsheet (Excel, Google Sheets) or Python script: from £29
+- Fix on an existing website, spreadsheet (Excel, Google Sheets) or Python script: from £19
 - Email templates and small automations: quoted fixed in writing
 
 ## Process
@@ -20,7 +20,7 @@ Oxfordshire, United Kingdom. Serves UK clients and works worldwide remotely.
 
 ## Hire
 - Request a quote: https://studio.newcopacks.co.uk/#quote
-- Hire on Upwork (payment protection): https://www.upwork.com/freelancers/~014d64a617a26f8854
+- Upwork (optional payment protection): https://www.upwork.com/freelancers/~014d64a617a26f8854
 
 ## Profiles
 - Website: https://studio.newcopacks.co.uk/
