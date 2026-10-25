@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
+<link rel="apple-touch-icon" href="/assets/icon-180.png">
+<meta name="robots" content="noindex,nofollow">
+<title>Automation samples (Demo) | NewCo Studio portfolio</title>
+<meta name="description" content="Sample Python and spreadsheet automation: an invoice CSV merge and a small-business KPI dashboard. Fictional data by NewCo Studio.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Automation samples (Demo) | NewCo Studio portfolio">
+<meta property="og:description" content="Sample Python and spreadsheet automation: an invoice CSV merge and a small-business KPI dashboard. Fictional data by NewCo Studio.">
+<meta property="og:url" content="https://studio.newcopacks.co.uk/demos/automation/">
+<meta property="og:image" content="https://studio.newcopacks.co.uk/demos/automation/dashboard_render.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/site.css?v=20261025">
+<style>
+body{background:var(--sand)}
+.note{background:var(--deep);color:#fff;text-align:center;padding:12px 20px;font-size:.95rem}
+.note a{color:var(--mint)}
+.top{background:#fff;border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+main{padding:48px 0 80px}
+.case{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:28px 0}
+.case img{width:100%;height:auto;background:#111}
+.case .body{padding:28px}
+.files{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="note" role="note">Sample automation by NewCo Studio, fictional data · <a href="https://studio.newcopacks.co.uk/#quote">Want a site like this? Get a fixed quote</a></div>
+<header class="top"><div class="wrap">
+<a class="brand" href="https://studio.newcopacks.co.uk/#work">NewCo <b>Studio</b></a>
+<a href="https://studio.newcopacks.co.uk/#work">All work</a>
+</div></header>
+<main id="main">
+<div class="wrap">
+<span class="eyebrow">Automation samples</span>
+<h1>Small jobs, shown working.</h1>
+<p class="lead">Two samples with fictional numbers. Open the screenshots here, or download the Python script and the Excel workbooks. Nothing on this page is a real client.</p>
+
+<article class="case">
+<img src="screenshot_terminal.png" width="820" height="260" alt="Terminal output of a Python script merging invoice CSV files into an Excel summary">
+<div class="body">
+<h2>Invoice CSVs → one Excel summary</h2>
+<p>Merges a folder of monthly CSVs into a workbook with per-client totals, unpaid balances and a chart. Sample data. The script needs Python and openpyxl, and a folder of CSV files in the shape described at the top of the file.</p>
+<div class="files">
+<a class="btn btn-cta" href="merge_invoices.py" download>Download merge_invoices.py</a>
+<a class="btn btn-ghost" href="invoice_summary.xlsx" download>Download invoice_summary.xlsx</a>
+</div>
+</div>
+</article>
+
+<article class="case">
+<img src="dashboard_render.png" width="1320" height="770" alt="Spreadsheet KPI dashboard with revenue line chart and service pie chart">
+<div class="body">
+<h2>Small-business KPI dashboard</h2>
+<p>Update the monthly rows and every figure and chart refreshes. Works in Excel and Google Sheets. Sample data.</p>
+<div class="files">
+<a class="btn btn-cta" href="kpi_dashboard_demo.xlsx" download>Download kpi_dashboard_demo.xlsx</a>
+</div>
+</div>
+</article>
+</div>
+</main>
+</body>
+</html>
