@@ -3,7 +3,8 @@
 <!-- Indexable studio pages only.
      Omitted on purpose: thanks.html and 404.html (noindex);
      /demos/ (noindex, and Disallow in robots.txt);
-     old demo redirects (noindex). -->
+     old demo redirects (noindex).
+     lastmod refreshed 25 October 2026. -->
 <url><loc>https://studio.newcopacks.co.uk/</loc><lastmod>2026-10-25</lastmod></url>
 <url><loc>https://studio.newcopacks.co.uk/privacy.html</loc><lastmod>2026-10-25</lastmod></url>
 </urlset>

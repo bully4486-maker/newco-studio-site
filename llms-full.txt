@@ -54,9 +54,12 @@ No. They're built for fictional businesses so you can see and test the quality b
 ### How fast will I hear back?
 You get a written fixed quote within 24 hours of sending the form, usually sooner. If the job isn't a fit, we'll tell you that within 24 hours too.
 
+### Can I request edits after delivery?
+Yes. Further edits after delivery are quoted as their own fixed-price jobs. A small change is priced like any other fix, from £19, and you get the price in writing before we start.
+
 ### Do you do hosting or ongoing maintenance?
 We don't sell hosting. We'll help you put the site on a host in your own name, and later changes can be quoted as small fixed-price jobs.
 
 ## Notes
 - Demo sites on the website show fictional businesses; no invented reviews or client logos.
-- No cookies or tracking on the website.
+- No advertising cookies or pixels. Notes about where a quote request came from stay in the browser tab (session storage) and are sent only with the quote form. Cookieless Cloudflare Web Analytics counts visits in aggregate.
