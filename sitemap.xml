@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://studio.newcopacks.co.uk/</loc><lastmod>2026-10-17</lastmod></url>
-<url><loc>https://studio.newcopacks.co.uk/privacy.html</loc><lastmod>2026-10-17</lastmod></url>
+<!-- Indexable studio pages only.
+     Omitted on purpose: thanks.html and 404.html (noindex);
+     /demos/ (noindex, and Disallow in robots.txt);
+     old demo redirects (noindex). -->
+<url><loc>https://studio.newcopacks.co.uk/</loc><lastmod>2026-10-25</lastmod></url>
+<url><loc>https://studio.newcopacks.co.uk/privacy.html</loc><lastmod>2026-10-25</lastmod></url>
 </urlset>

@@ -131,7 +131,7 @@ section{scroll-margin-top:72px}.sec{padding:104px 0}.sec-sand{background:var(--s
 /* footer */
 .ftr{padding:56px 0 40px;color:var(--muted);font-size:.93rem}
 .ftr .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
-.ftr h3{font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;color:var(--deep)}
+.ftr .ftr-label{font-family:Jakarta,Inter,system-ui,sans-serif;font-size:.85rem;font-weight:700;line-height:1.1;text-transform:uppercase;letter-spacing:.1em;color:var(--deep);margin:0 0 .5em}
 .ftr ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
 .ftr a{color:var(--muted)}.ftr a:hover{color:var(--teal)}
 .ftr .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
