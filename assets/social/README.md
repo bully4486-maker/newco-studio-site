@@ -2,60 +2,62 @@
 
 Ready for later posting. Nothing here has been published.
 
-Brand line, prices and timings match the live site. The one-page website starts at £99. A written fixed quote comes back within 24 hours. The before-and-after frames are fictional illustrations, labelled on the images and in `captions.md`.
+Four portrait boards cleared the house gate. The standing score is the lower of the author score and an independent review. Anything under 8.5 was rendered, scored, and left out of this folder.
 
-Regenerate the PNGs from `source/` with Chrome:
+Brand, prices and timings match the live site. A one-page website starts at £99. A written quote comes back within 24 hours, usually sooner. Fixes start at £19. The phones are fresh mobile captures of the live demos. Each one is labelled “Demo site · fictional business”.
+
+Regenerate the shipped PNGs:
 
 ```bash
+node assets/social/source/capture.mjs
 node assets/social/source/render.mjs
+bash assets/social/source/strip_and_check.sh assets/social/source/shots/*.png assets/social/*.png
 ```
 
-## Feed images
+`render.mjs` only writes the four boards below. The other artboards are still in `source/posts.html`.
 
-Portrait is 1080×1350 (4:5). Square is 1080×1080. Both suit a Facebook or LinkedIn image post. Use portrait in the feed. Use square where the placement crops to a square.
+## Shipped images
 
-| File | Pixels | Size | Use |
+1080×1350. Facebook or LinkedIn feed.
+
+| File | Size | Use | Standing score |
 | --- | --- | --- | --- |
-| `price-1080x1350.png` | 1080×1350 | 221 KB | Facebook, LinkedIn. Price. |
-| `price-1080x1080.png` | 1080×1080 | 186 KB | Facebook, LinkedIn. Price. |
-| `speed-1080x1350.png` | 1080×1350 | 189 KB | Facebook, LinkedIn. How long it takes. |
-| `speed-1080x1080.png` | 1080×1080 | 154 KB | Facebook, LinkedIn. How long it takes. |
-| `included-1080x1350.png` | 1080×1350 | 241 KB | Facebook, LinkedIn. What’s included. |
-| `included-1080x1080.png` | 1080×1080 | 204 KB | Facebook, LinkedIn. What’s included. |
-| `before-after-1080x1350.png` | 1080×1350 | 221 KB | Facebook, LinkedIn. Fictional before/after. |
-| `before-after-1080x1080.png` | 1080×1080 | 178 KB | Facebook, LinkedIn. Fictional before/after. |
-| `faq-1080x1350.png` | 1080×1350 | 190 KB | Facebook, LinkedIn. FAQ. |
-| `faq-1080x1080.png` | 1080×1080 | 166 KB | Facebook, LinkedIn. FAQ. |
-| `how-1080x1350.png` | 1080×1350 | 223 KB | Facebook, LinkedIn. How it works. |
-| `how-1080x1080.png` | 1080×1080 | 179 KB | Facebook, LinkedIn. How it works. |
+| `speed-1080x1350.png` | 1080×1350, 538,910 bytes | How long it takes. Paws Parlour demo. | 8.5 |
+| `included-1080x1350.png` | 1080×1350, 602,894 bytes | What’s in the £99 build. Halvercroft demo. | 8.5 |
+| `faq-1080x1350.png` | 1080×1350, 540,752 bytes | Four answers. Paws Parlour demo. | 8.5 |
+| `how-1080x1350.png` | 1080×1350, 590,837 bytes | Four steps. Halvercroft demo. | 8.5 |
 
-## Carousel
+## Withheld
 
-Post these five slides in order, as one Facebook or LinkedIn carousel. All are 1080×1350.
+Scored by the reviewer under 8.5, so not in this folder:
 
-| File | Size | Slide |
+| Board | Reviewer overall | Why it stayed under |
 | --- | --- | --- |
-| `carousel/01-offer-1080x1350.png` | 180 KB | Offer, from £99 |
-| `carousel/02-included-1080x1350.png` | 233 KB | What’s included |
-| `carousel/03-how-1080x1350.png` | 217 KB | How it works |
-| `carousel/04-before-after-1080x1350.png` | 222 KB | Fictional before/after |
-| `carousel/05-quote-1080x1350.png` | 133 KB | Quote form |
-
-## Video
-
-| File | Pixels | Size | Use |
-| --- | --- | --- | --- |
-| `one-page-99-slideshow.mp4` | 1080×1350, 11.6s, silent H.264 | 1.1 MB | Facebook, LinkedIn. Same five slides, short fades, no audio. |
-
-ffmpeg 6.1.1 was available, so the clip is included. It is under 15 MB and has no audio track.
+| Price, both sizes | 8.4 | Originality 8.0, and empty bands above and below the copy. |
+| Speed, included, FAQ, how squares | 8.1–8.4 | Tight squares. The phone was small and the caption wrapped. |
+| Before / after, both sizes, and carousel 04 | 8.0–8.4 | In-phone type sat under the 28px floor once the phone was small enough to fit beside the drawing. |
+| Carousel 01 | 8.4 | Originality 8.0. |
+| Carousel 05 | 8.5 on the last pass | Not shipped on its own. It is slide 05 of a set whose other slides failed, and it still carries “05/05”. |
+| Carousel 02 and 03 | 8.5 | Same reason. They read as slides 02 and 03 of a five-slide post. |
+| Silent slideshow | 8.3 | Same frames, and the crossfade ghosted the type. ffmpeg is available. The clip was built, scored, and not kept. |
 
 ## Copy and source
 
-| File | Size | What it is |
-| --- | --- | --- |
-| `captions.md` | 7 KB | Facebook caption, LinkedIn caption and 3 hashtag options for each graphic. |
-| `source/posts.html` | 17 KB | Artboards. Open `?id=` to preview one. |
-| `source/social.css` | 13 KB | Shared layout and type. |
-| `source/render.mjs` | 7 KB | Headless Chrome renderer for the PNGs. |
+| File | What it is |
+| --- | --- |
+| `captions.md` | Facebook caption, LinkedIn caption and 3 hashtag options for each shipped board. |
+| `SCORE.md` | Standing scores, withheld scores, and the metadata PASS log. |
+| `source/posts.html` | All artboards, including the ones not shipped. |
+| `source/social.css` | Shared layout and type. |
+| `source/render.mjs` | Headless Chrome renderer for the four shipped boards. |
+| `source/capture.mjs` | Mobile captures of the live demos. |
+| `source/shots/` | Those captures, stripped. |
+| `source/strip_and_check.sh` | Metadata strip and check. |
 
-Captions point at the quote form: https://studio.newcopacks.co.uk/#quote
+Captions point at https://studio.newcopacks.co.uk/#quote
+
+## Metadata
+
+`strip_and_check.sh` on 26 October 2026, exiftool 12.76. Every shipped PNG and every source shot printed `PASS`. The log is in `SCORE.md`.
+
+The previous `how-1080x1350.png` had been flagged for a possible XMP marker. That file’s PNG chunks were only IHDR, IDAT and IEND. The byte sequence `xmp` sat inside a compressed IDAT, not in an XMP chunk. The rebuilt file has the same chunk types, contains no `xmp` bytes, and PASSes the strip check.

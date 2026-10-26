@@ -8,23 +8,10 @@ const port = 9333;
 const html = resolve(root, "posts.html");
 
 const jobs = [
-  ["price-portrait", "../price-1080x1350.png", 1080, 1350],
-  ["price-square", "../price-1080x1080.png", 1080, 1080],
   ["speed-portrait", "../speed-1080x1350.png", 1080, 1350],
-  ["speed-square", "../speed-1080x1080.png", 1080, 1080],
   ["included-portrait", "../included-1080x1350.png", 1080, 1350],
-  ["included-square", "../included-1080x1080.png", 1080, 1080],
-  ["before-after-portrait", "../before-after-1080x1350.png", 1080, 1350],
-  ["before-after-square", "../before-after-1080x1080.png", 1080, 1080],
   ["faq-portrait", "../faq-1080x1350.png", 1080, 1350],
-  ["faq-square", "../faq-1080x1080.png", 1080, 1080],
   ["how-portrait", "../how-1080x1350.png", 1080, 1350],
-  ["how-square", "../how-1080x1080.png", 1080, 1080],
-  ["carousel-01", "../carousel/01-offer-1080x1350.png", 1080, 1350],
-  ["carousel-02", "../carousel/02-included-1080x1350.png", 1080, 1350],
-  ["carousel-03", "../carousel/03-how-1080x1350.png", 1080, 1350],
-  ["carousel-04", "../carousel/04-before-after-1080x1350.png", 1080, 1350],
-  ["carousel-05", "../carousel/05-quote-1080x1350.png", 1080, 1350],
 ];
 
 const chrome = spawn("google-chrome", [
@@ -144,9 +131,17 @@ async function main() {
         for (const el of board.querySelectorAll(".inner, .panel")) {
           if (el.scrollHeight > el.clientHeight + 4) issues.push("clip " + el.className + " " + el.scrollHeight + ">" + el.clientHeight);
         }
-        for (const el of board.querySelectorAll("h1,h2,p,li,strong,span,em,b")) {
+        for (const el of board.querySelectorAll("h1,h2,p,li,strong,span,em,b,figcaption,small,div")) {
           if (el.getClientRects().length === 0) continue;
-          if (el.scrollWidth > el.clientWidth + 8) issues.push("x " + el.tagName + "." + el.className + ":" + (el.innerText || "").slice(0, 36));
+          const own = [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim());
+          if (!own) continue;
+          const text = (el.innerText || "").trim();
+          if (el.scrollWidth > el.clientWidth + 8) issues.push("x " + el.tagName + "." + el.className + ":" + text.slice(0, 36));
+          const size = parseFloat(getComputedStyle(el).fontSize);
+          if (size < 28) issues.push("small " + size + " " + el.tagName + "." + el.className + ":" + text.slice(0, 24));
+        }
+        for (const img of board.querySelectorAll("img")) {
+          if (!img.complete || img.naturalWidth === 0) issues.push("img " + img.getAttribute("src"));
         }
         return { issues, w: Math.round(br.width), h: Math.round(br.height) };
       })()`,
