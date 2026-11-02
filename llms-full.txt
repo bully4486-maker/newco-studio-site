@@ -3,7 +3,7 @@
 > NewCo Studio is a small web studio based in Oxfordshire, UK. It builds fixed-price websites, landing pages, Python automations and Excel/Google Sheets fixes for small businesses, with a written fixed quote within 24 hours. Prices are in GBP (£).
 
 ## Services and prices (GBP)
-- One-page website (responsive, mobile-first): £99 fixed
+- One-page website (responsive, mobile-first): from £99
 - Multi-page website: from £249
 - Fix on an existing website, spreadsheet (Excel, Google Sheets) or Python script: from £19
 - Email templates and small automations: quoted fixed in writing

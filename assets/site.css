@@ -191,3 +191,22 @@ footer{padding-bottom:96px!important}
 .follow{display:flex;align-items:center;gap:10px;margin-top:16px}.follow span{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--deep);font-weight:700}.soc{display:inline-flex;width:36px;height:36px;border-radius:50%;align-items:center;justify-content:center;background:var(--deep,#00292D);color:#fff!important;transition:background .2s}.soc:hover{background:var(--teal,#02505A)}.soc svg{width:18px;height:18px}
 
 .fbar{margin:0;background:#C2410C;color:#fff;text-align:center;font-size:14px;line-height:1.4;padding:8px 16px}.fbar a{color:#fff;font-weight:700;text-decoration:underline;margin-left:6px}.fbar a:focus-visible{outline:2px solid #fff;outline-offset:2px}
+/* sticky mobile quote button */
+.mcta{display:none}
+@media (max-width:760px){.mcta{display:flex;align-items:center;justify-content:center;position:fixed;left:16px;right:88px;bottom:20px;z-index:79;min-height:52px;border-radius:999px;background:var(--cta);color:#00292D;font:700 1.02rem/1 Inter,sans-serif;text-decoration:none;box-shadow:0 12px 30px -10px rgba(0,41,45,.55);transition:opacity .2s}
+.mcta.off{opacity:0;pointer-events:none}.mcta:hover{color:#00292D;background:var(--cta-h)}
+.chat-fab span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.chat-fab{padding:15px;min-height:52px}
+body{padding-bottom:84px}}
+/* websites-99 */
+.w99-hero{padding:28px 0 40px}.w99-hero h1{font-size:clamp(2rem,7vw,3.4rem);margin-bottom:.35em}
+.w99-price{display:inline-flex;align-items:baseline;gap:8px;background:var(--sand);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:700;color:var(--deep);margin:0 0 14px}
+.w99-price b{font:800 1.5rem/1 Jakarta,sans-serif}
+.w99-hero .lead{font-size:1.08rem;margin-bottom:18px}
+.w99-hero .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.w99-run{font-size:.95rem;color:var(--muted);margin:0}
+.w99-inc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;list-style:none;padding:0;margin:0}
+.w99-inc li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}.w99-inc b{display:block;color:var(--deep);margin-bottom:4px}.w99-inc span{color:var(--muted);font-size:.95rem}
+.w99-ex .work{grid-template-columns:repeat(3,1fr)}
+@media (max-width:860px){.w99-ex .work{grid-template-columns:1fr}}
+.w99-ex .card-w{grid-column:auto}
+.w99-hbtn{white-space:nowrap;min-height:42px;padding:.6em 1.1em;font-size:.95rem}

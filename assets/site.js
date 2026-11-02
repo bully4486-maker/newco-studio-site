@@ -25,3 +25,7 @@ if(!get('landing_path'))set('landing_path',location.pathname);
 if(!get('referrer')){var r='';try{var u=new URL(document.referrer);if(u.origin!==location.origin)r=u.origin}catch(e){}if(r)set('referrer',r)}
 var f=document.querySelector('form.qform');if(!f)return;
 K.concat(['landing_path','referrer']).forEach(function(k){var i=f.querySelector('input[name="'+k+'"]');if(i)i.value=get(k)})})();
+(function(){var f=document.querySelector('form.qform');if(!f)return;var r=f.querySelector('input[name="redirect"]');
+f.addEventListener('submit',function(){if(!r)return;try{var u=new URL(r.value),k=['utm_source','utm_campaign'];k.forEach(function(n){var i=f.querySelector('input[name="'+n+'"]');if(i&&i.value)u.searchParams.set(n,i.value)});r.value=u.toString()}catch(e){}});
+var m=document.querySelector('.mcta');if(!m||!('IntersectionObserver' in window))return;
+new IntersectionObserver(function(es){es.forEach(function(e){m.classList.toggle('off',e.isIntersecting)})},{threshold:0.1}).observe(f)})();
