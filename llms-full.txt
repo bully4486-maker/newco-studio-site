@@ -46,8 +46,8 @@ What the job is, any logo, text, photos or files, a couple of sites or examples 
 ### Who owns the website or code?
 You do. You get the full source files when the job is done. Your domain and hosting stay in your name.
 
-### Are the demos real client work?
-No. They're built for fictional businesses so you can see and test the quality before hiring. We don't show invented reviews or client logos.
+### Are the example sites real client work?
+No. They're fictional businesses we built to show the standard of our work. We don't show invented reviews or client logos.
 
 ### How fast will I hear back?
 You get a written fixed quote within 24 hours of sending the form, usually sooner. If the job isn't a fit, we'll tell you that within 24 hours too.
@@ -59,5 +59,5 @@ Yes. Further edits after delivery are quoted as their own fixed-price jobs. A sm
 We don't sell hosting. We'll help you put the site on a host in your own name, and later changes can be quoted as small fixed-price jobs.
 
 ## Notes
-- Demo sites on the website show fictional businesses; no invented reviews or client logos.
+- Example sites on the website are not client work; no invented reviews or client logos.
 - No advertising cookies or pixels. Notes about where a quote request came from stay in the browser tab (session storage) and are sent only with the quote form. Cookieless Cloudflare Web Analytics counts visits in aggregate.
