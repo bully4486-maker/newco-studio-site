@@ -190,7 +190,7 @@ footer{padding-bottom:96px!important}
 
 .follow{display:flex;align-items:center;gap:10px;margin-top:16px}.follow span{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--deep);font-weight:700}.soc{display:inline-flex;width:36px;height:36px;border-radius:50%;align-items:center;justify-content:center;background:var(--deep,#00292D);color:#fff!important;transition:background .2s}.soc:hover{background:var(--teal,#02505A)}.soc svg{width:18px;height:18px}
 
-.fbar{margin:0;background:#C2410C;color:#fff;text-align:center;font-size:14px;line-height:1.4;padding:8px 16px}.fbar a{color:#fff;font-weight:700;text-decoration:underline;margin-left:6px}.fbar a:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
 /* sticky mobile quote button */
 .mcta{display:none}
 @media (max-width:760px){.mcta{display:flex;align-items:center;justify-content:center;position:fixed;left:16px;right:88px;bottom:20px;z-index:79;min-height:52px;border-radius:999px;background:var(--cta);color:#00292D;font:700 1.02rem/1 Inter,sans-serif;text-decoration:none;box-shadow:0 12px 30px -10px rgba(0,41,45,.55);transition:opacity .2s}
