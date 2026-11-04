@@ -1,36 +1,49 @@
 # NewCo Studio
 
-> NewCo Studio is a small web studio based in Oxfordshire, UK. It builds fixed-price websites, landing pages, Python automations and Excel/Google Sheets fixes for small businesses, with a written fixed quote within 24 hours. Prices are in GBP (£).
+> NewCo Studio is a UK-based web studio that builds fixed-price one-page websites for small businesses for £99 and fixes problems on existing websites, spreadsheets and scripts from £19. It works remotely with clients across the UK and worldwide, sends a written fixed quote within 24 hours, and takes payment by UK bank transfer: 50% to start and 50% after sign-off. Prices are in GBP (£).
 
-## Services and prices (GBP)
-- One-page website (responsive, mobile-first): from £99
-- Multi-page website: from £249
-- Fix on an existing website, spreadsheet (Excel, Google Sheets) or Python script: from £19
-- Email templates and small automations: quoted fixed in writing
-
-## Process
-1. Send a short written brief via the quote form: https://studio.newcopacks.co.uk/#quote
-2. Receive a written fixed quote (scope, price, delivery date) within 24 hours.
-3. Work is built; revisions are agreed up front.
-4. Client receives all source files and owns the code; domain and hosting stay in the client's name.
-Work is done in writing (email or the website quote form); no calls, no hourly billing.
-
-## Location
-Oxfordshire, United Kingdom. Serves UK clients and works worldwide remotely.
-
-## Hire
-- Request a quote: https://studio.newcopacks.co.uk/#quote
-
-## Profiles
-- Website: https://studio.newcopacks.co.uk/
-- Facebook: https://www.facebook.com/profile.php?id=61595242272069
-- GitHub: https://github.com/bully4486-maker
+## Key facts
+- Name: NewCo Studio (UK). Website: https://studio.newcopacks.co.uk/
+- Run by: Keith Bullock
+- Based in: United Kingdom. Serves: small businesses across the UK and worldwide, remotely.
+- One-page website: £99 (services, prices, photos and contact details on one mobile-friendly page; basic SEO, favicon, share image; all files handed over)
+- Website fix: from £19 (broken links, wrong contact details, buttons or forms that don't work, pages that look wrong on phones; spreadsheet and script fixes too)
+- Bigger sites: fixed quote in writing
+- Payment: UK bank transfer, 50% to start and 50% after sign-off. £19 fixes are paid once approved.
+- Quotes: written fixed quote within 24 hours via https://studio.newcopacks.co.uk/#quote
+- Ownership: clients own all files; domain and hosting stay in the client's name. No hosting sold, no subscription.
+- Contact: keith@newcopacks.co.uk
 
 ## Pages
-- Home: https://studio.newcopacks.co.uk/
-- Privacy notice: https://studio.newcopacks.co.uk/privacy.html
+- [Home](https://studio.newcopacks.co.uk/): overview, example sites, FAQ, quote form
+- [Pricing](https://studio.newcopacks.co.uk/pricing/): £99 one-page website, £19 website fix
+- [One-page websites £99](https://studio.newcopacks.co.uk/websites-99/)
+- [Website fixes from £19](https://studio.newcopacks.co.uk/website-fixes/)
+- [About NewCo Studio](https://studio.newcopacks.co.uk/about/): business facts
+- [Privacy notice](https://studio.newcopacks.co.uk/privacy.html)
+- [Full text for language models](https://studio.newcopacks.co.uk/llms-full.txt)
+
+## Profiles
+- Facebook: https://www.facebook.com/1474290995761850
+- Instagram: https://www.instagram.com/newcostudio.uk/
+- GitHub: https://github.com/bully4486-maker
+
+## Disambiguation
+NewCo Studio at studio.newcopacks.co.uk is a UK small-business web studio. It is not connected to other organisations using the name "NewCo Studio".
 
 ## FAQ
+### How much does a one-page website cost in the UK?
+At NewCo Studio a one-page website for a small business costs £99, fixed in writing before any work starts. That covers your services, prices, photos and contact details on one page that works properly on phones, with basic SEO and every file handed over.
+
+### Where can I get a cheap website for my small business in the UK?
+NewCo Studio builds one-page websites for small businesses for £99. You get a written fixed quote within 24 hours, you see the page before you pay the balance, and you own the site. It works remotely with businesses anywhere in the UK and worldwide.
+
+### Can you fix a broken link or a small problem on my website?
+Yes. Website fixes start from £19: broken links, a wrong phone number or email, a button or form that doesn't work, or a page that looks wrong on phones. Tell us what's wrong in the quote form and you get a fixed price in writing first.
+
+### Do you only work with businesses near you?
+No. NewCo Studio is UK-based and works remotely, by email and the website quote form, with small businesses anywhere in the UK and worldwide. Prices are in pounds sterling (GBP).
+
 ### Why written-only? Can we have a call?
 We work in writing, by email or through the quote form on our website. You get a clear record of what was agreed, you can reply when it suits you, and nothing gets lost between a call and the build. Most small jobs are quicker to scope in a few messages than a meeting.
 
@@ -38,7 +51,7 @@ We work in writing, by email or through the quote form on our website. You get a
 You get a fixed written quote first. Once you're happy, we send an invoice: 50% to start and 50% when you've approved the finished site, paid by UK bank transfer. You only pay the balance once you've signed it off, and everything is handed over to you once it's paid. Small fixes (£19) are paid in one go by bank transfer once you've approved the fix.
 
 ### How long does a job take?
-Small fixes are often a day or two. A one-page site is usually a few days, a multi-page site a little longer. Your quote gives a firm delivery date before you commit.
+Small fixes are often a day or two. A one-page site is usually a few days once we have your text and photos. Your quote gives a firm delivery date before you commit.
 
 ### What do I need to send?
 What the job is, any logo, text, photos or files, a couple of sites or examples you like, and your deadline. If something's missing, we'll ask in the thread.
@@ -46,8 +59,8 @@ What the job is, any logo, text, photos or files, a couple of sites or examples 
 ### Who owns the website or code?
 You do. You get the full source files when the job is done. Your domain and hosting stay in your name.
 
-### Are the example sites real client work?
-No. They're fictional businesses we built to show the standard of our work. We don't show invented reviews or client logos.
+### Are the example sites client work?
+No. They're example sites we designed and built ourselves to show the standard of our work. We don't show reviews or client logos we don't have.
 
 ### How fast will I hear back?
 You get a written fixed quote within 24 hours of sending the form, usually sooner. If the job isn't a fit, we'll tell you that within 24 hours too.
@@ -58,6 +71,44 @@ Yes. Further edits after delivery are quoted as their own fixed-price jobs. A sm
 ### Do you do hosting or ongoing maintenance?
 We don't sell hosting. We'll help you put the site on a host in your own name, and later changes can be quoted as small fixed-price jobs.
 
+### How much does it cost to fix a website?
+Small website fixes at NewCo Studio start from £19, for example a broken link, wrong contact details, a button or form that doesn't work, or a layout problem on phones. You get the exact price in writing first.
+
+### When do I pay?
+You get a fixed written quote first. Then it's 50% to start and 50% after you've signed off the finished work, both by UK bank transfer. A £19 fix is paid in one go once you've approved it.
+
+### Are there any monthly fees?
+No. NewCo Studio doesn't charge a subscription. You pay the fixed price for the job, and you own the site and its files.
+
+### Do you work with businesses outside the UK?
+Yes. NewCo Studio works remotely with small businesses across the UK and worldwide. Prices are quoted in pounds sterling (GBP).
+
+### How do I fix a broken link on my website?
+If you can't edit the site yourself, NewCo Studio can fix it for you from £19. Send your website address and the broken link through the quote form, and you get a fixed price in writing within 24 hours.
+
+### Can you fix my website if someone else built it?
+Usually, yes. Tell us how the site was built and what's wrong. If we can't fix it properly, we'll say so in writing rather than guess.
+
+### How much does a small website fix cost?
+Small fixes start from £19, fixed in writing before work starts, and are paid by UK bank transfer once you've approved the fix.
+
+### How long does a fix take?
+Small fixes are often done in a day or two. Your quote gives a firm date.
+
+### What do I get for £99?
+A one-page website for your business: your services, prices, photos and contact details on a single page that works well on phones. It includes basic SEO, a favicon and a share image, and you get every file at the end.
+
+### How long does it take?
+Usually a few days once we have your text and photos. Your written quote gives a firm delivery date before you commit. Need it sooner? Ask in the form and your quote will say if we can.
+
+### Do I need hosting or a domain?
+We don't sell hosting or domains. Many simple sites can be hosted free, and we help you set it up in your name, so it stays yours.
+
+### What if I need more than one page?
+Tell us what you need in the form. Bigger sites get their own fixed quote in writing, so you know exactly what's included and the price before we start.
+
 ## Notes
-- Example sites on the website are not client work; no invented reviews or client logos.
-- No advertising cookies or pixels. Notes about where a quote request came from stay in the browser tab (session storage) and are sent only with the quote form. Cookieless Cloudflare Web Analytics counts visits in aggregate.
+- The example sites on the home page were designed and built by NewCo Studio to show the standard of its work. They are not client projects.
+- No advertising cookies or pixels. Cookieless Cloudflare Web Analytics counts visits in aggregate.
+
+Last updated: 4 November 2026

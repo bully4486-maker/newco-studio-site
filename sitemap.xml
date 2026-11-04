@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<!-- Indexable studio pages only.
-     Omitted on purpose: thanks.html and 404.html (noindex);
-     /demos/ (noindex, and Disallow in robots.txt);
-     old demo redirects (noindex).
-     lastmod refreshed 25 October 2026. -->
-<url><loc>https://studio.newcopacks.co.uk/</loc><lastmod>2026-10-25</lastmod></url>
-<url><loc>https://studio.newcopacks.co.uk/websites-99/</loc><lastmod>2026-11-02</lastmod></url>
-<url><loc>https://studio.newcopacks.co.uk/privacy.html</loc><lastmod>2026-11-02</lastmod></url>
+<!-- Indexable studio pages only. Omitted on purpose: thanks.html and 404.html (noindex); /demos/ (noindex, Disallow in robots.txt). -->
+<url><loc>https://studio.newcopacks.co.uk/</loc><lastmod>2026-11-04</lastmod></url>
+<url><loc>https://studio.newcopacks.co.uk/pricing/</loc><lastmod>2026-11-04</lastmod></url>
+<url><loc>https://studio.newcopacks.co.uk/websites-99/</loc><lastmod>2026-11-04</lastmod></url>
+<url><loc>https://studio.newcopacks.co.uk/website-fixes/</loc><lastmod>2026-11-04</lastmod></url>
+<url><loc>https://studio.newcopacks.co.uk/about/</loc><lastmod>2026-11-04</lastmod></url>
+<url><loc>https://studio.newcopacks.co.uk/privacy.html</loc><lastmod>2026-11-04</lastmod></url>
 </urlset>

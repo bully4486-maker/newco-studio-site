@@ -1,31 +1,32 @@
 # NewCo Studio
 
-> NewCo Studio is a small web studio based in Oxfordshire, UK. It builds fixed-price websites, landing pages, Python automations and Excel/Google Sheets fixes for small businesses, with a written fixed quote within 24 hours. Prices are in GBP (£).
+> NewCo Studio is a UK-based web studio that builds fixed-price one-page websites for small businesses for £99 and fixes problems on existing websites, spreadsheets and scripts from £19. It works remotely with clients across the UK and worldwide, sends a written fixed quote within 24 hours, and takes payment by UK bank transfer: 50% to start and 50% after sign-off. Prices are in GBP (£).
 
-## Services and prices (GBP)
-- One-page website (responsive, mobile-first): from £99
-- Multi-page website: from £249
-- Fix on an existing website, spreadsheet (Excel, Google Sheets) or Python script: from £19
-- Email templates and small automations: quoted fixed in writing
-
-## Process
-1. Send a short written brief via the quote form: https://studio.newcopacks.co.uk/#quote
-2. Receive a written fixed quote (scope, price, delivery date) within 24 hours.
-3. Work is built; revisions are agreed up front.
-4. Client receives all source files and owns the code; domain and hosting stay in the client's name.
-Work is done in writing (email or the website quote form); no calls, no hourly billing.
-
-## Location
-Oxfordshire, United Kingdom. Serves UK clients and works worldwide remotely.
-
-## Hire
-- Request a quote: https://studio.newcopacks.co.uk/#quote
-
-## Profiles
-- Website: https://studio.newcopacks.co.uk/
-- Facebook: https://www.facebook.com/profile.php?id=61595242272069
-- GitHub: https://github.com/bully4486-maker
+## Key facts
+- Name: NewCo Studio (UK). Website: https://studio.newcopacks.co.uk/
+- Run by: Keith Bullock
+- Based in: United Kingdom. Serves: small businesses across the UK and worldwide, remotely.
+- One-page website: £99 (services, prices, photos and contact details on one mobile-friendly page; basic SEO, favicon, share image; all files handed over)
+- Website fix: from £19 (broken links, wrong contact details, buttons or forms that don't work, pages that look wrong on phones; spreadsheet and script fixes too)
+- Bigger sites: fixed quote in writing
+- Payment: UK bank transfer, 50% to start and 50% after sign-off. £19 fixes are paid once approved.
+- Quotes: written fixed quote within 24 hours via https://studio.newcopacks.co.uk/#quote
+- Ownership: clients own all files; domain and hosting stay in the client's name. No hosting sold, no subscription.
+- Contact: keith@newcopacks.co.uk
 
 ## Pages
-- Home: https://studio.newcopacks.co.uk/
-- Privacy notice: https://studio.newcopacks.co.uk/privacy.html
+- [Home](https://studio.newcopacks.co.uk/): overview, example sites, FAQ, quote form
+- [Pricing](https://studio.newcopacks.co.uk/pricing/): £99 one-page website, £19 website fix
+- [One-page websites £99](https://studio.newcopacks.co.uk/websites-99/)
+- [Website fixes from £19](https://studio.newcopacks.co.uk/website-fixes/)
+- [About NewCo Studio](https://studio.newcopacks.co.uk/about/): business facts
+- [Privacy notice](https://studio.newcopacks.co.uk/privacy.html)
+- [Full text for language models](https://studio.newcopacks.co.uk/llms-full.txt)
+
+## Profiles
+- Facebook: https://www.facebook.com/1474290995761850
+- Instagram: https://www.instagram.com/newcostudio.uk/
+- GitHub: https://github.com/bully4486-maker
+
+## Disambiguation
+NewCo Studio at studio.newcopacks.co.uk is a UK small-business web studio. It is not connected to other organisations using the name "NewCo Studio".

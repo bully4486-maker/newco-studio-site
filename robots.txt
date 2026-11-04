@@ -34,6 +34,34 @@ User-agent: Bingbot
 Allow: /
 Disallow: /demos/
 
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /demos/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /demos/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /demos/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /demos/
+
+User-agent: Applebot
+Allow: /
+Disallow: /demos/
+
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /demos/
+
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /demos/
+
 User-agent: *
 Allow: /
 Disallow: /demos/
