@@ -4,7 +4,7 @@ Ready for later posting. Nothing here has been published.
 
 Four portrait boards cleared the house gate. The standing score is the lower of the author score and an independent review. Anything under 8.5 was rendered, scored, and left out of this folder.
 
-Brand, prices and timings match the live site. A one-page website starts at £99. A written quote comes back within 24 hours, usually sooner. Fixes start at £19. The phones are fresh mobile captures of the live demos. Each one is labelled “Demo site · fictional business”.
+Brand, prices and timings match the live site. A one-page website starts at £99. A written quote comes back within 24 hours, usually sooner. Fixes start at £19. The phones are fresh mobile captures of the example sites. Each one is labelled “Example of our work”.
 
 Regenerate the shipped PNGs:
 

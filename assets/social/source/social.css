@@ -129,17 +129,17 @@ h1 {
 .sq h1 { font-size: 48px; }
 h1 em { font-style: normal; color: #9CC4B8; }
 
-.deck, .note, .aside, .honest, .founding {
+.deck, .note, .aside, .honest, .priceline {
   margin: 0;
   font: 500 32px/1.25 Inter, sans-serif;
   color: #D7E8E2;
 }
-.sq .deck, .sq .note, .sq .aside, .sq .honest, .sq .founding { font-size: 28px; }
-.light .deck, .light .note, .light .aside, .light .honest, .light .founding { color: #02505A; }
-.mintboard .deck, .mintboard .note, .mintboard .founding { color: #00292D; }
-.founding { font-weight: 600; color: #9CC4B8; }
-.light .founding { color: #02505A; }
-.mintboard .founding { color: #00292D; }
+.sq .deck, .sq .note, .sq .aside, .sq .honest, .sq .priceline { font-size: 28px; }
+.light .deck, .light .note, .light .aside, .light .honest, .light .priceline { color: #02505A; }
+.mintboard .deck, .mintboard .note, .mintboard .priceline { color: #00292D; }
+.priceline { font-weight: 600; color: #9CC4B8; }
+.light .priceline { color: #02505A; }
+.mintboard .priceline { color: #00292D; }
 
 .foot {
   flex: none;
@@ -233,7 +233,7 @@ h1 em { font-style: normal; color: #9CC4B8; }
 .price .body, #carousel-01 .body, #carousel-05 .body { align-items: center; }
 .price .note { margin-top: 0; }
 .price .ticks, #carousel-01 .ticks { margin-top: 4px; }
-.price .founding, #carousel-01 .founding { margin-top: 6px; padding-top: 0; }
+.price .priceline, #carousel-01 .priceline { margin-top: 6px; padding-top: 0; }
 
 .ticks {
   list-style: none;
