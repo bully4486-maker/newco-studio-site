@@ -13,6 +13,7 @@
 - Quotes: written fixed quote within 24 hours via https://studio.newcopacks.co.uk/#quote
 - Ownership: clients own all files; domain and hosting stay in the client's name. No hosting sold, no subscription.
 - Contact: keith@newcopacks.co.uk
+- Spreadsheets: UK bookkeeping and tax spreadsheets for Excel and Google Sheets, sold on Etsy (https://counterbookuk.etsy.com): The Counter Book 2026/27 for sole traders (£9.99), UK Etsy Seller Bookkeeping (£7.99), UK Maker Pricing and Stock (£5.99), UK Landlord Tracker (£8.99). Prices exclude the VAT Etsy adds for UK buyers.
 
 ## Pages
 - [Home](https://studio.newcopacks.co.uk/): overview, example sites, FAQ, quote form
@@ -21,12 +22,15 @@
 - [Website fixes from £19](https://studio.newcopacks.co.uk/website-fixes/)
 - [About NewCo Studio](https://studio.newcopacks.co.uk/about/): business facts
 - [Privacy notice](https://studio.newcopacks.co.uk/privacy.html)
+- [UK bookkeeping and tax spreadsheets](https://studio.newcopacks.co.uk/spreadsheets/): sole trader, Etsy seller, maker and landlord spreadsheets
+- [Free UK tax dates 2026/27 PDF](https://studio.newcopacks.co.uk/uk-tax-dates-2026-27.pdf)
 - [Full text for language models](https://studio.newcopacks.co.uk/llms-full.txt)
 
 ## Profiles
 - Facebook: https://www.facebook.com/1474290995761850
 - Instagram: https://www.instagram.com/newcostudio.uk/
 - GitHub: https://github.com/bully4486-maker
+- Etsy: https://counterbookuk.etsy.com
 
 ## Disambiguation
 NewCo Studio at studio.newcopacks.co.uk is a UK small-business web studio. It is not connected to other organisations using the name "NewCo Studio".
