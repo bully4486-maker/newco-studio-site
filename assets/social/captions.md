@@ -4,7 +4,7 @@ UK English. Nothing here has been posted.
 
 Quote form: <https://studio.newcopacks.co.uk/#quote>
 
-Use one hashtag set, not all three. Prices are the published ones. Where a phone is in the image, the business is a fictional demo.
+Use one hashtag set, not all three. Prices are the published ones. Where a phone is in the image, it is an example of our work, not a client.
 
 ## Speed
 
@@ -16,7 +16,7 @@ You hear back within 24 hours. Usually sooner.
 
 The reply is a written quote, or a straight no. A one-page site is often a few days, and the date is in the quote before you commit.
 
-No calls. No hourly meter. Paws Parlour in the phone is a fictional demo.
+No calls. No hourly meter. Paws Parlour in the phone is an example of our work, not a client.
 
 https://studio.newcopacks.co.uk/#quote
 
@@ -44,7 +44,7 @@ In the £99 build: one responsive page, your services and prices, a light page w
 
 You own the files. We don’t sell hosting.
 
-The electrician on the image, Halvercroft Electrical, is fictional.
+The electrician on the image, Halvercroft Electrical, is an example of our work, not a client.
 
 Get a fixed quote:
 https://studio.newcopacks.co.uk/#quote
@@ -76,7 +76,7 @@ https://studio.newcopacks.co.uk/#quote
 
 ### LinkedIn
 
-Four answers before you write to us. The files are yours. The work stays in writing. One page is usually a few days. The demos are fictional businesses.
+Four answers before you write to us. The files are yours. The work stays in writing. One page is usually a few days. The example sites are examples of our work, not clients.
 
 Written quote within 24 hours.
 https://studio.newcopacks.co.uk/#quote
@@ -98,7 +98,7 @@ File: `how-1080x1350.png`
 3. A preview.
 4. The files. You approve, then pay.
 
-Halvercroft Electrical, in the phone, is a fictional demo.
+Halvercroft Electrical, in the phone, is an example of our work, not a client.
 
 Get a fixed quote:
 https://studio.newcopacks.co.uk/#quote

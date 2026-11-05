@@ -1,6 +1,6 @@
 # NewCo Studio
 
-> NewCo Studio is a UK-based web studio that builds fixed-price one-page websites for small businesses for £99 and fixes problems on existing websites, spreadsheets and scripts from £19. It works remotely with clients across the UK and worldwide, sends a written fixed quote within 24 hours, and takes payment by UK bank transfer: 50% to start and 50% after sign-off. Prices are in GBP (£).
+> NewCo Studio is a UK-based web studio that builds fixed-price one-page websites for small businesses for £99 and fixes problems on existing websites, spreadsheets and scripts from £19. It works remotely with clients across the UK and worldwide, sends a written fixed quote within 24 hours, and takes payment by UK bank transfer: 50% to start and 50% after sign-off. Prices are in GBP (£). Prices as stated. VAT is not charged.
 
 ## Key facts
 - Name: NewCo Studio (UK). Website: https://studio.newcopacks.co.uk/
@@ -16,9 +16,10 @@
 
 ## Pages
 - [Home](https://studio.newcopacks.co.uk/): overview, example sites, FAQ, quote form
-- [Pricing](https://studio.newcopacks.co.uk/pricing/): £99 one-page website, £19 website fix
+- [Pricing](https://studio.newcopacks.co.uk/pricing/): £99 one-page website, £19 website fix, with the quote form on the page
 - [One-page websites £99](https://studio.newcopacks.co.uk/websites-99/)
-- [Website fixes from £19](https://studio.newcopacks.co.uk/website-fixes/)
+- [Website fixes from £19](https://studio.newcopacks.co.uk/website-fixes/): quote form on the page, including an optional screenshot
+- [Example sites, annotated](https://studio.newcopacks.co.uk/standards/): examples of our work, not a client list
 - [About NewCo Studio](https://studio.newcopacks.co.uk/about/): business facts
 - [Privacy notice](https://studio.newcopacks.co.uk/privacy.html)
 - [Full text for language models](https://studio.newcopacks.co.uk/llms-full.txt)

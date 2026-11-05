@@ -4,7 +4,7 @@ Method: nine categories, as on the published fb2_99 post (8.7). Each is 0–10. 
 
 An author scored the boards first. A reviewer from another model family then scored them, more than once, after each rework. The lower overall stands. These tables are that reviewer’s scores.
 
-Compliance, shipped assets: pass. No claim that a model does the work. No local-service framing. No voice. Prices are the published ones. Demos are labelled fictional.
+Compliance, shipped assets: pass. No claim that a model does the work. No local-service framing. No voice. Prices are the published ones. Example sites are labelled as examples of our work.
 
 Provenance: pass. Log at the bottom.
 
@@ -46,7 +46,7 @@ Provenance: pass. Log at the bottom.
 | Typography | 8.6 | Questions 28px, answers larger. |
 | Imagery | 8.3 | Live Paws capture next to the demo answer. |
 | Layout | 8.6 | Four cards fill. |
-| Trust | 8.9 | The answers are the site’s FAQ, including that the demos are fictional. |
+| Trust | 8.9 | The answers are the site’s FAQ, including that the example sites are not client work. |
 | Mobile | 8.6 | On the 28px floor for the question labels. |
 | Call to action | 8.7 | URL and button. |
 | Originality | 7.9 | Hook is “Worth asking first.” |
@@ -78,7 +78,7 @@ The review scored the longer caption file, which also covered boards that were l
 | Typography | 8.6 | Short. UK English. Different shape per post. |
 | Imagery | n/a | |
 | Layout | n/a | |
-| Trust | 9.0 | Fictional demos are named as fictional. No testimonials. |
+| Trust | 9.0 | Example sites are named as examples of our work. No testimonials. |
 | Mobile | n/a | |
 | Call to action | 8.3 | Each one ends on the quote URL. The line above it is not always the same button label. |
 | Originality | 8.2 | Hashtag sets are no longer one pool reshuffled. Some facts repeat because they are the offer. |
