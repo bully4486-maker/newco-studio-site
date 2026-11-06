@@ -7,11 +7,11 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
 <link rel="apple-touch-icon" href="/assets/icon-180.png">
 <meta name="robots" content="noindex,nofollow">
-<title>Automation samples (Demo) | NewCo Studio portfolio</title>
-<meta name="description" content="Sample Python and spreadsheet automation: an invoice CSV merge and a small-business KPI dashboard. Fictional data by NewCo Studio.">
+<title>Automation samples | NewCo Studio</title>
+<meta name="description" content="Sample Python and spreadsheet automation: an invoice CSV merge and a small-business KPI dashboard. Sample data by NewCo Studio.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Automation samples (Demo) | NewCo Studio portfolio">
-<meta property="og:description" content="Sample Python and spreadsheet automation: an invoice CSV merge and a small-business KPI dashboard. Fictional data by NewCo Studio.">
+<meta property="og:title" content="Automation samples | NewCo Studio">
+<meta property="og:description" content="Sample Python and spreadsheet automation: an invoice CSV merge and a small-business KPI dashboard. Sample data by NewCo Studio.">
 <meta property="og:url" content="https://studio.newcopacks.co.uk/demos/automation/">
 <meta property="og:image" content="https://studio.newcopacks.co.uk/demos/automation/dashboard_render.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -24,8 +24,81 @@ body{background:var(--sand)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
 main{padding:48px 0 80px}
 .case{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:28px 0}
-.case img{width:100%;height:auto;background:#111}
+.case img{width:100%;height:auto;background:#fff;display:block}
 .case .body{padding:28px}
+.sheet{background:#fff;color:var(--ink)}
+.sheet-bar{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;padding:16px 18px;background:radial-gradient(70% 160% at 100% 0%,rgba(156,196,184,.32),transparent 58%),var(--deep);color:#fff}
+.sheet-id{display:flex;align-items:center;gap:12px;min-width:0}
+.sheet-id>div{min-width:0}
+.sheet-ic{width:36px;height:36px;border-radius:10px;background:rgba(156,196,184,.16);display:grid;place-items:center;color:var(--mint);flex:none}
+.sheet-ic svg{width:20px;height:20px}
+.sheet-name{margin:0;font:700 1.02rem/1.2 Jakarta,Inter,sans-serif;letter-spacing:-.015em}
+.sheet-sub{margin:2px 0 0;color:#D5E4DF;font-size:.8rem}
+.sheet .pill{background:var(--mint);color:var(--deep);border-radius:999px;padding:6px 12px;font:600 .78rem/1 Inter,sans-serif;flex:none}
+.kpis{display:grid;grid-template-columns:1fr 1fr;margin:0}
+.kpis div{padding:14px 16px 13px;border-bottom:1px solid var(--line)}
+.kpis div:nth-child(odd){border-right:1px solid var(--line)}
+.kpis dt{margin:0;font:600 .72rem/1.2 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.kpis dd{margin:6px 0 0;font:800 1.2rem/1 Jakarta,sans-serif;letter-spacing:-.03em;color:var(--deep);font-variant-numeric:tabular-nums;white-space:nowrap}
+.kpis .due dd{color:var(--teal)}
+.sheet-split{display:grid;gap:6px;padding:14px 16px 4px}
+table.inv{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+table.inv th,table.inv td{padding:9px 8px 9px 0;text-align:right;font-weight:500;font-size:.92rem;border-bottom:1px solid var(--line);vertical-align:middle}
+table.inv thead th{font:600 .7rem/1.2 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+table.inv tbody th,table.inv thead th:first-child,table.inv tfoot th{text-align:left;color:var(--deep);font-weight:600}
+table.inv td:last-child{color:var(--teal);font-weight:600}
+table.inv tbody tr:last-child th,table.inv tbody tr:last-child td{border-bottom:0}
+table.inv tfoot th,table.inv tfoot td{border-top:2px solid var(--deep);border-bottom:0;background:#F7F4EE;font-weight:700;color:var(--deep);padding-top:11px;padding-bottom:11px}
+table.inv tfoot td:last-child{color:var(--teal)}
+.count{display:block;margin-top:2px;font:500 .75rem/1.3 Inter,sans-serif;color:var(--muted);letter-spacing:0;text-transform:none}
+.col-n{display:none}
+.bars .chart-title{margin:10px 0 12px;font:700 .98rem/1.2 Jakarta,sans-serif;color:var(--deep)}
+.brow{margin:0 0 11px}
+.bmeta{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-bottom:5px;font-size:.84rem}
+.bmeta span:first-child{font-weight:600;color:var(--deep);min-width:0}
+.bmeta span:last-child{font-variant-numeric:tabular-nums;color:var(--teal);font-weight:600;white-space:nowrap}
+.track{height:9px;background:#E7E2D8;border-radius:999px;overflow:hidden}
+.bar{display:flex;height:100%;border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%}
+.bar .paid{background:var(--mint)}
+.bar .unpaid{background:var(--deep)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:2px 0 8px;padding:0;list-style:none;font-size:.78rem;color:var(--muted)}
+.legend li{display:flex;align-items:center;gap:6px}
+.legend b{width:10px;height:10px;border-radius:3px;display:block}
+.legend .paid{background:var(--mint)}
+.legend .unpaid{background:var(--deep)}
+.sheet-note{margin:0;padding:4px 16px 16px;font-size:.84rem;color:var(--muted)}
+.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+@media (max-width:759px){
+table.inv th,table.inv td{font-size:.86rem;padding:8px 4px 8px 0}
+.kpis dd{font-size:1.15rem}
+}
+@media (max-width:520px){
+.sheet-bar{grid-template-columns:1fr;justify-items:start;gap:10px}
+}
+@media (max-width:380px){
+.kpis dd{font-size:1.05rem}
+table.inv thead{display:none}
+table.inv,table.inv tbody,table.inv tfoot{display:block;width:100%}
+table.inv tr{display:grid;grid-template-columns:1fr 1fr;column-gap:12px;row-gap:2px;padding:11px 0 12px;border-bottom:1px solid var(--line)}
+table.inv tbody th,table.inv tfoot th{grid-column:1/-1;border:0;padding:0 0 4px;text-align:left}
+table.inv td{display:block;text-align:left;border:0;padding:0}
+table.inv td.col-n{display:none}
+table.inv td::before{content:attr(data-label);display:block;margin-bottom:2px;font:600 .68rem/1.2 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+table.inv tfoot tr{background:#F7F4EE;border:0;border-top:2px solid var(--deep);border-radius:10px;margin-top:8px;padding:12px 10px}
+table.inv tfoot th,table.inv tfoot td{background:transparent;border:0}
+}
+@media (min-width:760px){
+.kpis{grid-template-columns:repeat(4,1fr)}
+.kpis div{border-right:1px solid var(--line)}
+.kpis div:last-child{border-right:0}
+.kpis dd{font-size:1.45rem}
+.sheet-split{grid-template-columns:minmax(0,1.2fr) minmax(0,.9fr);gap:28px;align-items:start;padding:18px 18px 8px}
+.col-n{display:table-cell}
+.count{display:none}
+.bars .chart-title{margin-top:0}
+.sheet-note{padding:0 18px 18px}
+}
 .files{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
 </style>
 </head>
@@ -40,10 +113,53 @@ main{padding:48px 0 80px}
 <div class="wrap">
 <span class="eyebrow">Automation samples</span>
 <h1>Small jobs, shown working.</h1>
-<p class="lead">Two samples with sample numbers. Open the screenshots here, or download the Python script and the Excel workbooks. Nothing on this page is a real client.</p>
+<p class="lead">Two samples with sample numbers. The invoice summary is shown below, and you can download the Python script and the Excel workbooks. Nothing on this page is a real client.</p>
 
 <article class="case">
-<img src="screenshot_terminal.png" width="820" height="260" alt="Terminal output of a Python script merging invoice CSV files into an Excel summary">
+<div class="sheet" aria-labelledby="sheet-title">
+<div class="sheet-bar">
+<div class="sheet-id">
+<span class="sheet-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="2.5" width="18" height="19" rx="2"/><path d="M3 8.5h18M3 14h18M9 8.5V21.5M15 8.5V21.5"/></svg></span>
+<div>
+<p class="sheet-name" id="sheet-title">invoice_summary.xlsx</p>
+<p class="sheet-sub">By client · 3 source files</p>
+</div>
+</div>
+<span class="pill">Sample data</span>
+</div>
+<dl class="kpis">
+<div><dt>Invoices</dt><dd>24</dd></div>
+<div><dt>Invoiced</dt><dd>£10,850.53</dd></div>
+<div class="due"><dt>Unpaid</dt><dd>£2,978.43</dd></div>
+<div><dt>Source files</dt><dd>3</dd></div>
+</dl>
+<div class="sheet-split">
+<table class="inv">
+<caption class="vh">Sample totals by client. Amounts are example output, not a client job.</caption>
+<thead>
+<tr><th>Client</th><th class="col-n">Invoices</th><th>Total</th><th>Unpaid</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Elmford Garage<span class="count">12 invoices</span></th><td class="col-n">12</td><td data-label="Invoiced">£6,490.17</td><td data-label="Unpaid">£1,676.90</td></tr>
+<tr><th scope="row">Hollow Green Bakery<span class="count">2 invoices</span></th><td class="col-n">2</td><td data-label="Invoiced">£573.73</td><td data-label="Unpaid">£76.65</td></tr>
+<tr><th scope="row">Riverside Dental<span class="count">6 invoices</span></th><td class="col-n">6</td><td data-label="Invoiced">£2,196.96</td><td data-label="Unpaid">£1,128.92</td></tr>
+<tr><th scope="row">Weldmere Florist<span class="count">4 invoices</span></th><td class="col-n">4</td><td data-label="Invoiced">£1,589.67</td><td data-label="Unpaid">£95.96</td></tr>
+</tbody>
+<tfoot>
+<tr><th scope="row">Total</th><td class="col-n">24</td><td data-label="Invoiced">£10,850.53</td><td data-label="Unpaid">£2,978.43</td></tr>
+</tfoot>
+</table>
+<figure class="bars" aria-hidden="true">
+<p class="chart-title">Invoiced by client</p>
+<div class="brow"><div class="bmeta"><span>Elmford Garage</span><span>£6,490.17</span></div><div class="track"><div class="bar" style="width:100%"><i class="paid" style="width:74.2%"></i><i class="unpaid" style="width:25.8%"></i></div></div></div>
+<div class="brow"><div class="bmeta"><span>Hollow Green Bakery</span><span>£573.73</span></div><div class="track"><div class="bar" style="width:8.8%"><i class="paid" style="width:86.6%"></i><i class="unpaid" style="width:13.4%"></i></div></div></div>
+<div class="brow"><div class="bmeta"><span>Riverside Dental</span><span>£2,196.96</span></div><div class="track"><div class="bar" style="width:33.9%"><i class="paid" style="width:48.6%"></i><i class="unpaid" style="width:51.4%"></i></div></div></div>
+<div class="brow"><div class="bmeta"><span>Weldmere Florist</span><span>£1,589.67</span></div><div class="track"><div class="bar" style="width:24.5%"><i class="paid" style="width:94%"></i><i class="unpaid" style="width:6%"></i></div></div></div>
+<ul class="legend"><li><b class="paid"></b> Paid</li><li><b class="unpaid"></b> Unpaid</li></ul>
+</figure>
+</div>
+<p class="sheet-note">Example output — not a client job. 24 invoices merged from 3 files.</p>
+</div>
 <div class="body">
 <h2>Invoice CSVs → one Excel summary</h2>
 <p>Merges a folder of monthly CSVs into a workbook with per-client totals, unpaid balances and a chart. Sample data. The script needs Python and openpyxl, and a folder of CSV files in the shape described at the top of the file.</p>

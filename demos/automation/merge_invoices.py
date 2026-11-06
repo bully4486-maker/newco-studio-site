@@ -1,4 +1,4 @@
-"""Demo project: merge monthly invoice CSVs into one summary Excel workbook.
+"""Merge monthly invoice CSVs into one summary Excel workbook.
 Usage: python merge_invoices.py [input_folder] [output.xlsx]"""
 import csv, glob, os, sys
 from collections import defaultdict
