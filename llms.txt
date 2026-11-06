@@ -14,7 +14,7 @@
 - Quotes: written fixed quote within 24 hours via https://studio.newcopacks.co.uk/#quote
 - Ownership: clients own all files; domain and hosting stay in the client's name. No hosting sold, no subscription.
 - Contact: keith@newcopacks.co.uk
-- Spreadsheets: UK bookkeeping and tax spreadsheets for Excel and Google Sheets, sold on Etsy (https://counterbookuk.etsy.com): The Counter Book 2026/27 for sole traders (£9.99), UK Etsy Seller Bookkeeping (£7.99), UK Maker Pricing and Stock (£5.99), UK Landlord Tracker (£8.99). Prices exclude the VAT Etsy adds for UK buyers.
+- Spreadsheets: UK bookkeeping and tax spreadsheets for Excel and Google Sheets, sold on Etsy (https://counterbookuk.etsy.com). UK listing prices, including UK VAT: The Counter Book 2026/27 for sole traders £11.99 (seller price before UK VAT £9.99), UK Etsy Seller Bookkeeping £9.59 (seller price £7.99), UK Maker Pricing and Stock £7.19 (seller price £5.99), UK Landlord Tracker £10.79 (seller price £8.99). Etsy prices may vary by buyer location. That VAT is Etsy's charge, not the studio's.
 
 ## Pages
 - [Home](https://studio.newcopacks.co.uk/): overview, example sites, FAQ, quote form
