@@ -10,6 +10,7 @@
 - Website fix: from £19 (broken links, wrong contact details, buttons or forms that don't work, pages that look wrong on phones; spreadsheet and script fixes too)
 - Bigger sites: fixed quote in writing
 - Payment: UK bank transfer, 50% to start and 50% after sign-off. £19 fixes are paid once approved.
+- Delivery: website and fix work is files and a preview link, not a parcel, with no shipping charge. The published window is one to five days, and the written quote names the date. Finished website and fix work is not returned; further edits after delivery are new fixed-price jobs from £19. Spreadsheet files are instant downloads on Etsy, with no physical shipping from the studio. Etsy handles any refund on those downloads. See https://studio.newcopacks.co.uk/delivery/
 - Quotes: written fixed quote within 24 hours via https://studio.newcopacks.co.uk/#quote
 - Ownership: clients own all files; domain and hosting stay in the client's name. No hosting sold, no subscription.
 - Contact: keith@newcopacks.co.uk
@@ -21,6 +22,7 @@
 - [Website fixes from £19](https://studio.newcopacks.co.uk/website-fixes/): quote form on the page, including an optional screenshot
 - [Example sites, annotated](https://studio.newcopacks.co.uk/standards/): examples of our work, not a client list
 - [About NewCo Studio](https://studio.newcopacks.co.uk/about/): business facts
+- [Delivery and returns](https://studio.newcopacks.co.uk/delivery/): files and preview links for studio work; instant Etsy downloads for spreadsheets
 - [Privacy notice](https://studio.newcopacks.co.uk/privacy.html)
 - [Full text for language models](https://studio.newcopacks.co.uk/llms-full.txt)
 
@@ -112,4 +114,4 @@ Tell us what you need in the form. Bigger sites get their own fixed quote in wri
 - The example sites on the home page were designed and built by NewCo Studio to show the standard of its work. They are not client projects.
 - No advertising cookies or pixels. Cookieless Cloudflare Web Analytics counts visits in aggregate.
 
-Last updated: 4 November 2026
+Last updated: 6 November 2026
