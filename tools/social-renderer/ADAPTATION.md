@@ -11,4 +11,10 @@ Source zip: `existing-renderer-reference` → `video_poc/`.
 | `licence/LICENCE_PROOF.md` | Copied as `fixtures/LICENCE_PROOF.md.reference_only` — provenance lead, not re-verified; **no audio bundled** |
 | Counter Book PNGs | Optional refs under `vendor_assets/counter_book_ref/` (MTD-named still excluded from default masters) |
 
+## Related in-repo pack (do not conflate)
+
+`assets/social/` is the house **static** 1080×1350 Chrome CDP board renderer (`posts.html` / `render.mjs`). Prefer **main** wording there (“Example of our work”, current prices) over older branch tips that still say “Demo site · fictional business” / “First 3 clients”.
+
+This `tools/social-renderer/` package is the **9:16 music-only** path. Reuse brand fonts/mark/prices from the site; do not republish withheld/under-8.5 boards or Hearth & Crumb café scroll frames as new masters.
+
 Intentionally **not** carried over: voiceover/comedy pipelines, café scroll frame packs (`scr3/`), hardcoded “Demo site · fictional business”, silent publication-ready defaults.
