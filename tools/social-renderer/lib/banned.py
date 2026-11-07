@@ -22,6 +22,11 @@ BANNED_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
     )),
     ("hearth_crumb_republish", re.compile(r"hearth\s*&\s*crumb|hearth\s+and\s+crumb", re.I)),
     ("fake_cafe_menu", re.compile(r"\bflat\s*white\b|\bbook a table\b", re.I)),
+    # Cafe/restaurant-specific hooks mismatch general trade examples (e.g. electrician)
+    ("cafe_specific_hook", re.compile(
+        r"menu,\s*hours\s*&\s*booking|hours\s*&\s*booking,\s*one\s*page",
+        re.I,
+    )),
 ]
 
 # Platform-only / non-cross-licence music claims are rejected separately in music.py.

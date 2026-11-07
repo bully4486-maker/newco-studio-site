@@ -14,28 +14,28 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#00292d;font-fam
 #brand{position:absolute;left:64px;top:284px;display:flex;align-items:center;gap:16px;font-size:30px;z-index:6}
 #brand img{width:56px;height:56px;border-radius:8px}
 .abs{position:absolute;left:64px;right:64px}
-/* Large soft headline behind phone — Keith style */
-#hook{top:360px;font-size:72px;line-height:1.05;z-index:2;color:rgba(214,230,226,.55);pointer-events:none}
+/* Hook is scene 1 only — must reach opacity 0 before caps/phone headlines */
+#hook{top:400px;font-size:68px;line-height:1.08;z-index:2;color:rgba(214,230,226,.92);pointer-events:none}
 #hook .l{display:block}
 .sage{color:#9cc4b8}
-#phone{position:absolute;left:285px;top:500px;width:510px;height:1000px;border-radius:60px;background:#0e1214;box-shadow:0 40px 90px rgba(0,0,0,.55),inset 0 0 0 3px #3c464a;padding:16px;z-index:4;opacity:0}
+#phone{position:absolute;left:285px;top:560px;width:510px;height:960px;border-radius:60px;background:#0e1214;box-shadow:0 40px 90px rgba(0,0,0,.55),inset 0 0 0 3px #3c464a;padding:16px;z-index:4;opacity:0}
 #phone .scr{width:100%;height:100%;border-radius:50px;overflow:hidden;background:#fbf7ef}
 #phone img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
-#cap{top:372px;font-size:70px;line-height:1.05;height:200px;z-index:5}
+/* Caps sit in the band below brand and above phone — exclusive with hook */
+#cap{top:372px;font-size:64px;line-height:1.06;height:170px;z-index:5}
 #cap .c{position:absolute;left:0;right:0;top:0;opacity:0}
-#cap .sm{font-size:26px;font-weight:600;color:#9cc4b8;display:block;margin-bottom:10px;letter-spacing:.06em;font-family:'Inter',sans-serif}
-#tag{position:absolute;left:50%;transform:translateX(-50%);bottom:684px;white-space:nowrap;z-index:5;box-shadow:0 8px 24px rgba(0,0,0,.4);background:#02505a;border-radius:40px;padding:10px 22px;font-size:24px;font-weight:600;opacity:0}
+#cap .sm{font-size:24px;font-weight:600;color:#9cc4b8;display:block;margin-bottom:10px;letter-spacing:.06em;font-family:'Inter',sans-serif}
+#tag{position:absolute;left:50%;transform:translateX(-50%);top:1480px;white-space:nowrap;z-index:5;box-shadow:0 8px 24px rgba(0,0,0,.4);background:#02505a;border-radius:40px;padding:10px 22px;font-size:24px;font-weight:600;opacity:0}
 #bottomTag{position:absolute;left:65px;right:65px;bottom:340px;text-align:center;font-size:22px;font-weight:700;letter-spacing:.14em;color:rgba(214,230,226,.75);z-index:5;opacity:0}
-#end{position:absolute;inset:0;z-index:8}
-#end .big{font-size:120px;color:#9cc4b8;line-height:1}
+#end{position:absolute;inset:0;z-index:8;opacity:0}
+#end .big{font-size:110px;color:#9cc4b8;line-height:1}
 #pill{position:absolute;background:#fff;color:#00292d;border-radius:60px;font-weight:700;font-size:40px;padding:24px 50px;left:64px}
-.chk{display:flex;align-items:center;gap:22px;font-size:40px;font-weight:600;opacity:0;margin-bottom:28px}
-.chk i{width:48px;height:48px;border-radius:50%;background:#9cc4b8;display:inline-block;position:relative;flex:none}
-.chk i:after{content:"";position:absolute;left:15px;top:8px;width:11px;height:22px;border:solid #00292d;border-width:0 5px 5px 0;transform:rotate(40deg)}
+.chk{display:flex;align-items:center;gap:22px;font-size:38px;font-weight:600;opacity:0;margin-bottom:26px}
+.chk i{width:46px;height:46px;border-radius:50%;background:#9cc4b8;display:inline-block;position:relative;flex:none}
+.chk i:after{content:"";position:absolute;left:14px;top:8px;width:11px;height:22px;border:solid #00292d;border-width:0 5px 5px 0;transform:rotate(40deg)}
 #safe{display:none;position:absolute;left:65px;top:269px;width:950px;height:1371px;border:1px dashed rgba(255,255,255,.25);z-index:99;pointer-events:none}
 body.show-safe #safe{display:block}
-/* Cover / still: freeze mid composition */
-body.cover #cap .c,body.cover #end{display:none}
+body.cover #cap .c,body.cover #end,body.cover #hook{display:none}
 </style>
 </head>
 <body>
@@ -48,11 +48,11 @@ body.cover #cap .c,body.cover #end{display:none}
 <div id="tag"></div>
 <div id="bottomTag"></div>
 <div id="end">
-  <div class="abs J" id="e1" style="line-height:1.05;top:376px;font-size:78px"></div>
+  <div class="abs J" id="e1" style="line-height:1.05;top:376px;font-size:72px"></div>
   <div class="abs J big" id="e2" style="top:470px"></div>
-  <div class="abs" id="eck" style="top:650px"></div>
+  <div class="abs" id="eck" style="top:640px"></div>
   <div class="abs" id="e3" style="top:900px;font-size:30px;color:#d6e6e2;font-weight:600"></div>
-  <div class="abs J" id="e4" style="top:960px;font-size:48px"></div>
+  <div class="abs J" id="e4" style="top:960px;font-size:46px"></div>
   <div id="pill" style="top:1040px">Get a fixed quote</div>
 </div>
 <script>
@@ -62,14 +62,14 @@ const seg=(t,a,b)=>cl((t-a)/(b-a));
 const oq=u=>1-Math.pow(1-cl(u),5);
 const ob=u=>{u=cl(u);const c=1.45;return 1+(c+1)*Math.pow(u-1,3)+c*Math.pow(u-1,2)};
 const ioc=u=>{u=cl(u);return u<.5?4*u*u*u:1-Math.pow(-2*u+2,3)/2};
+const CAP_TIMES=[[3.2,6.0],[5.9,8.8],[8.7,11.5]];
 let D={};
 let COVER=false;
 
 function setData(d){
   D=d||{};
   COVER=!!D.cover_mode;
-  if(COVER) document.body.classList.add('cover');
-  else document.body.classList.remove('cover');
+  document.body.classList.toggle('cover', COVER);
   if(D.show_safe) document.body.classList.add('show-safe');
 
   const hooks=D.hook_lines||[];
@@ -97,6 +97,36 @@ function inEl(el,t,t0,dur=.55,rise=40,ease=oq){
   el.style.transform=`translateY(${(1-v)*rise}px)`;
 }
 
+function effOpacity(el){
+  if(!el) return 0;
+  let o=1, n=el;
+  while(n && n!==document.body){
+    const cs=getComputedStyle(n);
+    if(cs.display==='none' || cs.visibility==='hidden') return 0;
+    o *= parseFloat(cs.opacity||'1');
+    n=n.parentElement;
+  }
+  return o;
+}
+
+/** Per-scene visibility for automated QA. Visible = effective opacity >= 0.2 */
+function sceneState(t){
+  render(t);
+  const caps=(D.caps||[]).map((_,i)=>effOpacity($('c'+i)));
+  return {
+    t,
+    hook: effOpacity($('hook')),
+    brand: effOpacity($('brand')),
+    phone: effOpacity($('phone')),
+    tag: effOpacity($('tag')),
+    bottomTag: effOpacity($('bottomTag')),
+    end: effOpacity($('end')),
+    caps,
+    activeCap: caps.reduce((best,o,i)=>o>(caps[best]||0)?i:best, 0),
+    capVisibleCount: caps.filter(o=>o>=0.2).length,
+  };
+}
+
 function render(t){
   const H=1920;
   const b1=$('b1'), b2=$('b2');
@@ -104,49 +134,62 @@ function render(t){
   b2.style.cssText=`left:${-300+t*6}px;top:${(H-350)-t*5}px;width:680px;height:600px;background:#033036;border-radius:50%`;
   $('brand').style.opacity=1;
 
-  // Soft headline always present early; fades as phone settles
-  const hookFade=COVER?1: (1-oq(seg(t,2.6,3.4))*0.35);
-  $('hook').style.opacity=hookFade;
-  $('h1').style.opacity=oq(seg(t,-0.1,0.4));
-  $('h2').style.opacity=oq(seg(t,0.15,0.55));
-
   if(COVER){
-    // Mid-beat still: phone + label + bottom tag visible
+    // Cover: phone + honest label only — no hook ghost, no caps, no endcard
+    $('hook').style.opacity=0;
+    $('h1').style.opacity=0;
+    $('h2').style.opacity=0;
     const ph=$('phone');
     ph.style.opacity=1;
     ph.style.transform='translateY(0) scale(1)';
     $('tag').style.opacity=1;
     $('bottomTag').style.opacity=1;
     $('end').style.opacity=0;
+    (D.caps||[]).forEach((_,i)=>{const el=$('c'+i); if(el) el.style.opacity=0;});
     return measureOverflow();
   }
 
-  // Phone: enter ~2.85, exit ~11.35
+  // Hook: fully on early, fully OFF before phone/caps headlines (no residual ghost)
+  const hookIn=oq(seg(t,-0.05,0.45));
+  const hookOut=oq(seg(t,2.55,3.15)); // reaches 1 by ~3.15s → hook opacity 0
+  const hookOp=cl(hookIn*(1-hookOut));
+  $('hook').style.opacity=hookOp;
+  $('hook').style.visibility=hookOp<0.02?'hidden':'visible';
+  $('h1').style.opacity=1;
+  $('h2').style.opacity=1;
+
+  // Phone: enter after hook cleared
   const pin=seg(t,2.85,3.65), pout=ioc(seg(t,11.35,11.85));
   const ph=$('phone');
-  ph.style.opacity=cl(oq(seg(t,2.85,3.25)))*(1-pout);
+  const phoneOp=cl(oq(seg(t,2.85,3.25)))*(1-pout);
+  ph.style.opacity=phoneOp;
   const float=Math.sin(t*1.5)*5*cl(pin);
-  ph.style.transform=`translateY(${(1-ob(pin))*420+pout*160+float}px) scale(${.94+.06*ob(pin)-pout*.04})`;
+  ph.style.transform=`translateY(${(1-ob(pin))*380+pout*160+float}px) scale(${.94+.06*ob(pin)-pout*.04})`;
   $('tag').style.opacity=cl(oq(seg(t,3.25,3.75)))*(1-pout);
   $('bottomTag').style.opacity=cl(oq(seg(t,3.4,3.9)))*(1-pout);
 
-  // Gentle vertical pan of the static screen (no fake cafe scroll frames)
   const sp=seg(t,3.4,11.2);
-  const img=$('scrimg');
-  img.style.objectPosition=`center ${Math.round(sp*35)}%`;
+  $('scrimg').style.objectPosition=`center ${Math.round(sp*35)}%`;
 
-  const times=[[3.2,6.0],[5.9,8.8],[8.7,11.5]];
   (D.caps||[]).forEach((_,i)=>{
     const el=$('c'+i); if(!el) return;
-    const [a,b]=times[i];
+    const [a,b]=CAP_TIMES[i];
     const inn=oq(seg(t,a,a+.45)), out=oq(seg(t,b-.3,b));
-    el.style.opacity=cl(oq(seg(t,a,a+.3)))*(1-out);
+    // Suppress caps while hook still visible
+    const gate=hookOp<0.05?1:0;
+    el.style.opacity=gate*cl(oq(seg(t,a,a+.3)))*(1-out);
     el.style.transform=`translateY(${(1-inn)*36-out*22}px)`;
   });
 
-  // End card
+  // End card — hide hook/caps/phone layer already via their outs; force hook 0
   const endOn=t>=11.4;
+  if(endOn){
+    $('hook').style.opacity=0;
+    $('hook').style.visibility='hidden';
+    (D.caps||[]).forEach((_,i)=>{const el=$('c'+i); if(el) el.style.opacity=0;});
+  }
   $('end').style.opacity=endOn?1:0;
+  $('end').style.visibility=endOn?'visible':'hidden';
   inEl($('e1'),t,11.55);
   inEl($('e2'),t,11.8,.8,50,ob);
   [0,1,2].forEach(i=>inEl($('k'+i),t,12.3+i*.35,.6,30));
@@ -154,41 +197,63 @@ function render(t){
   inEl($('e4'),t,13.35,.6,24);
   const pl=$('pill');
   const pu=seg(t,13.5,14.05);
-  pl.style.opacity=cl(oq(seg(t,13.5,13.8)));
+  pl.style.opacity=endOn?cl(oq(seg(t,13.5,13.8))):0;
   const pulse=t>14.1?(1+.025*Math.sin((t-14.1)*4.2)):1;
   pl.style.transform=`translateY(${(1-ob(pu))*34}px) scale(${pulse})`;
 
   return measureOverflow();
 }
 
+function boxesOverlap(a,b,pad=8){
+  return !(a.right<b.left+pad || a.left>b.right-pad || a.bottom<b.top+pad || a.top>b.bottom-pad);
+}
+
 function measureOverflow(){
   const issues=[];
   const safe={x0:65,x1:1015,y0:269,y1:1640};
   const check=(el,opts={})=>{
-    if(!el) return;
-    const cs=getComputedStyle(el);
-    if(parseFloat(cs.opacity||'1')<0.05) return;
+    if(!el || effOpacity(el)<0.05) return;
     const r=el.getBoundingClientRect();
     if(r.width<2||r.height<2) return;
-    // Use text metrics for centered labels; box may be padded wider than glyphs
     if(!opts.skipBox){
       if(r.left<safe.x0-2) issues.push('left:'+(el.id||el.className));
       if(r.right>safe.x1+2) issues.push('right:'+(el.id||el.className));
     }
     if(el.scrollWidth>el.clientWidth+6) issues.push('xclip:'+(el.id||el.className));
   };
-  ['brand','hook','tag','e1','e2','e3','e4','pill'].forEach(id=>check($(id)));
-  // hook lines + bottom tag: clip check only (full-row text containers)
+  ['brand','tag','e1','e2','e3','e4','pill'].forEach(id=>check($(id)));
   ['h1','h2','bottomTag'].forEach(id=>check($(id),{skipBox:true}));
-  document.querySelectorAll('#cap .c, .chk span').forEach((el,i)=>{
-    if(parseFloat(getComputedStyle(el).opacity)<0.05) return;
-    if(el.scrollWidth>el.clientWidth+6) issues.push('xclip:text'+i);
+  document.querySelectorAll('#cap .c').forEach((el,i)=>{
+    if(effOpacity(el)<0.05) return;
+    if(el.scrollWidth>el.clientWidth+6) issues.push('xclip:cap'+i);
   });
+
+  // Collision: visible hook vs visible caps; brand vs visible headline band
+  const brand=$('brand').getBoundingClientRect();
+  const hook=$('hook');
+  if(effOpacity(hook)>=0.2){
+    document.querySelectorAll('#cap .c').forEach((el,i)=>{
+      if(effOpacity(el)<0.2) return;
+      if(boxesOverlap(hook.getBoundingClientRect(), el.getBoundingClientRect()))
+        issues.push('overlap:hook-cap'+i);
+    });
+    if(effOpacity($('end'))>=0.2)
+      issues.push('overlap:hook-end');
+  }
+  document.querySelectorAll('#cap .c').forEach((el,i)=>{
+    if(effOpacity(el)<0.2) return;
+    const r=el.getBoundingClientRect();
+    if(boxesOverlap(brand, r, 4)) issues.push('overlap:brand-cap'+i);
+  });
+  if(effOpacity($('e1'))>=0.2 && boxesOverlap(brand, $('e1').getBoundingClientRect(), 4))
+    issues.push('overlap:brand-end');
+
   return {issues, w:1080, h:1920};
 }
 
 window.setData=setData;
 window.render=render;
+window.sceneState=sceneState;
 window.measureOverflow=measureOverflow;
 </script>
 </body>

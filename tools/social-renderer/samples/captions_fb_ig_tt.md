@@ -14,7 +14,7 @@ Published Wed 11 Nov photo and both Thu 12 Nov Facebook Reels stay untouched. Th
 
 ## Facebook Reel
 
-Menu, hours and booking on one clear page.
+Services, prices and contact on one clear page.
 
 A one-page website for your small business is £99, fixed in writing first. Prices as stated. VAT is not charged. Small fixes from £19.
 

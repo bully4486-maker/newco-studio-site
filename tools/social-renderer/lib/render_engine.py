@@ -71,6 +71,41 @@ def check_overflow_at(page, t: float) -> list[str]:
     return list(issues)
 
 
+def scene_state_at(page, t: float) -> dict:
+    return page.evaluate("t => sceneState(t)", t)
+
+
+def assert_scene_exclusive(state: dict, *, expect_hook: bool, expect_end: bool, expect_cap: int | None) -> list[str]:
+    """Return list of assertion failures for exclusive scene headlines."""
+    fails: list[str] = []
+    hook_on = state.get("hook", 0) >= 0.2
+    end_on = state.get("end", 0) >= 0.2
+    caps = state.get("caps") or []
+    vis_caps = [i for i, o in enumerate(caps) if o >= 0.2]
+
+    if expect_hook and not hook_on:
+        fails.append(f"t={state.get('t')}: expected hook visible")
+    if not expect_hook and hook_on:
+        fails.append(f"t={state.get('t')}: hook ghost still visible ({state.get('hook'):.2f})")
+    if expect_end and not end_on:
+        fails.append(f"t={state.get('t')}: expected endcard visible")
+    if not expect_end and end_on:
+        fails.append(f"t={state.get('t')}: endcard unexpectedly visible")
+    if expect_hook and vis_caps:
+        fails.append(f"t={state.get('t')}: caps visible during hook: {vis_caps}")
+    if expect_end and vis_caps:
+        fails.append(f"t={state.get('t')}: caps visible during endcard: {vis_caps}")
+    if expect_cap is not None:
+        if expect_cap not in vis_caps:
+            fails.append(f"t={state.get('t')}: expected cap[{expect_cap}] visible, got {vis_caps}")
+        # At most one dominant cap (allow brief crossfade: max 2, but primary must win)
+        if len(vis_caps) > 2:
+            fails.append(f"t={state.get('t')}: too many caps visible: {vis_caps}")
+        if vis_caps and caps[expect_cap] < max(caps) - 0.05:
+            fails.append(f"t={state.get('t')}: cap[{expect_cap}] not dominant")
+    return fails
+
+
 def render_stills(
     cfg: dict[str, Any],
     root: Path,

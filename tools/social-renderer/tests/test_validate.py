@@ -107,3 +107,7 @@ def test_rejects_publication_claim_on_test_fixture(cfg):
 def test_banned_voiceover_scan():
     assert "voiceover" in scan_text("Add a voice-over here")
     assert "comedy" in scan_text("quick comedy skit")
+
+
+def test_banned_cafe_specific_hook_scan():
+    assert "cafe_specific_hook" in scan_text("Menu, hours & booking, one page")

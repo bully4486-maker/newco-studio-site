@@ -6,8 +6,8 @@
   "fps": 30,
   "copy": {
     "hook_lines": [
-      "Menu, hours & booking,",
-      "one page"
+      "Services, prices & contact,",
+      "one clear page"
     ],
     "caps": [
       ["MOBILE-FIRST", "Built for<br>phones first"],
