@@ -1,0 +1,50 @@
+{
+  "master_id": "websites99_teal_phone_v1",
+  "template_id": "teal_phone_v1",
+  "format": "916",
+  "duration_s": 15,
+  "fps": 30,
+  "copy": {
+    "hook_lines": [
+      "Menu, hours & booking,",
+      "one page"
+    ],
+    "caps": [
+      ["MOBILE-FIRST", "Built for<br>phones first"],
+      ["FIXED PRICE", "Agreed in<br>writing"],
+      ["OWNED BY YOU", "Every file<br>handed over"]
+    ],
+    "end_title": "One-page websites",
+    "price": "from £99",
+    "checks": [
+      "Your own domain, in your name",
+      "Fast-loading, clean design",
+      "Quote within 24 hours, no calls"
+    ],
+    "footnote": "Prices as stated. VAT is not charged. Fixes from £19.",
+    "url": "studio.newcopacks.co.uk/websites-99",
+    "cta": "Get a fixed quote",
+    "phone_label": "Example of our work",
+    "bottom_tag": "ONE-PAGE WEBSITE"
+  },
+  "assets": {
+    "logo": "vendor_assets/mark.png",
+    "phone_screen": "vendor_assets/phone/halvercroft-crop.png"
+  },
+  "music": {
+    "test_only": true,
+    "title": "TEST ONLY silent fixture — not for publication",
+    "artist_or_uploader": "NewCo Studio fixtures",
+    "source_url": "fixtures/test_only_audio/TEST_ONLY_silent_1s.wav",
+    "licence": "TEST ONLY — NOT FOR PUBLICATION — no music licence claimed",
+    "licence_url": "fixtures/test_only_audio/README.md",
+    "cross_platform_ok": false,
+    "file": "fixtures/test_only_audio/TEST_ONLY_silent_1s.wav"
+  },
+  "notes": {
+    "style_ref": "Keith-approved older teal+phone layout (not a proven analytics winner)",
+    "analytics": "FB week ending 6 Nov 2026: insufficient organic engagement data to rank templates; do not manufacture a winning claim",
+    "etsy_prices": "Omitted — UK buyer VAT-inclusive Etsy prices not independently verified in this pass",
+    "quote_url": "https://studio.newcopacks.co.uk/websites-99/"
+  }
+}
