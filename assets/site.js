@@ -33,10 +33,12 @@ function applyRedirect(f){var r=f.querySelector('input[name="redirect"]');if(!r)
 document.querySelectorAll('form.qform').forEach(function(f){applyRedirect(f);f.addEventListener('submit',function(){applyRedirect(f)})});
 var m=document.querySelector('.mcta');if(!m||!('IntersectionObserver' in window))return;
 var forms=document.querySelectorAll('form.qform');if(!forms.length)return;
+m.classList.add('off');
+var quote=document.getElementById('quote');
+var targets=quote?[quote]:Array.prototype.slice.call(forms);
 var vis=[];
-forms.forEach(function(f,i){vis[i]=false});
-var io=new IntersectionObserver(function(es){es.forEach(function(e){var i=Number(e.target.getAttribute('data-q'));vis[i]=e.isIntersecting});var on=false;vis.forEach(function(v){if(v)on=true});m.classList.toggle('off',on)},{threshold:0.05});
-forms.forEach(function(f,i){f.setAttribute('data-q',String(i));io.observe(f)})})();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){var i=Number(e.target.getAttribute('data-q'));vis[i]=e.isIntersecting});var on=false;vis.forEach(function(v){if(v)on=true});m.classList.toggle('off',on)},{threshold:0});
+targets.forEach(function(el,i){vis[i]=false;el.setAttribute('data-q',String(i));io.observe(el)})})();
 (function(){
 var guides={
 'One-page website':'Guide price £99, confirmed in a written quote before any work. That guide includes one mobile-first page, your services, prices, photos and contact details, basic SEO, a favicon, a share image, the revisions named in the quote, and every file. Prices as stated. VAT is not charged. Payment is 50% to start and 50% after you sign off, by UK bank transfer. You own the files.',

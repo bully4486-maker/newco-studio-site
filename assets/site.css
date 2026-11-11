@@ -261,3 +261,18 @@ fieldset.either legend,fieldset.choice-set legend{font-weight:600;font-size:1rem
 .notes dd{margin:0;color:var(--muted)}
 .frame-note{background:#E6F0ED;border-radius:14px;padding:14px 16px;color:var(--deep);margin:0 0 18px}
 @media (max-width:560px){.notes div{grid-template-columns:1fr;gap:2px}}
+
+/* websites-99 compact quote under hero */
+.w99-quote{padding:8px 0 48px}
+.w99-quote-grid{display:grid;gap:24px;align-items:start}
+.w99-quote-intro .lead{margin-bottom:12px}
+.w99-quote-intro .w99-run{margin:0 0 10px}
+.qform-compact{gap:14px;padding:22px}
+.qform-compact input[type="text"]#w-desc{min-height:48px}
+.qform-compact .w99-msg-alt{margin:0;justify-content:flex-start}
+#quote{scroll-margin-top:84px}
+@media (min-width:860px){.w99-quote-grid{grid-template-columns:.85fr 1.15fr;gap:36px;align-items:start}}
+/* This page has no chat fab: full-width sticky bar, content clear of it */
+@media (max-width:760px){
+.mcta[href="#quote"]{left:16px;right:16px}
+}
