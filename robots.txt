@@ -1,69 +1,86 @@
 User-agent: GPTBot
 Allow: /
 Disallow: /demos/
+Disallow: /_demos/
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /demos/
+Disallow: /_demos/
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /demos/
+Disallow: /_demos/
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /demos/
+Disallow: /_demos/
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /demos/
+Disallow: /_demos/
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /demos/
+Disallow: /_demos/
 
 User-agent: Applebot-Extended
 Allow: /
 Disallow: /demos/
+Disallow: /_demos/
 
 User-agent: CCBot
 Allow: /
 Disallow: /demos/
+Disallow: /_demos/
 
 User-agent: Bingbot
 Allow: /
 Disallow: /demos/
+Disallow: /_demos/
 
 User-agent: Claude-SearchBot
 Allow: /
 Disallow: /demos/
+Disallow: /_demos/
 
 User-agent: Claude-User
 Allow: /
 Disallow: /demos/
+Disallow: /_demos/
 
 User-agent: Perplexity-User
 Allow: /
 Disallow: /demos/
+Disallow: /_demos/
 
 User-agent: Googlebot
 Allow: /
 Disallow: /demos/
+Disallow: /_demos/
 
 User-agent: Applebot
 Allow: /
 Disallow: /demos/
+Disallow: /_demos/
 
 User-agent: DuckAssistBot
 Allow: /
 Disallow: /demos/
+Disallow: /_demos/
 
 User-agent: Meta-ExternalAgent
 Allow: /
 Disallow: /demos/
+Disallow: /_demos/
 
 User-agent: *
 Allow: /
 Disallow: /demos/
+Disallow: /_demos/
 
 Sitemap: https://studio.newcopacks.co.uk/sitemap.xml

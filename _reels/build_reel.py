@@ -1,64 +1,123 @@
 #!/usr/bin/env python3
-"""fbad03 Creative B v2 — music-only 9:16 Reel, recut from tpl_site99_phone_v1.
+"""Music-only 1080x1920 Reel renderer.
 
-Fixes vs v1 (kept at /workspace/ads/fbad03_reelB_fix19_v1.mp4):
-1. All type (wordmark, phone UI, end-card CTA / UK-wide line) inside y 269–1248.
-2. Scene 1 'Get in touch' button fully inside the phone bezel.
-3. Scene transitions are fade-out-then-in through the teal background, not a headline crossfade.
-4. End card CTA is 'Tap Send Message below' (small URL kept).
-5. 0.25s ease-out slide/pop-in per text group, staggered, so it is not a static slideshow.
+Scenes and on-screen copy come from a JSON spec in `_reels/specs/`.
+The frame (colours, type, logo, safe area, fade-through-teal, end card)
+stays the house style from fbad03 Reel B / tpl_site99_phone_v1.
 
-No VO. Never silent. No banned wording.
+  python3 build_reel.py                 # render every spec to _reels/out/
+  python3 build_reel.py --stills        # settled frames only (no video)
+  python3 build_reel.py specs/one.json
 """
 from __future__ import annotations
 
+import hashlib
 import json
-import math
+import re
 import subprocess
-from dataclasses import dataclass, field
+import sys
+import urllib.request
+from dataclasses import dataclass
+from datetime import date
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-import os
 HERE = Path(__file__).resolve().parent
-ROOT = Path(os.environ.get('REEL_WORK', str(HERE / 'work')))
-FR, QA = ROOT / 'frames' / 'v2', ROOT / 'qa' / 'v2'
-OUT = Path(os.environ.get('REEL_OUT', str(HERE / 'out' / 'reel.mp4')))
-LOGO = Path(os.environ.get('REEL_LOGO', str(HERE / 'newco_studio_logo.png')))
-MUSIC = Path(os.environ.get('REEL_MUSIC', str(HERE / 'music.mp3')))
-JK = '/usr/share/fonts/truetype/sand-box/google/Plus Jakarta Sans/PlusJakartaSans-VariableFont_wght.ttf'
-IN = '/usr/share/fonts/truetype/sand-box/google/Inter/Inter-VariableFont_opsz,wght.ttf'
+SPECS = HERE / 'specs'
+OUT_DIR = HERE / 'out'
+WORK = HERE / 'work'
+LOGO = HERE / 'newco_studio_logo.png'
+MUSIC = HERE / 'music' / 'city-loop.mp3'
+FONT_DIR = HERE / 'fonts'
+JK_FILE = FONT_DIR / 'PlusJakartaSans-Variable.ttf'
+IN_FILE = FONT_DIR / 'Inter-Variable.ttf'
+
+JK_URL = 'https://github.com/google/fonts/raw/main/ofl/plusjakartasans/PlusJakartaSans%5Bwght%5D.ttf'
+IN_URL = 'https://github.com/google/fonts/raw/main/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf'
+MUSIC_URL = 'https://opengameart.org/sites/default/files/city-loop.mp3'
+MUSIC_PAGE = 'https://opengameart.org/content/city-loop-0'
 
 BG, PANEL, MINT, WHITE = '#00292D', '#02505A', '#9CC4B8', '#FFFFFF'
 ELLIPSE = '#013A40'
 PHONE_CHROME = '#0B1416'
 PHONE_SCREEN = '#F6F8F7'
-ROW_LINE = '#DDE5E3'
+ROW_LINE = '#D5DEDB'
 W, H = 1080, 1920
-# Top 14% = 268.8px, bottom 35% starts at 1248. Type must sit inside y 269–1248 inclusive.
 SAFE_TOP, SAFE_BOT = 269, 1248
+# Ink may slide down POP_PX at the start of a scene, so rest positions
+# stay this far above the bottom of the safe box.
+POP_PX = 28
+INK_BOT = SAFE_BOT - POP_PX
 SIDE = 65
 FPS = 30
 POP_S = 0.25
-POP_PX = 28
-
-# Timing in frames. Fades are out-then-in through teal, never a crossfade of two headlines.
-# 90+5+5+92+5+5+90+5+5+94 = 396 frames = 13.20s
-SCENE_FRAMES = [90, 92, 90, 94]
 FADE_OUT = 5
 FADE_IN = 5
 
+FILLS = {'white': WHITE, 'mint': MINT, 'bg': BG, 'panel': PANEL}
 
-def font(path, size, weight):
+# Prices that may appear on screen, by template. End card always carries £99 and £19.
+ALLOWED_PRICES = {
+    'tpl_site99_phone_v1': {'99', '19'},
+    'tpl_fix19_phone_v1': {'99', '19'},
+    'tpl_freecheck_v1': {'99', '19'},
+    'tpl_etsy_seller_fees_v1': {'99', '19', '9.59'},
+    'tpl_counterbook_sa_v1': {'99', '19', '11.99'},
+}
+
+BANNED = [
+    r'\bartificial intelligence\b', r'\bchatgpt\b', r'\bai\b',
+    r'demo site', r'\bfictional\b', r'\bfounding\b', r'first 3 clients',
+    r'\bclients?\b', r'\breviews?\b', r'\bratings?\b', r'\btestimonials?\b',
+    r'\bhurry\b', r'\blimited time\b', r'last chance', r"don't miss", r'dont miss',
+    r'\bact now\b', r'today only', r'\bspots\b', r'selling fast', r'\burgent\b',
+    r'mtd-ready', r'\boxfordshire\b', r'50/50', r'50 / 50', r'\bhandmade\b',
+]
+
+_FONT_CACHE: dict = {}
+
+
+def ensure_fonts() -> tuple[str, str]:
+    FONT_DIR.mkdir(parents=True, exist_ok=True)
+    pairs = (
+        (JK_FILE, JK_URL, 'Plus Jakarta Sans'),
+        (IN_FILE, IN_URL, 'Inter'),
+    )
+    for path, url, label in pairs:
+        if path.exists() and path.stat().st_size > 1000:
+            continue
+        sys.stderr.write(f'Downloading {label} from Google Fonts\n')
+        urllib.request.urlretrieve(url, path)
+    return str(JK_FILE), str(IN_FILE)
+
+
+def ensure_music() -> Path:
+    MUSIC.parent.mkdir(parents=True, exist_ok=True)
+    marker = MUSIC.with_suffix('.downloaded.txt')
+    if not MUSIC.exists() or MUSIC.stat().st_size < 1000:
+        sys.stderr.write(f'Downloading City Loop from {MUSIC_URL}\n')
+        urllib.request.urlretrieve(MUSIC_URL, MUSIC)
+        marker.write_text(date.today().isoformat() + '\n')
+    if not marker.exists():
+        marker.write_text(date.today().isoformat() + '\n')
+    return MUSIC
+
+
+def font(path: str, size: int, weight: int) -> ImageFont.FreeTypeFont:
+    key = (path, size, weight)
+    hit = _FONT_CACHE.get(key)
+    if hit is not None:
+        return hit
     f = ImageFont.truetype(path, size)
     try:
-        f.set_variation_by_axes([weight] if 'Jakarta' in path else [14, weight])
-    except Exception:
-        try:
+        if 'Inter' in path:
+            f.set_variation_by_axes([14, weight])
+        else:
             f.set_variation_by_axes([weight])
-        except Exception:
-            pass
+    except Exception:
+        pass
+    _FONT_CACHE[key] = f
     return f
 
 
@@ -67,12 +126,20 @@ def ease_out(t: float) -> float:
     return 1.0 - (1.0 - t) ** 3
 
 
+def fill_of(name: str) -> str:
+    return FILLS.get(name, name)
+
+
+def face(name: str, jk: str, inn: str) -> str:
+    return inn if name == 'inter' else jk
+
+
 @dataclass
 class Layer:
     name: str
-    im: Image.Image  # RGBA
+    im: Image.Image
     x: int
-    y: int  # rest position (top of this layer)
+    y: int
     delay: float = 0.0
     is_text: bool = True
     y_ink_top: int = 0
@@ -81,41 +148,31 @@ class Layer:
     x_ink_right: int = 0
 
 
-def _ink_bounds(im: Image.Image):
-    """Bounding box of non-transparent pixels, or None."""
-    if im.mode != 'RGBA':
-        im = im.convert('RGBA')
-    alpha = im.getchannel('A')
-    box = alpha.getbbox()
-    return box
-
-
-def make_text(name, text, y_top, size, fill=WHITE, weight=800, path=JK, delay=0.0) -> Layer:
-    f = font(path, size, weight)
+def _measure(text, fnt):
     dummy = ImageDraw.Draw(Image.new('RGBA', (1, 1)))
-    b = dummy.textbbox((0, 0), text, font=f)
-    tw, th = b[2] - b[0], b[3] - b[1]
-    im = Image.new('RGBA', (tw, th), (0, 0, 0, 0))
-    ImageDraw.Draw(im).text((-b[0], -b[1]), text, font=f, fill=fill)
-    x = (W - tw) // 2
+    b = dummy.textbbox((0, 0), text, font=fnt)
+    return b, b[2] - b[0], b[3] - b[1]
+
+
+def make_text(name, text, x, y_top, size, fill, weight, path, delay, centre=False) -> Layer:
+    fnt = font(path, size, weight)
+    b, tw, th = _measure(text, fnt)
+    if centre:
+        x = (W - tw) // 2
+    im = Image.new('RGBA', (max(tw, 1), max(th, 1)), (0, 0, 0, 0))
+    ImageDraw.Draw(im).text((-b[0], -b[1]), text, font=fnt, fill=fill)
     y_bot = y_top + th - 1
-    assert tw <= (W - 2 * SIDE), (name, text, tw)
-    assert SAFE_TOP <= y_top and y_bot <= SAFE_BOT, (name, text, y_top, y_bot)
-    assert x >= SIDE and x + tw - 1 <= W - 1 - SIDE, (name, text, x, x + tw)
+    if tw > (W - 2 * SIDE):
+        raise SystemExit(f'{name!r} is {tw}px wide, max {W - 2 * SIDE}: {text!r}')
+    if y_top < SAFE_TOP or y_bot > INK_BOT:
+        raise SystemExit(f'{name!r} y {y_top}–{y_bot} outside {SAFE_TOP}–{INK_BOT}: {text!r}')
+    if x < SIDE or x + tw - 1 > W - 1 - SIDE:
+        raise SystemExit(f'{name!r} x {x}–{x + tw - 1} outside side margins: {text!r}')
     return Layer(name, im, x, y_top, delay, True, y_top, y_bot, x, x + tw - 1)
 
 
-def make_text_at(name, text, x, y_top, size, fill=WHITE, weight=800, path=JK, delay=0.0) -> Layer:
-    f = font(path, size, weight)
-    dummy = ImageDraw.Draw(Image.new('RGBA', (1, 1)))
-    b = dummy.textbbox((0, 0), text, font=f)
-    tw, th = b[2] - b[0], b[3] - b[1]
-    im = Image.new('RGBA', (tw, th), (0, 0, 0, 0))
-    ImageDraw.Draw(im).text((-b[0], -b[1]), text, font=f, fill=fill)
-    y_bot = y_top + th - 1
-    assert SAFE_TOP <= y_top and y_bot <= SAFE_BOT, (name, text, y_top, y_bot)
-    assert x >= SIDE and x + tw - 1 <= W - 1 - SIDE, (name, text, x, x + tw)
-    return Layer(name, im, x, y_top, delay, True, y_top, y_bot, x, x + tw - 1)
+def centred(name, text, y, size, fill, weight, path, delay) -> Layer:
+    return make_text(name, text, 0, y, size, fill, weight, path, delay, centre=True)
 
 
 def background() -> Image.Image:
@@ -126,327 +183,536 @@ def background() -> Image.Image:
     return im
 
 
-def wordmark_layer(delay=0.0) -> Layer:
-    # Clearly inside the safe box, not tight against y=269.
-    return make_text('wordmark', 'NEWCO STUDIO', 320, 30, MINT, 800, JK, delay)
+def wordmark_layer(jk, delay=0.0) -> Layer:
+    return centred('wordmark', 'NEWCO STUDIO', 308, 30, MINT, 800, jk, delay)
 
 
-def phone_mockup() -> tuple[Image.Image, int, int, list[Layer]]:
-    """Phone with a complete 'Get in touch' button fully inside the bezel.
+def logo_layer(y=360, size=200, delay=0.06) -> Layer:
+    src = Image.open(LOGO).convert('RGBA')
+    # Scale only. The white square and the mark are not redrawn.
+    if src.size != (size, size):
+        src = src.resize((size, size), Image.Resampling.LANCZOS)
+    x = (W - size) // 2
+    y_bot = y + size - 1
+    if y < SAFE_TOP or y_bot > INK_BOT:
+        raise SystemExit(f'logo y {y}–{y_bot} outside safe box')
+    return Layer('logo', src, x, y, delay, False, y, y_bot, x, x + size - 1)
 
-    The whole device, including chrome, sits inside y 269–1248.
-    Returns (image, x, y, text layers for bounds reporting — already composited).
-    """
-    # Hook occupies ~320–560; phone starts at 600 and must end by 1248.
-    pw, ph = 340, 620  # 600+620-1=1219, inside 1248
-    x, y = (W - pw) // 2, 600
-    assert y >= SAFE_TOP and y + ph - 1 <= SAFE_BOT, (y, y + ph)
+
+def line_spec(raw, default_size, default_fill, default_weight, default_font):
+    if isinstance(raw, str):
+        return raw, default_size, default_fill, default_weight, default_font
+    return (
+        raw['text'],
+        raw.get('size', default_size),
+        raw.get('fill', default_fill),
+        raw.get('weight', default_weight),
+        raw.get('font', default_font),
+    )
+
+
+def stack_centred(layers, lines, y, jk, inn, delay0=0.04, gap=10, name='line'):
+    for i, raw in enumerate(lines):
+        text, size, fill, weight, face_name = line_spec(raw, 64, 'white', 800, 'jakarta')
+        layer = centred(
+            f'{name}_{i+1}', text, y, size, fill_of(fill), weight,
+            face(face_name, jk, inn), delay0 + i * 0.06,
+        )
+        layers.append(layer)
+        y = layer.y_ink_bottom + 1 + gap
+    return y
+
+
+def draw_check(d, cx, cy, r, colour):
+    d.line((cx - r, cy, cx - r // 3, cy + r), fill=colour, width=max(4, r // 2))
+    d.line((cx - r // 3, cy + r, cx + r + 2, cy - r), fill=colour, width=max(4, r // 2))
+
+
+def layout_hook_phone(scene, jk, inn):
+    layers = [wordmark_layer(jk)]
+    y = stack_centred(layers, scene['lines'], 368, jk, inn, 0.04, 8, 'hook')
+    phone_top = y + 16
+    ph = min(620, INK_BOT - phone_top + 1)
+    if ph < 520:
+        raise SystemExit(f'phone does not fit under the hook (height {ph})')
+    pw = int(round(ph * 340 / 620))
+    px = (W - pw) // 2
+    im, extra = draw_phone(pw, ph, scene['phone'], px, phone_top, inn)
+    layers.append(Layer(
+        'phone', im, px, phone_top, 0.14, False,
+        phone_top, phone_top + ph - 1, px, px + pw - 1,
+    ))
+    return background(), layers, extra
+
+
+def draw_phone(pw, ph, ui, ox, oy, inn):
     im = Image.new('RGBA', (pw, ph), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
-    d.rounded_rectangle((0, 0, pw - 1, ph - 1), radius=48, fill=PHONE_CHROME)
-    pad = 16
+    scale = ph / 620.0
+
+    def S(n):
+        return max(8, int(round(n * scale)))
+
+    d.rounded_rectangle((0, 0, pw - 1, ph - 1), radius=S(48), fill=PHONE_CHROME)
+    pad = S(16)
     sx, sy, sr, sb = pad, pad, pw - pad - 1, ph - pad - 1
-    d.rounded_rectangle((sx, sy, sr, sb), radius=36, fill=PHONE_SCREEN)
-    # notch
-    d.rounded_rectangle((pw // 2 - 48, 10, pw // 2 + 48, 26), radius=8, fill=PHONE_CHROME)
+    d.rounded_rectangle((sx, sy, sr, sb), radius=S(36), fill=PHONE_SCREEN)
+    notch_w = S(96)
+    d.rounded_rectangle((pw // 2 - notch_w // 2, S(10), pw // 2 + notch_w // 2, S(26)), radius=S(8), fill=PHONE_CHROME)
 
-    fi = lambda s, wt=700: font(IN, s, wt)
-    header_bottom = sy + 168
-    d.rectangle((sx, sy + 42, sr, header_bottom), fill=PANEL)
-    # Phone UI type — positions are relative to the phone image; convert to canvas below.
-    ui = []
+    btn_h = S(44)
+    btn_x0, btn_x1 = sx + S(22), sr - S(22)
+    btn_y0 = sy + S(124)
+    btn_y1 = btn_y0 + btn_h
+    header_top = sy + S(36)
+    header_bottom = btn_y1 + S(16)
+    d.rectangle((sx, header_top, sr, header_bottom), fill=PANEL)
 
-    def ui_text(name, text, lx, ly, size, fill, weight=800):
-        fnt = fi(size, weight)
+    extra = []
+
+    def ui_text(name, text, lx, ly, size, fill, weight):
+        fnt = font(inn, S(size), weight)
         b = d.textbbox((0, 0), text, font=fnt)
-        # draw so ink top is ly
-        d.text((lx, ly - b[1]), text, font=fnt, fill=fill)
         tw, th = b[2] - b[0], b[3] - b[1]
-        ink_top = y + ly
-        ink_bot = y + ly + th - 1
-        ink_l = x + lx
-        ink_r = x + lx + tw - 1
-        assert SAFE_TOP <= ink_top and ink_bot <= SAFE_BOT, (name, ink_top, ink_bot)
-        ui.append({
+        d.text((lx - b[0], ly - b[1]), text, font=fnt, fill=fill)
+        ink_l, ink_r = ox + lx, ox + lx + tw - 1
+        ink_top, ink_bot = oy + ly, oy + ly + th - 1
+        if ink_l < SIDE or ink_r > W - 1 - SIDE or ink_top < SAFE_TOP or ink_bot > INK_BOT:
+            raise SystemExit(f'{name} outside safe box: {text}')
+        extra.append({
             'name': name, 'text': text,
             'y_top': ink_top, 'y_bottom': ink_bot,
             'x_left': ink_l, 'x_right': ink_r,
+            'inside_269_1248': True,
         })
+        return tw, th
 
-    ui_text('phone_title', 'Your Business', sx + 22, sy + 58, 26, WHITE, 800)
-    ui_text('phone_sub', 'Services · Prices · Contact', sx + 22, sy + 96, 15, MINT, 500)
+    ui_text('phone_title', ui['title'], sx + S(22), sy + S(52), 26, WHITE, 800)
+    ui_text('phone_sub', ui['subtitle'], sx + S(22), sy + S(90), 15, MINT, 600)
 
-    # Button fully inside the screen, with padding from every edge of the bezel/screen.
-    btn_h = 40
-    btn_x0 = sx + 22
-    btn_x1 = sr - 22
-    btn_y0 = sy + 118
-    btn_y1 = btn_y0 + btn_h
-    assert btn_x0 > sx and btn_x1 < sr and btn_y0 > sy and btn_y1 < sb
-    d.rounded_rectangle((btn_x0, btn_y0, btn_x1, btn_y1), radius=18, fill=MINT)
-    label = 'Get in touch'
-    fbtn = fi(16, 700)
+    if not (btn_x0 > sx and btn_x1 < sr and btn_y0 > sy and btn_y1 < sb):
+        raise SystemExit('Get in touch button is not inside the phone screen')
+    d.rounded_rectangle((btn_x0, btn_y0, btn_x1, btn_y1), radius=S(18), fill=MINT)
+    label = ui.get('button', 'Get in touch')
+    fbtn = font(inn, S(16), 700)
     bb = d.textbbox((0, 0), label, font=fbtn)
     ltw, lth = bb[2] - bb[0], bb[3] - bb[1]
-    # Centre the label inside the button; confirm it does not overflow the button.
     lx = btn_x0 + (btn_x1 - btn_x0 - ltw) // 2
     ly = btn_y0 + (btn_h - lth) // 2
-    assert btn_x0 + 6 <= lx and lx + ltw <= btn_x1 - 6, (lx, ltw, btn_x0, btn_x1)
-    assert btn_y0 + 4 <= ly and ly + lth <= btn_y1 - 4, (ly, lth, btn_y0, btn_y1)
-    d.text((lx, ly - bb[1]), label, font=fbtn, fill=BG)
-    ink_top = y + ly
-    ink_bot = y + ly + lth - 1
-    assert SAFE_TOP <= ink_top and ink_bot <= SAFE_BOT
-    ui.append({
+    if lx < btn_x0 + S(6) or lx + ltw > btn_x1 - S(6) or ly < btn_y0 + S(4) or ly + lth > btn_y1 - S(4):
+        raise SystemExit(f'button label does not fit inside the button: {label!r}')
+    d.text((lx - bb[0], ly - bb[1]), label, font=fbtn, fill=BG)
+    extra.append({
         'name': 'phone_button', 'text': label,
-        'y_top': ink_top, 'y_bottom': ink_bot,
-        'x_left': x + lx, 'x_right': x + lx + ltw - 1,
-        'button_box_local': [btn_x0, btn_y0, btn_x1, btn_y1],
-        'button_box_canvas': [x + btn_x0, y + btn_y0, x + btn_x1, y + btn_y1],
-        'screen_box_canvas': [x + sx, y + sy, x + sr, y + sb],
-        'bezel_box_canvas': [x, y, x + pw - 1, y + ph - 1],
+        'y_top': oy + ly, 'y_bottom': oy + ly + lth - 1,
+        'x_left': ox + lx, 'x_right': ox + lx + ltw - 1,
         'button_inside_bezel': True,
+        'inside_269_1248': True,
     })
 
-    # Three content rows, all inside the screen.
-    yy = header_bottom + 20
-    row_h = 112
-    gap = 14
-    for title in ['Services', 'Prices', 'Contact']:
+    rows = ui.get('rows', ['Services', 'Prices', 'Contact'])
+    header_bottom = btn_y1 + S(16)
+    yy = header_bottom + S(8)
+    gap = S(12)
+    avail = (sb - S(10)) - yy
+    row_h = min(S(112), (avail - gap * (len(rows) - 1)) // max(len(rows), 1))
+    if row_h < S(64):
+        raise SystemExit('phone rows do not fit inside the screen')
+    for title in rows:
         box_bottom = yy + row_h
-        assert box_bottom < sb, (title, box_bottom, sb)
-        d.rounded_rectangle((sx + 16, yy, sr - 16, box_bottom), radius=14, fill=WHITE, outline=ROW_LINE, width=2)
-        ui_text(f'phone_row_{title.lower()}', title, sx + 32, yy + 16, 20, BG, 800)
-        for k in range(2):
-            d.rounded_rectangle(
-                (sx + 32, yy + 52 + k * 22, sr - 48 - k * 24, yy + 64 + k * 22),
-                radius=5, fill=ROW_LINE,
-            )
+        if box_bottom >= sb:
+            raise SystemExit(f'phone row {title!r} escapes the screen')
+        d.rounded_rectangle((sx + S(16), yy, sr - S(16), box_bottom), radius=S(14), fill=WHITE, outline=ROW_LINE, width=2)
+        ui_text(f'phone_row_{title.lower()}', title, sx + S(32), yy + S(16), 20, BG, 800)
+        if row_h > S(70):
+            for k in range(2):
+                d.rounded_rectangle(
+                    (sx + S(32), yy + S(52) + k * S(22), sr - S(48) - k * S(24), yy + S(64) + k * S(22)),
+                    radius=S(5), fill=ROW_LINE,
+                )
         yy = box_bottom + gap
-
-    return im, x, y, ui
-
-
-def tick_row(label, y, delay) -> tuple[Layer, Layer]:
-    """Mint tick + label as two layers, label y matches circle."""
-    row_h = 60
-    # Circle on a small RGBA canvas
-    circ = Image.new('RGBA', (60, 60), (0, 0, 0, 0))
-    cd = ImageDraw.Draw(circ)
-    cd.ellipse((0, 0, 59, 59), fill=MINT)
-    check_f = font(IN, 44, 800)
-    # Centre a checkmark
-    bb = ImageDraw.Draw(circ).textbbox((0, 0), '✓', font=check_f)
-    ctw, cth = bb[2] - bb[0], bb[3] - bb[1]
-    cd.text(((60 - ctw) // 2 - bb[0], (60 - cth) // 2 - bb[1]), '✓', font=check_f, fill=BG)
-    cx = 230
-    assert SAFE_TOP <= y and y + row_h - 1 <= SAFE_BOT, ('tick', label, y)
-    tick = Layer(f'tick_{label}', circ, cx, y, delay, False, y, y + 59, cx, cx + 59)
-    lab = make_text_at(f'label_{label}', label, 320, y + 8, 48, WHITE, 700, JK, delay)
-    return tick, lab
+    return im, extra
 
 
-def logo_layer(y=360, size=200, delay=0.08) -> Layer:
-    logo = Image.open(LOGO).convert('RGBA').resize((size, size), Image.Resampling.LANCZOS)
-    x = (W - size) // 2
-    y_bot = y + size - 1
-    assert SAFE_TOP <= y and y_bot <= SAFE_BOT, ('logo', y, y_bot)
-    return Layer('logo', logo, x, y, delay, False, y, y_bot, x, x + size - 1)
+def layout_hook_type(scene, jk, inn):
+    layers = [wordmark_layer(jk)]
+    measured = []
+    for raw in scene['lines']:
+        text, size, fill, weight, face_name = line_spec(raw, 72, 'white', 800, 'jakarta')
+        fnt = font(face(face_name, jk, inn), size, weight)
+        _, tw, th = _measure(text, fnt)
+        measured.append((text, size, fill, weight, face_name, th))
+    gap = 12
+    block = sum(m[5] for m in measured) + gap * (len(measured) - 1)
+    region_top, region_bot = 400, 1140
+    if block > region_bot - region_top:
+        raise SystemExit('hook lines do not fit in the safe box')
+    y = region_top + (region_bot - region_top - block) // 2
+    for i, (text, size, fill, weight, face_name, th) in enumerate(measured):
+        layers.append(centred(
+            f'hook_{i+1}', text, y, size, fill_of(fill), weight,
+            face(face_name, jk, inn), 0.04 + i * 0.06,
+        ))
+        y += th + gap
+    return background(), layers, []
 
 
-def panel_layer(x0, y0, x1, y1, delay=0.06) -> Layer:
-    im = Image.new('RGBA', (x1 - x0, y1 - y0), (0, 0, 0, 0))
-    ImageDraw.Draw(im).rounded_rectangle((0, 0, x1 - x0 - 1, y1 - y0 - 1), radius=36, fill=PANEL)
-    assert SAFE_TOP <= y0 and y1 - 1 <= SAFE_BOT, ('panel', y0, y1)
-    return Layer('quote_panel', im, x0, y0, delay, False, y0, y1 - 1, x0, x1 - 1)
+def layout_ticks(scene, jk, inn):
+    layers = [wordmark_layer(jk)]
+    y = 360
+    title = scene.get('title')
+    if title:
+        layer = centred('ticks_title', title, y, scene.get('title_size', 56), WHITE, 800, jk, 0.04)
+        layers.append(layer)
+        y = layer.y_ink_bottom + 36
+    items = scene['items']
+    item_size = scene.get('item_size', 46)
+    circle = 58
+    avail = INK_BOT - y
+    pitch = min(128, avail // len(items))
+    if pitch < circle + 16:
+        raise SystemExit('tick list does not fit in the safe box')
+    sample = font(jk, item_size, 700)
+    widths = []
+    heights = []
+    for label in items:
+        _, tw, th = _measure(label, sample)
+        widths.append(tw)
+        heights.append(th)
+    block = circle + 28 + max(widths)
+    tick_x = max(SIDE, (W - block) // 2)
+    lab_x = tick_x + circle + 28
+    for i, label in enumerate(items):
+        tw, th = widths[i], heights[i]
+        row_y = y + i * pitch
+        circ = Image.new('RGBA', (circle, circle), (0, 0, 0, 0))
+        cd = ImageDraw.Draw(circ)
+        cd.ellipse((0, 0, circle - 1, circle - 1), fill=MINT)
+        draw_check(cd, circle // 2 - 2, circle // 2 - 2, 12, BG)
+        if row_y < SAFE_TOP or row_y + circle - 1 > INK_BOT:
+            raise SystemExit(f'tick {label!r} outside safe box')
+        layers.append(Layer(
+            f'tick_{i+1}', circ, tick_x, row_y, 0.10 + i * 0.06, False,
+            row_y, row_y + circle - 1, tick_x, tick_x + circle - 1,
+        ))
+        lab_y = row_y + (circle - th) // 2
+        layers.append(make_text(
+            f'label_{i+1}', label, lab_x, lab_y, item_size, WHITE, 700, jk, 0.10 + i * 0.06,
+        ))
+    return background(), layers, []
 
 
-def build_scenes():
+def layout_panel(scene, jk, inn):
+    layers = [wordmark_layer(jk)]
+    y = stack_centred(layers, scene['lines'], 356, jk, inn, 0.04, 8, 'title')
+    y += 16
+    texts = scene['panel']
+    size = scene.get('panel_size', 48)
+    fnt = font(jk, size, 700)
+    heights = [_measure(t, fnt)[2] for t in texts]
+    gap = 20
+    block = sum(heights) + gap * (len(texts) - 1)
+    footnote = scene.get('footnote')
+    foot_block = 0
+    if footnote:
+        foot_block = _measure(footnote, font(inn, 32, 600))[2] + 28
+    room = INK_BOT - y - foot_block
+    panel_h = max(block + 64, min(380, room))
+    if block + 48 > panel_h:
+        raise SystemExit('panel lines do not fit')
+    x0, x1 = 120, 960
+    y1 = y + panel_h
+    im = Image.new('RGBA', (x1 - x0, panel_h), (0, 0, 0, 0))
+    ImageDraw.Draw(im).rounded_rectangle((0, 0, x1 - x0 - 1, panel_h - 1), radius=36, fill=PANEL)
+    layers.append(Layer('panel', im, x0, y, 0.12, False, y, y1 - 1, x0, x1 - 1))
+    start = y + (panel_h - block) // 2
+    yy = start
+    for i, (text, th) in enumerate(zip(texts, heights)):
+        layers.append(centred(f'panel_{i+1}', text, yy, size, MINT, 700, jk, 0.16 + i * 0.05))
+        yy += th + gap
+    if footnote:
+        layers.append(centred('footnote', footnote, y1 + 22, 32, WHITE, 600, inn, 0.34))
+    return background(), layers, []
+
+
+def layout_sheet(scene, jk, inn):
+    layers = [wordmark_layer(jk)]
+    y = 348
+    if scene.get('lines'):
+        y = stack_centred(layers, scene['lines'], y, jk, inn, 0.04, 8, 'sheet_title')
+        y += 12
+    rows = scene['rows']
+    row_h = 78
+    header_h = 70
+    panel_h = header_h + row_h * len(rows)
+    if y + panel_h - 1 > INK_BOT:
+        raise SystemExit(f'sheet is too tall ({y + panel_h} > {INK_BOT})')
+    x0, x1 = 110, 970
+    pw, phh = x1 - x0, panel_h
+    im = Image.new('RGBA', (pw, phh), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle((0, 0, pw - 1, phh - 1), radius=28, fill=PANEL)
+    d.rounded_rectangle((10, header_h - 8, pw - 11, phh - 11), radius=20, fill=PHONE_SCREEN)
+    hf = font(jk, 30, 700)
+    left_h = scene.get('col_left', 'Per order')
+    right_h = scene.get('col_right', 'In the sheet')
+    hb = d.textbbox((0, 0), left_h, font=hf)
+    d.text((28, (header_h - (hb[3] - hb[1])) // 2 - hb[1]), left_h, font=hf, fill=WHITE)
+    rb = d.textbbox((0, 0), right_h, font=hf)
+    rw = rb[2] - rb[0]
+    d.text((pw - 28 - rw, (header_h - (rb[3] - rb[1])) // 2 - rb[1]), right_h, font=hf, fill=MINT)
+    rf = font(jk, 36, 700)
+    for i, row in enumerate(rows):
+        ry = header_h + i * row_h
+        if i:
+            d.line((28, ry, pw - 28, ry), fill=ROW_LINE, width=2)
+        cy = ry + row_h // 2
+        d.ellipse((32, cy - 16, 64, cy + 16), fill=MINT)
+        draw_check(d, 46, cy - 2, 8, BG)
+        b = d.textbbox((0, 0), row, font=rf)
+        th = b[3] - b[1]
+        d.text((80, cy - th // 2 - b[1]), row, font=rf, fill=BG)
+        tw = b[2] - b[0]
+        if 80 + tw > pw - 36:
+            raise SystemExit(f'sheet row too wide: {row!r}')
+    layers.append(Layer('sheet', im, x0, y, 0.12, False, y, y + phh - 1, x0, x1 - 1))
+    return background(), layers, []
+
+
+def layout_endcard(scene, jk, inn):
+    cta = scene.get('cta', 'Message us · link in bio')
+    layers = [wordmark_layer(jk, 0.0)]
+    layers.append(logo_layer(352, 196, 0.05))
+    y = 568
+    rows = [
+        ('end_name', 'NewCo Studio', 60, WHITE, 800, jk, 0.10),
+        ('end_price_1', 'Websites from £99', 46, MINT, 700, jk, 0.15),
+        ('end_price_2', 'Fixes from £19', 46, MINT, 700, jk, 0.19),
+        ('end_cta', cta, 42, WHITE, 800, jk, 0.23),
+        ('end_url', 'studio.newcopacks.co.uk', 32, WHITE, 600, inn, 0.27),
+        ('end_geo', 'UK-wide & worldwide, fully remote', 30, WHITE, 600, inn, 0.31),
+    ]
+    for name, text, size, col, weight, path, delay in rows:
+        layer = centred(name, text, y, size, col, weight, path, delay)
+        layers.append(layer)
+        y = layer.y_ink_bottom + 14
+    return background(), layers, []
+
+
+LAYOUTS = {
+    'hook_phone': layout_hook_phone,
+    'hook_type': layout_hook_type,
+    'ticks': layout_ticks,
+    'panel': layout_panel,
+    'sheet': layout_sheet,
+    'endcard': layout_endcard,
+}
+
+
+def on_screen_strings(spec) -> list[str]:
+    found = ['NEWCO STUDIO', 'NewCo Studio', 'Websites from £99', 'Fixes from £19', 'studio.newcopacks.co.uk', 'UK-wide & worldwide, fully remote']
+    for scene in spec['scenes']:
+        if scene.get('cta'):
+            found.append(scene['cta'])
+        elif scene['layout'] == 'endcard':
+            found.append('Message us · link in bio')
+        for key in ('title', 'footnote', 'col_left', 'col_right'):
+            if scene.get(key):
+                found.append(scene[key])
+        for raw in scene.get('lines', []):
+            found.append(raw['text'] if isinstance(raw, dict) else raw)
+        for key in ('panel', 'items', 'rows'):
+            found.extend(scene.get(key, []))
+        phone = scene.get('phone') or {}
+        for key in ('title', 'subtitle', 'button'):
+            if phone.get(key):
+                found.append(phone[key])
+        found.extend(phone.get('rows', []))
+    return found
+
+
+def lint_spec(spec):
+    tid = spec['template_id']
+    if tid not in ALLOWED_PRICES:
+        raise SystemExit(f'unknown template_id {tid}')
+    strings = on_screen_strings(spec)
+    blob = '\n'.join(strings)
+    for pat in BANNED:
+        if re.search(pat, blob, flags=re.IGNORECASE):
+            raise SystemExit(f'banned wording {pat!r} in {spec.get("asset_id")}')
+    prices = set(re.findall(r'£\s?(\d+(?:\.\d+)?)', blob))
+    allowed = ALLOWED_PRICES[tid]
+    extra = prices - allowed
+    if extra:
+        raise SystemExit(f'unexpected price {extra} on {tid}')
+    if '99' not in prices or '19' not in prices:
+        raise SystemExit('end card must show £99 and £19')
+    joined = ' '.join(s['layout'] for s in spec['scenes'])
+    if 'endcard' not in joined:
+        raise SystemExit('spec is missing an end card')
+
+
+def build_scenes(spec, jk, inn):
+    lint_spec(spec)
+    scenes = []
     bounds = []
-    scenes = []  # list of (base_rgb, layers)
-
-    def record(scene, layers, extra=None):
-        rows = []
-        for L in layers:
-            if L.y_ink_top or L.is_text:
-                rows.append({
-                    'scene': scene,
-                    'name': L.name,
-                    'y_top': L.y_ink_top,
-                    'y_bottom': L.y_ink_bottom,
-                    'x_left': L.x_ink_left,
-                    'x_right': L.x_ink_right,
-                    'inside_269_1248': SAFE_TOP <= L.y_ink_top and L.y_ink_bottom <= SAFE_BOT,
-                })
-        if extra:
-            rows.extend(extra)
-        bounds.extend(rows)
-        return rows
-
-    # --- Scene 1: hook + phone ---
-    base1 = background()
-    layers1 = [wordmark_layer(0.0)]
-    layers1.append(make_text('hook_1', 'Broken button?', 370, 84, WHITE, 800, JK, 0.04))
-    layers1.append(make_text('hook_2', 'From £19', 370 + 84 + 10, 84, WHITE, 800, JK, 0.10))
-    phone_im, px, py, phone_ui = phone_mockup()
-    layers1.append(Layer('phone', phone_im, px, py, 0.12, False, py, py + phone_im.size[1] - 1, px, px + phone_im.size[0] - 1))
-    record(1, layers1, [
-        {**u, 'scene': 1, 'inside_269_1248': SAFE_TOP <= u['y_top'] and u['y_bottom'] <= SAFE_BOT}
-        for u in phone_ui
-    ])
-    scenes.append((base1, layers1))
-
-    # --- Scene 2: what we fix ---
-    base2 = background()
-    layers2 = [wordmark_layer(0.0)]
-    layers2.append(make_text('fixes_title', 'What we fix, from £19', 390, 62, WHITE, 800, JK, 0.04))
-    y = 520
-    for i, label in enumerate(['Broken links', 'Broken buttons', 'Details out of date', 'Layout on phones']):
-        tick, lab = tick_row(label, y, delay=0.10 + i * 0.06)
-        layers2.extend([tick, lab])
-        y += 130
-    record(2, layers2)
-    scenes.append((base2, layers2))
-
-    # --- Scene 3: quote ---
-    base3 = background()
-    layers3 = [wordmark_layer(0.0)]
-    layers3.append(make_text('quote_1', 'Written fixed quote', 390, 66, WHITE, 800, JK, 0.04))
-    layers3.append(make_text('quote_2', 'within 24 hours', 390 + 66 + 10, 66, WHITE, 800, JK, 0.08))
-    # Panel and its three lines. Keep the VAT line clearly above 1248.
-    panel_y0, panel_y1 = 600, 980
-    layers3.append(panel_layer(140, panel_y0, 940, panel_y1, 0.10))
-    lines = ['No call.', 'No obligation.', 'Fixed price first.']
-    # Vertically centre the three lines in the panel with size 52, gap 22.
-    f52 = font(JK, 52, 700)
-    dummy = ImageDraw.Draw(Image.new('RGBA', (1, 1)))
-    line_h = dummy.textbbox((0, 0), 'No obligation.', font=f52)
-    lh = line_h[3] - line_h[1]
-    block = 3 * lh + 2 * 22
-    start = panel_y0 + (panel_y1 - panel_y0 - block) // 2
-    for i, ln in enumerate(lines):
-        layers3.append(make_text(f'quote_panel_{i+1}', ln, start + i * (lh + 22), 52, MINT, 700, JK, 0.14 + i * 0.05))
-    layers3.append(make_text('vat', 'Prices as stated. VAT is not charged.', 1020, 34, WHITE, 500, IN, 0.28))
-    record(3, layers3)
-    scenes.append((base3, layers3))
-
-    # --- Scene 4: end card ---
-    base4 = background()
-    layers4 = [wordmark_layer(0.0)]
-    layers4.append(logo_layer(360, 200, 0.06))
-    layers4.append(make_text('end_name', 'NewCo Studio', 580, 64, WHITE, 800, JK, 0.10))
-    layers4.append(make_text('end_price_1', 'Websites from £99', 660, 48, MINT, 700, JK, 0.14))
-    layers4.append(make_text('end_price_2', 'Fixes from £19', 660 + 48 + 10, 48, MINT, 700, JK, 0.18))
-    layers4.append(make_text('end_cta', 'Tap Send Message below', 800, 48, WHITE, 800, JK, 0.22))
-    layers4.append(make_text('end_url', 'studio.newcopacks.co.uk', 864, 30, WHITE, 500, IN, 0.26))
-    layers4.append(make_text('end_geo', 'UK-wide & worldwide, fully remote', 914, 34, WHITE, 500, IN, 0.30))
-    record(4, layers4)
-    scenes.append((base4, layers4))
-
-    # Final assertion on every recorded bound
-    bad = [r for r in bounds if not r.get('inside_269_1248', False)]
+    for idx, scene in enumerate(spec['scenes'], start=1):
+        layout = scene['layout']
+        if layout not in LAYOUTS:
+            raise SystemExit(f'unknown layout {layout}')
+        base, layers, extra = LAYOUTS[layout](scene, jk, inn)
+        hold = float(scene['hold_s'])
+        n = max(1, int(round(hold * FPS)))
+        for layer in layers:
+            bounds.append({
+                'scene': idx,
+                'name': layer.name,
+                'y_top': layer.y_ink_top,
+                'y_bottom': layer.y_ink_bottom,
+                'x_left': layer.x_ink_left,
+                'x_right': layer.x_ink_right,
+                'inside_safe': SAFE_TOP <= layer.y_ink_top and layer.y_ink_bottom <= SAFE_BOT,
+            })
+        for row in extra:
+            row = dict(row)
+            row['scene'] = idx
+            bounds.append(row)
+        scenes.append({'base': base, 'layers': layers, 'frames': n, 'id': scene.get('id', layout)})
+    bad = [b for b in bounds if not b.get('inside_safe', b.get('inside_269_1248', False))]
     if bad:
-        raise SystemExit(f'safe-zone assertion failed: {bad}')
-    return scenes, bounds
+        raise SystemExit(f'safe-zone failed: {bad}')
+    n_scenes = len(scenes)
+    total = sum(s['frames'] for s in scenes) + (n_scenes - 1) * (FADE_OUT + FADE_IN)
+    duration = total / FPS
+    if not (15.0 <= duration <= 26.0):
+        raise SystemExit(f'duration {duration:.2f}s is outside 15–26s')
+    return scenes, bounds, duration, total
 
 
-def compose(base: Image.Image, layers: list[Layer], t_local: float) -> Image.Image:
-    """t_local is seconds from the start of the scene (including fade-in)."""
+def compose(base, layers, t_local: float) -> Image.Image:
     frame = base.copy()
-    for L in layers:
-        p = ease_out((t_local - L.delay) / POP_S)
+    for layer in layers:
+        p = ease_out((t_local - layer.delay) / POP_S)
         if p <= 0:
             continue
-        alpha = p
         dy = int(round(POP_PX * (1.0 - p)))
-        y = L.y + dy
-        layer = L.im
-        if alpha < 0.999:
-            # multiply alpha channel
-            r, g, b, a = layer.split()
-            a = a.point(lambda v, al=alpha: int(v * al))
-            layer = Image.merge('RGBA', (r, g, b, a))
-        frame.paste(layer, (L.x, y), layer)
+        im = layer.im
+        if p < 0.999:
+            r, g, b, a = im.split()
+            a = a.point(lambda v, al=p: int(v * al))
+            im = Image.merge('RGBA', (r, g, b, a))
+        frame.paste(im, (layer.x, layer.y + dy), im)
     return frame
 
 
-def fade_towards(src: Image.Image, dst: Image.Image, p: float) -> Image.Image:
+def fade_towards(src, dst, p):
     p = 0.0 if p < 0 else 1.0 if p > 1 else p
     return Image.blend(src.convert('RGB'), dst.convert('RGB'), p)
 
 
-def render(scenes, bounds):
-    FR.mkdir(parents=True, exist_ok=True)
-    QA.mkdir(parents=True, exist_ok=True)
+def settled_frame(scene):
+    return compose(scene['base'], scene['layers'], t_local=2.0)
 
-    # Pre-render a settled still for each scene (for QA and for fade sources).
-    settled = []
-    hold_end_t = [(n / FPS) for n in SCENE_FRAMES]  # seconds of scene content before fade-out
-    for i, (base, layers) in enumerate(scenes):
-        still = compose(base, layers, t_local=2.0)  # well after pop-ins
-        still.save(FR / f'0{i+1}_settled.png')
-        settled.append(still)
 
-    teal = background()
-    n_scenes = len(scenes)
-    total_frames = sum(SCENE_FRAMES) + (n_scenes - 1) * (FADE_OUT + FADE_IN)
-    duration = total_frames / FPS
+def render_stills(spec, scenes, work: Path):
+    work.mkdir(parents=True, exist_ok=True)
+    paths = []
+    for i, scene in enumerate(scenes, start=1):
+        im = settled_frame(scene)
+        path = work / f'0{i}_settled.png'
+        im.save(path)
+        paths.append(path)
+    sheet = contact_sheet(paths)
+    sheet.save(work / 'contact.png')
+    return paths
 
-    mid_frame_index = []
-    idx = 0
-    for i, n in enumerate(SCENE_FRAMES):
-        mid_frame_index.append(idx + n // 2)
-        idx += n
-        if i < n_scenes - 1:
-            idx += FADE_OUT + FADE_IN
 
+def contact_sheet(paths: list[Path]) -> Image.Image:
+    cell_w, cell_h = 360, 640
+    sheet = Image.new('RGB', (cell_w * len(paths), cell_h), BG)
+    for i, path in enumerate(paths):
+        im = Image.open(path).convert('RGB').resize((cell_w, cell_h), Image.Resampling.LANCZOS)
+        sheet.paste(im, (i * cell_w, 0))
+    return sheet
+
+
+def verify_frame(path: Path, scene_no: int):
+    im = Image.open(path).convert('RGB')
+    pix = im.load()
+
+    def is_type_pixel(r, g, b):
+        if r > 200 and g > 200 and b > 200:
+            return True
+        if abs(r - 0x9C) < 45 and abs(g - 0xC4) < 45 and abs(b - 0xB8) < 45 and (r + g + b) > 280:
+            return True
+        if r < 40 and g < 50 and b < 55 and not (
+            abs(r - 0x00) <= 8 and abs(g - 0x29) <= 16 and abs(b - 0x2D) <= 16
+        ):
+            return True
+        return False
+
+    unsafe = []
+    for y in list(range(0, SAFE_TOP)) + list(range(SAFE_BOT + 1, H)):
+        for x in range(0, W, 2):
+            if is_type_pixel(*pix[x, y]):
+                unsafe.append((x, y))
+                break
+    if unsafe:
+        raise SystemExit(f'scene {scene_no} has type outside the safe box, e.g. {unsafe[:4]}')
+
+
+def encode(spec, scenes, duration, out_mp4: Path):
+    out_mp4.parent.mkdir(parents=True, exist_ok=True)
+    music = ensure_music()
     cmd = [
         'ffmpeg', '-v', 'error', '-y',
         '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', 'pipe:0',
-        '-i', str(MUSIC),
+        '-stream_loop', '-1', '-i', str(music),
         '-filter_complex',
-        f'[1:a]atrim=0:{duration:.4f},afade=t=in:st=0:d=0.3,afade=t=out:st={duration-1.5:.4f}:d=1.5,loudnorm=I=-14:TP=-1.5:LRA=7,aresample=48000[aout]',
+        (
+            f'[1:a]atrim=0:{duration:.4f},afade=t=in:st=0:d=0.3,'
+            f'afade=t=out:st={max(0.0, duration - 1.5):.4f}:d=1.5,'
+            f'loudnorm=I=-14:TP=-1.5:LRA=7,aresample=48000,aformat=channel_layouts=stereo[aout]'
+        ),
         '-map', '0:v', '-map', '[aout]',
         '-t', f'{duration:.4f}',
         '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p',
         '-c:a', 'aac', '-b:a', '192k', '-ac', '2', '-ar', '48000',
         '-movflags', '+faststart', '-map_metadata', '-1',
-        str(OUT),
+        str(out_mp4),
     ]
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
-    qa_saved = {}
+    teal = background()
+    mids = {}
+    written = 0
 
-    def write(im: Image.Image, fi: int):
+    def write(im):
+        nonlocal written
         proc.stdin.write(im.convert('RGB').tobytes())
-        if fi in mid_frame_index:
-            si = mid_frame_index.index(fi) + 1
-            path = QA / f'0{si}_mid.png'
-            im.convert('RGB').save(path)
-            qa_saved[si] = str(path)
+        written += 1
 
-    fi = 0
     try:
-        for i, (base, layers) in enumerate(scenes):
-            n = SCENE_FRAMES[i]
-            for k in range(n):
-                t_local = k / FPS
-                frame = compose(base, layers, t_local)
-                write(frame, fi)
-                fi += 1
-            if i < n_scenes - 1:
-                end_still = settled[i]
-                start_next = compose(scenes[i + 1][0], scenes[i + 1][1], t_local=0.0)
-                # Fade out to teal, then fade in the next scene from teal.
-                # Next scene at t_local=0 has no text yet (p=0), so headlines cannot overlap.
+        for i, scene in enumerate(scenes):
+            # Scene 0 starts at t=0. Later scenes already used FADE_IN frames
+            # of local time during the transition, so the hold continues.
+            t0 = 0.0 if i == 0 else FADE_IN / FPS
+            mid_k = scene['frames'] // 2
+            for k in range(scene['frames']):
+                t_local = t0 + k / FPS
+                frame = compose(scene['base'], scene['layers'], t_local)
+                if k == mid_k:
+                    mids[i] = frame.copy()
+                write(frame)
+            if i < len(scenes) - 1:
+                end_still = settled_frame(scene)
                 for k in range(FADE_OUT):
                     p = (k + 1) / FADE_OUT
-                    write(fade_towards(end_still, teal, p), fi)
-                    fi += 1
+                    write(fade_towards(end_still, teal, p))
+                nxt = scenes[i + 1]
                 for k in range(FADE_IN):
                     p = (k + 1) / FADE_IN
-                    nxt = compose(scenes[i + 1][0], scenes[i + 1][1], t_local=k / FPS)
-                    write(fade_towards(teal, nxt, p), fi)
-                    fi += 1
+                    frame = compose(nxt['base'], nxt['layers'], k / FPS)
+                    write(fade_towards(teal, frame, p))
         proc.stdin.close()
         rc = proc.wait()
         if rc != 0:
@@ -454,100 +720,185 @@ def render(scenes, bounds):
     except BrokenPipeError:
         rc = proc.wait()
         raise SystemExit(f'ffmpeg pipe broke, rc={rc}')
+    return mids, written
 
-    assert fi == total_frames, (fi, total_frames)
 
-    # Contact sheet of mid-scene QA frames
-    ins = []
-    for i in range(1, 5):
-        ins += ['-i', qa_saved[i]]
-    subprocess.run(
-        ['ffmpeg', '-v', 'error', '-y', *ins,
-         '-filter_complex',
-         'scale=270:480[0s];[1]scale=270:480[1s];[2]scale=270:480[2s];[3]scale=270:480[3s];[0s][1s][2s][3s]hstack=inputs=4',
-         str(QA / 'contact_sheet.jpg')],
-        check=True,
+def probe(path: Path) -> dict:
+    raw = subprocess.check_output([
+        'ffprobe', '-v', 'error', '-show_entries',
+        'format=duration:stream=codec_type,codec_name,width,height,avg_frame_rate,sample_rate,channels',
+        '-of', 'json', str(path),
+    ], text=True)
+    return json.loads(raw)
+
+
+def audio_mean_db(path: Path) -> float:
+    proc = subprocess.run(
+        ['ffmpeg', '-v', 'info', '-i', str(path), '-af', 'volumedetect', '-f', 'null', '-'],
+        capture_output=True, text=True,
+    )
+    blob = proc.stderr
+    match = re.search(r'mean_volume:\s*(-?\d+(?:\.\d+)?) dB', blob)
+    if not match:
+        raise SystemExit(f'could not read loudness of {path.name}\n{blob[-400:]}')
+    return float(match.group(1))
+
+
+def write_licence(path: Path, music: Path):
+    digest = hashlib.sha256(music.read_bytes()).hexdigest()
+    marker = music.with_suffix('.downloaded.txt')
+    downloaded = marker.read_text().strip() if marker.exists() else date.today().isoformat()
+    duration = subprocess.check_output([
+        'ffprobe', '-v', 'error', '-show_entries', 'format=duration',
+        '-of', 'default=nw=1:nk=1', str(music),
+    ], text=True).strip()
+    path.write_text(
+        f'''# Music licence proof
+
+This Reel uses one music bed. No other track, voiceover, or TTS.
+
+- Track: City Loop
+- Author: wipics
+- Source page: {MUSIC_PAGE}
+- File downloaded: {MUSIC_URL}
+- Terms: CC0 1.0 Universal (public domain). The person who associated the work with this deed has dedicated it to the public domain by waiving all of their rights to the work worldwide under copyright law, including all related and neighbouring rights, to the extent allowed by law. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. Deed: https://creativecommons.org/publicdomain/zero/1.0/
+- Download date: {downloaded}
+- File duration: {duration} seconds
+- SHA-256: `{digest}`
+- Reference proof: ../licence/CITY_LOOP_LICENCE_PROOF.md
+
+No attribution is required under CC0. The uploader's authorship claim is not independently verified.
+'''
     )
 
-    # Also grab a frame in the middle of the 1→2 fade-out to prove no overlapping headlines.
-    # (Re-extract from the finished file.)
-    t_fade = SCENE_FRAMES[0] / FPS + (FADE_OUT / 2) / FPS
-    subprocess.run(
-        ['ffmpeg', '-v', 'error', '-y', '-ss', f'{t_fade:.4f}', '-i', str(OUT),
-         '-frames:v', '1', str(QA / 'transition_1_to_2.png')],
-        check=True,
-    )
 
-    (QA / 'text_bounds.json').write_text(json.dumps({
-        'safe_box': {'y_top': SAFE_TOP, 'y_bottom': SAFE_BOT, 'x_left': SIDE, 'x_right': W - 1 - SIDE},
+def render_one(spec_path: Path, jk: str, inn: str, stills_only: bool) -> dict:
+    spec = json.loads(spec_path.read_text())
+    scenes, bounds, duration, total = build_scenes(spec, jk, inn)
+    stem = spec_path.stem
+    work = WORK / stem
+    still_paths = render_stills(spec, scenes, work)
+    for i, path in enumerate(still_paths, start=1):
+        verify_frame(path, i)
+    (work / 'text_bounds.json').write_text(json.dumps({
         'duration_s': duration,
-        'total_frames': total_frames,
-        'fps': FPS,
+        'frames': total,
         'elements': bounds,
     }, indent=2) + '\n')
+    info = {
+        'asset_id': spec['asset_id'],
+        'template_id': spec['template_id'],
+        'date': spec['date'],
+        'weekday': spec.get('weekday', ''),
+        'file': f'{stem}.mp4',
+        'duration_s': round(duration, 3),
+        'frames': total,
+        'captions': spec['captions'],
+        'links': spec['links'],
+    }
+    if stills_only:
+        print(f'stills {stem} {duration:.2f}s')
+        return info
+    out_mp4 = OUT_DIR / f'{stem}.mp4'
+    mids, written = encode(spec, scenes, duration, out_mp4)
+    if written != total:
+        raise SystemExit(f'frame count {written} != {total} for {stem}')
+    mid_paths = []
+    for i, im in mids.items():
+        path = work / f'0{i+1}_mid.png'
+        im.save(path)
+        verify_frame(path, i + 1)
+        mid_paths.append(path)
+    cover = OUT_DIR / f'{stem}.cover.png'
+    contact = OUT_DIR / f'{stem}.contact.png'
+    # Cover is the settled hook, the frame people see as the thumbnail.
+    Image.open(still_paths[0]).save(cover, optimize=True)
+    contact_sheet(mid_paths).save(contact, optimize=True)
+    write_licence(OUT_DIR / f'{stem}.LICENCE_PROOF.md', MUSIC)
+    meta = probe(out_mp4)
+    streams = meta['streams']
+    video = next(s for s in streams if s['codec_type'] == 'video')
+    audio = next(s for s in streams if s['codec_type'] == 'audio')
+    got = float(meta['format']['duration'])
+    if video.get('width') != W or video.get('height') != H:
+        raise SystemExit(f'{stem} is {video.get("width")}x{video.get("height")}')
+    if audio.get('codec_name') != 'aac':
+        raise SystemExit(f'{stem} audio is {audio.get("codec_name")}')
+    if abs(got - duration) > 0.15:
+        raise SystemExit(f'{stem} duration {got} != {duration}')
+    mean_db = audio_mean_db(out_mp4)
+    if mean_db < -30:
+        raise SystemExit(f'{stem} music is too quiet ({mean_db} dB)')
+    info['mean_volume_db'] = mean_db
+    info['probed_duration_s'] = round(got, 3)
+    print(f'wrote {out_mp4.name} {got:.2f}s mean {mean_db:.1f} dB')
+    return info
 
-    return duration, total_frames, bounds
+
+def write_schedule(rows: list[dict]):
+    lines = [
+        '# Reel schedule — 17 to 27 November 2026',
+        '',
+        'One music-only Reel per posting weekday. 16 November is already filled and is not in this batch.',
+        'Post around 12:30 Europe/London. Same master on Facebook, Instagram and TikTok; captions and links differ.',
+        'Do not publish from this file until the slot is confirmed empty.',
+        '',
+        'Music on every file: City Loop by wipics, CC0. See each `*.LICENCE_PROOF.md` and `../licence/CITY_LOOP_LICENCE_PROOF.md`.',
+        '',
+    ]
+    for row in sorted(rows, key=lambda r: r['date']):
+        y, m, d = row['date'].split('-')
+        months = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+        when = f"{row['weekday']} {int(d)} {months[int(m)]} {y}"
+        length = row.get('probed_duration_s', row['duration_s'])
+        lines += [
+            f'## {when}',
+            '',
+            f'- Date: {row["date"]}',
+            f'- template_id: `{row["template_id"]}`',
+            f'- asset_id: `{row["asset_id"]}`',
+            f'- File: `{row["file"]}`',
+            f'- Length: {length:.2f}s',
+            f'- Cover: `{Path(row["file"]).stem}.cover.png`',
+            f'- QA contact sheet: `{Path(row["file"]).stem}.contact.png`',
+            f'- Licence: `{Path(row["file"]).stem}.LICENCE_PROOF.md`',
+            '',
+            '### Facebook caption',
+            '',
+            row['captions']['facebook'].strip(),
+            '',
+            '### Instagram and TikTok caption',
+            '',
+            row['captions']['instagram_tiktok'].strip(),
+            '',
+            '### Links',
+            '',
+        ]
+        for key, url in row['links'].items():
+            lines.append(f'- {key}: {url}')
+        lines.append('')
+    (OUT_DIR / 'SCHEDULE.md').write_text('\n'.join(lines))
 
 
-def verify_qa_frames(bounds):
-    """Scan mid-scene QA frames: no white/mint/dark-UI type in reserved bands."""
-    def is_type_pixel(p):
-        r, g, b = p
-        # white typography
-        if r > 200 and g > 200 and b > 200:
-            return True
-        # mint typography
-        if abs(r - 0x9C) < 45 and abs(g - 0xC4) < 45 and abs(b - 0xB8) < 45 and (r + g + b) > 280:
-            return True
-        # near-black UI text on a light phone screen (not the dark teal background)
-        if r < 40 and g < 50 and b < 55 and not (abs(r - 0x00) <= 8 and abs(g - 0x29) <= 16 and abs(b - 0x2D) <= 16):
-            return True
-        return False
-
-    report = []
-    for i in range(1, 5):
-        path = QA / f'0{i}_mid.png'
-        im = Image.open(path).convert('RGB')
-        pix = im.load()
-        unsafe = []
-        for y in list(range(0, SAFE_TOP)) + list(range(SAFE_BOT + 1, H)):
-            for x in range(W):
-                if is_type_pixel(pix[x, y]):
-                    unsafe.append(y)
-                    break
-        # Measured ink of light/mint text inside the frame
-        ys = []
-        for y in range(SAFE_TOP, SAFE_BOT + 1):
-            for x in range(W):
-                r, g, b = pix[x, y]
-                if (r > 200 and g > 200 and b > 200) or (
-                    abs(r - 0x9C) < 45 and abs(g - 0xC4) < 45 and abs(b - 0xB8) < 45 and r + g + b > 280
-                ):
-                    ys.append(y)
-                    break
-        report.append({
-            'scene': i,
-            'measured_light_text_y': [min(ys), max(ys)] if ys else None,
-            'type_pixels_outside_safe_box': (min(unsafe), max(unsafe), len(unsafe)) if unsafe else None,
-        })
-        if unsafe:
-            raise SystemExit(f'scene {i} has type pixels outside y {SAFE_TOP}–{SAFE_BOT}: {report[-1]}')
-    return report
-
-
-def main():
-    scenes, bounds = build_scenes()
-    duration, total_frames, bounds = render(scenes, bounds)
-    measured = verify_qa_frames(bounds)
-    print('duration', duration)
-    print('frames', total_frames)
-    print('wrote', OUT)
-    print('TEXT BOUNDS (rest positions, y 269–1248 required):')
-    for r in bounds:
-        print(f"  scene {r['scene']:>1}  {r['name']:<24}  y {r['y_top']:>4}–{r['y_bottom']:<4}  "
-              f"x {r.get('x_left','?'):>4}–{r.get('x_right','?'):<4}  ok={r['inside_269_1248']}")
-    print('QA frame scan:', json.dumps(measured))
+def main(argv: list[str]):
+    stills_only = '--stills' in argv
+    args = [a for a in argv if a != '--stills']
+    jk, inn = ensure_fonts()
+    if not args:
+        spec_paths = sorted(SPECS.glob('*.json'))
+    else:
+        spec_paths = [Path(a) if Path(a).is_absolute() else HERE / a for a in args]
+    if not spec_paths:
+        raise SystemExit(f'no specs in {SPECS}')
+    if not stills_only:
+        ensure_music()
+    rows = []
+    for path in spec_paths:
+        rows.append(render_one(path, jk, inn, stills_only))
+    if not stills_only and len(spec_paths) == len(list(SPECS.glob('*.json'))):
+        write_schedule(rows)
+        print(f'wrote {OUT_DIR / "SCHEDULE.md"}')
 
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv[1:])

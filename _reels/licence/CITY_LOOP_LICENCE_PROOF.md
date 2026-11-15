@@ -8,6 +8,14 @@
 - CC0 1.0 deed: https://creativecommons.org/publicdomain/zero/1.0/ (saved: licence/cc0_1.0_deed.html). Key text: "The person who associated a work with this deed has dedicated the work to the public domain by waiving all of his or her rights ... You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission."
 - No attribution needed. Residual risk: the uploader's own claim of authorship is not independently verified (true of any user-upload site, Pixabay included). Not registered with any Content ID system as far as can be known, but Meta's rights manager could in theory still flag it: check the ad status after upload.
 
+## Download used for the 17–27 November 2026 reels
+
+- Downloaded 15 November 2026 from https://opengameart.org/sites/default/files/city-loop.mp3
+- SHA-256: `9349982fb8e365167bc5c89f2ac50d3b5376b9f627d506ba30a9b26c8230597e`
+- Duration: 56.424500 seconds
+- Local file: `music/city-loop.mp3` (gitignored; not committed)
+- Each Reel under `out/` has its own `*.LICENCE_PROOF.md` pointing back to this file. No other music is used.
+
 ## Why NOT Pixabay (the brief's first choice)
 - pixabay.com and cdn.pixabay.com returned 403 / Cloudflare "Just a moment" bot challenges from the box, so no Pixabay track could be downloaded here. I did not try to get round the challenge.
 - Pixabay Content Licence summary, retrieved via WebFetch from https://pixabay.com/service/license-summary/ : allows use "for free", "without having to attribute", and "Modify or adapt Content into new works"; prohibits Standalone redistribution, recognisable trademarks, misleading uses, and use in a trade-mark/business name. (Only the full licence at https://pixabay.com/service/terms/ is binding.) Commercial/ad use is allowed under it, but Pixabay Music tracks may be flagged by Content ID systems, so always check on upload.

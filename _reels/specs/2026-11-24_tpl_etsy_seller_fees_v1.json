@@ -1,0 +1,100 @@
+{
+  "asset_id": "reel-2026-11-24-etsy",
+  "template_id": "tpl_etsy_seller_fees_v1",
+  "date": "2026-11-24",
+  "weekday": "Tuesday",
+  "scenes": [
+    {
+      "id": "hook",
+      "hold_s": 4.8,
+      "layout": "hook_type",
+      "lines": [
+        {
+          "text": "What does Etsy",
+          "size": 72,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "really take?",
+          "size": 88,
+          "fill": "mint",
+          "weight": 800
+        }
+      ]
+    },
+    {
+      "id": "sheet",
+      "hold_s": 5.2,
+      "layout": "sheet",
+      "lines": [
+        {
+          "text": "Worked out per order",
+          "size": 52,
+          "fill": "white",
+          "weight": 800
+        }
+      ],
+      "col_left": "Line",
+      "col_right": "In the sheet",
+      "rows": [
+        "Transaction fee",
+        "Processing fee",
+        "Regulatory fee",
+        "Listing fee",
+        "Offsite Ads",
+        "VAT on the fees",
+        "What you keep"
+      ]
+    },
+    {
+      "id": "price",
+      "hold_s": 4.6,
+      "layout": "hook_type",
+      "lines": [
+        {
+          "text": "£9.59",
+          "size": 132,
+          "fill": "mint",
+          "weight": 800
+        },
+        {
+          "text": "including UK VAT",
+          "size": 48,
+          "fill": "white",
+          "weight": 700
+        },
+        {
+          "text": "Excel and Google Sheets",
+          "size": 40,
+          "fill": "white",
+          "weight": 600,
+          "font": "inter"
+        },
+        {
+          "text": "Instant download",
+          "size": 36,
+          "fill": "white",
+          "weight": 600,
+          "font": "inter"
+        }
+      ]
+    },
+    {
+      "id": "end",
+      "hold_s": 5.0,
+      "layout": "endcard",
+      "cta": "Shop on Etsy"
+    }
+  ],
+  "captions": {
+    "facebook": "What does Etsy really take from a sale? Transaction, processing, regulatory and listing fees, any Offsite Ads, and VAT on the fees. This spreadsheet works it out on every order and shows what you actually keep. £9.59 including UK VAT. Excel and Google Sheets, instant download.\n\nhttps://counterbookuk.etsy.com/uk/listing/4610102135/uk-etsy-seller-bookkeeping-spreadsheet",
+    "instagram_tiktok": "What does Etsy really take from a sale?\n\nTransaction, processing, regulatory and listing fees, any Offsite Ads, and VAT on the fees, worked out on every order, plus what you keep. UK Etsy Seller Bookkeeping is £9.59 including UK VAT. Excel and Google Sheets, instant download.\n\nLink in bio."
+  },
+  "links": {
+    "Facebook": "https://counterbookuk.etsy.com/uk/listing/4610102135/uk-etsy-seller-bookkeeping-spreadsheet",
+    "Instagram": "https://counterbookuk.etsy.com/uk/listing/4610102135/uk-etsy-seller-bookkeeping-spreadsheet",
+    "TikTok": "https://counterbookuk.etsy.com/uk/listing/4610102135/uk-etsy-seller-bookkeeping-spreadsheet",
+    "Note": "Etsy listing. No studio UTM. Buyers stay on Etsy."
+  }
+}

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample Maker Shop — example one-page website</title>
+<meta name="description" content="Example one-page website for a maker who sells on Etsy or Shopify. Not a real business.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#00292D">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%2300292D'/%3E%3C/svg%3E">
+<style>
+
+:root{--bg:#F6F1EA;--ink:#241C16;--muted:#3E342C;--deep:#2A211B;--card:#FFFBF6;--line:#E4D8CA;--soft:#EFE4D6}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;font:400 1.0625rem/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}
+img,svg{max-width:100%;height:auto;display:block}
+.banner{margin:0;background:#00292D;color:#fff;text-align:center;padding:14px 18px;font-size:1rem;line-height:1.45;font-weight:700}
+.skip{position:absolute;left:8px;top:-48px;background:#fff;color:#00292D;padding:10px 14px;z-index:5;border-radius:8px}
+.skip:focus{top:8px}
+header.site{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 12px;padding:8px 20px;background:var(--card);border-bottom:1px solid var(--line)}
+.brand{font-weight:800;font-size:1.15rem;color:var(--ink);min-height:48px;display:inline-flex;align-items:center;margin:0}
+nav{display:flex;flex-wrap:wrap;gap:10px}
+nav a{color:var(--deep);min-height:48px;display:inline-flex;align-items:center;padding:0 12px;font-weight:700;text-underline-offset:.2em}
+.wrap{width:min(920px,100%);margin:0 auto;padding:0 20px}
+.hero{padding:36px 0 12px}
+.hero-grid{display:grid;gap:24px;align-items:center}
+h1,h2,h3{line-height:1.12;letter-spacing:-.02em;font-weight:800;margin:0 0 .45em}
+h1{font-size:clamp(2.15rem,8vw,3.5rem)}
+h2{font-size:clamp(1.55rem,4.5vw,2.15rem)}
+h3{font-size:1.2rem}
+.eyebrow{margin:0 0 10px;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--deep)}
+.lead{font-size:1.15rem;color:var(--muted);max-width:38rem;margin:0 0 8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin-top:18px;padding:0 18px;border-radius:999px;background:var(--deep);color:#fff;text-decoration:none;font-weight:700}
+section{padding:36px 0}
+.cards{display:grid;gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 6px}
+.card p{color:var(--muted);margin:0 0 14px}
+.ill{background:var(--soft);border-radius:20px;padding:12px}
+.price{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line)}
+.price span{font-weight:700}
+.price b{font-size:1.15rem;font-variant-numeric:tabular-nums}
+.note{color:var(--muted)}
+.panel{background:var(--deep);color:#fff;border-radius:18px;padding:22px}
+.panel h2,.panel p,.panel dt,.panel dd,.panel a{color:#fff}
+.panel a{text-underline-offset:.2em}
+.panel dt{font-weight:700;margin-top:12px}
+.panel dd{margin:0}
+footer{padding:8px 20px 48px;color:var(--muted)}
+footer .wrap{padding:0}
+footer a{color:var(--deep);font-weight:700}
+:focus-visible{outline:3px solid var(--deep);outline-offset:3px}
+.panel a:focus-visible,.btn:focus-visible{outline-color:#fff}
+.hero.dark{background:var(--deep);color:#fff;margin:0 0 8px;padding:40px 0 36px}
+.hero.dark .eyebrow,.hero.dark .lead, .hero.dark h1{color:#fff}
+.hero.dark .lead{color:#F4EEE8}
+.hero.dark .btn{background:#fff;color:var(--deep)}
+.hero.dark .btn:focus-visible{outline-color:#fff}
+.centre{text-align:center}
+.centre .lead,.centre .eyebrow{margin-left:auto;margin-right:auto}
+@media (min-width:840px){
+  .hero-grid{grid-template-columns:1.05fr .95fr;gap:36px}
+  .cards{grid-template-columns:repeat(3,1fr)}
+  .hero.dark .hero-grid{align-items:center}
+}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<p class="banner">Example website by NewCo Studio — not a real business</p>
+<header class="site">
+  <p class="brand">Sample Maker Shop</p>
+  <nav aria-label="On this page">
+    <a href="#services">Services</a>
+    <a href="#prices">Prices</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+<main id="main">
+  <div class="hero">
+    <div class="wrap hero-grid"><div>
+      <p class="eyebrow">Maker shop · Etsy or Shopify</p>
+      <h1>Made in small batches. Sold from one page.</h1>
+      <p class="lead">Prints, textiles and small ceramics. This page is the shape of a simple shop: what you make, sample prices, and where the real shop link would go.</p>
+      <a class="btn" href="#prices">See sample prices</a>
+    </div><div class="ill"><svg viewBox="0 0 640 460" aria-hidden="true">
+          <rect width="640" height="460" rx="28" fill="#E7D7C4"/>
+          <rect x="48" y="56" width="230" height="280" rx="12" fill="#FFFBF6" stroke="#2A211B" stroke-width="8"/>
+          <rect x="78" y="88" width="170" height="150" fill="#C46A4A"/>
+          <rect x="78" y="256" width="120" height="18" rx="9" fill="#2A211B"/>
+          <ellipse cx="470" cy="250" rx="100" ry="42" fill="#FFFBF6" stroke="#2A211B" stroke-width="8"/>
+          <ellipse cx="470" cy="242" rx="62" ry="18" fill="#C46A4A"/>
+          <path d="M390 248c30 36 130 36 160 0" fill="none" stroke="#2A211B" stroke-width="8"/>
+        </svg></div></div>
+  </div>
+  <section id="services" aria-labelledby="services-h">
+    <div class="wrap">
+      <h2 id="services-h">What the shop shows</h2>
+      <div class="cards">
+        <article class="card"><h3>Prints</h3><p>A short line on paper size, edition and how someone orders one.</p></article>
+<article class="card"><h3>Textiles</h3><p>Cloth goods, with the materials named in plain words.</p></article>
+<article class="card"><h3>Ceramics</h3><p>Small pieces, with a note on making time and care.</p></article>
+      </div>
+    </div>
+  </section>
+  <section id="prices" aria-labelledby="prices-h">
+    <div class="wrap">
+      <h2 id="prices-h">Sample prices</h2>
+      <p class="note">Replace these with your own prices. They are here to show the layout.</p>
+      <div class="price"><span>Print, unframed</span><b>£24</b></div>
+<div class="price"><span>Textile piece</span><b>£48</b></div>
+<div class="price"><span>Small ceramic</span><b>£36</b></div>
+    </div>
+  </section>
+  <section id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="panel">
+        <h2 id="contact-h">Contact</h2>
+        <p>Replace this block with the shop’s own details. Nothing here is a real shop.</p>
+        <dl>
+<dt>Phone</dt><dd>Your phone number</dd>
+<dt>Email</dt><dd>Your email address</dd>
+<dt>Sells through</dt><dd>Your Etsy shop or your Shopify shop</dd>
+</dl>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <p>Example website by NewCo Studio — not a real business.</p>
+    <p><a href="https://studio.newcopacks.co.uk/">NewCo Studio</a> · one-page websites from £99</p>
+  </div>
+</footer>
+<!-- Images: original SVG drawn for this example. No third-party photographs. -->
+</body>
+</html>
