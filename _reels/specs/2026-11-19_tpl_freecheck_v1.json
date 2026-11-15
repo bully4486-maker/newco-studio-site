@@ -26,6 +26,12 @@
           "size": 48,
           "fill": "white",
           "weight": 700
+        },
+        {
+          "text": "10 free checks at a time",
+          "size": 44,
+          "fill": "mint",
+          "weight": 700
         }
       ]
     },
@@ -72,12 +78,12 @@
       "id": "end",
       "hold_s": 4.8,
       "layout": "endcard",
-      "cta": "Tap Send Message below"
+      "cta": "Message us · link in bio"
     }
   ],
   "captions": {
-    "facebook": "Send a page address and get a short written list of what to fix. Free, no call, no obligation. If you want the work done, website fixes are from £19. Prices as stated. VAT is not charged.\n\nhttps://studio.newcopacks.co.uk/website-fixes/?utm_source=facebook&utm_medium=social&utm_content=tpl_freecheck_v1",
-    "instagram_tiktok": "Want a written list of what to fix on your website?\n\nSend the page address. You get a short written list, free, with no call and no obligation. If you want the work done, fixes are from £19. Prices as stated. VAT is not charged.\n\nLink in bio."
+    "facebook": "Send a page address and get a short written list of what to fix. Free, no call, no obligation. 10 free checks at a time. If you want the work done, website fixes are from £19. Prices as stated. VAT is not charged.\n\nhttps://studio.newcopacks.co.uk/website-fixes/?utm_source=facebook&utm_medium=social&utm_content=tpl_freecheck_v1",
+    "instagram_tiktok": "Want a written list of what to fix on your website?\n\nSend the page address. You get a short written list, free, with no call and no obligation. 10 free checks at a time. If you want the work done, fixes are from £19. Prices as stated. VAT is not charged.\n\nLink in bio."
   },
   "links": {
     "Facebook": "https://studio.newcopacks.co.uk/website-fixes/?utm_source=facebook&utm_medium=social&utm_content=tpl_freecheck_v1",

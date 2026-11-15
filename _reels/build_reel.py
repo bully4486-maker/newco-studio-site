@@ -480,7 +480,7 @@ def layout_sheet(scene, jk, inn):
 
 
 def layout_endcard(scene, jk, inn):
-    cta = scene.get('cta', 'Tap Send Message below')
+    cta = scene.get('cta', 'Message us · link in bio')
     layers = [wordmark_layer(jk, 0.0)]
     layers.append(logo_layer(352, 196, 0.05))
     y = 568
@@ -515,7 +515,7 @@ def on_screen_strings(spec) -> list[str]:
         if scene.get('cta'):
             found.append(scene['cta'])
         elif scene['layout'] == 'endcard':
-            found.append('Tap Send Message below')
+            found.append('Message us · link in bio')
         for key in ('title', 'footnote', 'col_left', 'col_right'):
             if scene.get(key):
                 found.append(scene[key])

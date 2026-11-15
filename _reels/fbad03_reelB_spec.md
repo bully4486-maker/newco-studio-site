@@ -46,7 +46,7 @@ The organic site99 master used a looser bottom bound (y=1560). Assert bounds in 
 **4 — End card, 3.13s hold** (`qa/v2/04_mid.png`)
 - Logo (unchanged) · “NewCo Studio”
 - “Websites from £99” / “Fixes from £19”
-- “Tap Send Message below”
+- “Message us · link in bio”
 - Small “studio.newcopacks.co.uk”
 - “UK-wide & worldwide, fully remote”
 
