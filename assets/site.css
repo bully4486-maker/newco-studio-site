@@ -134,6 +134,7 @@ section{scroll-margin-top:72px}.sec{padding:104px 0}.sec-sand{background:var(--s
 .ftr{padding:56px 0 40px;color:var(--muted);font-size:.93rem}
 .ftr .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
 .ftr .ftr-label{font-family:Jakarta,Inter,system-ui,sans-serif;font-size:.85rem;font-weight:700;line-height:1.1;text-transform:uppercase;letter-spacing:.1em;color:var(--deep);margin:0 0 .5em}
+.ftr p + .ftr-label{margin-top:1.25em}
 .ftr ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
 .ftr a{color:var(--muted)}.ftr a:hover{color:var(--teal)}
 .ftr .legal{grid-column:1/-1;border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
@@ -205,6 +206,8 @@ body{padding-bottom:84px}}
 .w99-price b{font:800 1.5rem/1 Jakarta,sans-serif}
 .w99-hero .lead{font-size:1.08rem;margin-bottom:18px}
 .w99-hero .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+body.service-page .w99-hero .w99-run{margin:0 0 14px}
+body.service-page .w99-hero .hero-ctas{margin:0 0 4px}
 .w99-run{font-size:.95rem;color:var(--muted);margin:0}
 .w99-inc{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;list-style:none;padding:0;margin:0}
 .w99-inc li{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}.w99-inc b{display:block;color:var(--deep);margin-bottom:4px}.w99-inc span{color:var(--muted);font-size:.95rem}
@@ -283,4 +286,12 @@ fieldset.either legend,fieldset.choice-set legend{font-weight:600;font-size:1rem
 /* This page has no chat fab: full-width sticky bar, content clear of it */
 @media (max-width:760px){
 .mcta[href="#quote"]{left:16px;right:16px}
+body.service-page .mcta{left:16px;right:16px}
 }
+.copy{max-width:42em}
+.copy h2{font-size:clamp(1.6rem,3vw,2.1rem);margin-top:1.45em}
+.copy h2:first-child{margin-top:0}
+.copy h3{margin-top:1.15em}
+.copy ul,.copy ol{margin:0 0 1em;padding-left:1.25em}
+.copy li{margin:.35em 0}
+.copy .w99-inc{padding-left:0;margin:0 0 1.2em}
