@@ -262,6 +262,14 @@ fieldset.either legend,fieldset.choice-set legend{font-weight:600;font-size:1rem
 .frame-note{background:#E6F0ED;border-radius:14px;padding:14px 16px;color:var(--deep);margin:0 0 18px}
 @media (max-width:560px){.notes div{grid-template-columns:1fr;gap:2px}}
 
+/* homepage free website check, inside the hero */
+.hero .check-note{background:#fff;color:var(--ink);border-radius:16px;padding:16px 18px 18px;margin:8px 0 20px}
+.hero .check-note .eyebrow{color:var(--teal);margin-bottom:8px}
+.hero .check-note h2{color:var(--deep);font-size:clamp(1.2rem,2.2vw,1.45rem);line-height:1.25;margin:0 0 .45em;max-width:22em}
+.hero .check-note p:not(.eyebrow){color:var(--muted);font-size:.98rem;line-height:1.5;margin:0 0 14px}
+.hero .check-note .btn{margin:0}
+.qform > .w99-msg-alt{margin:0}
+@media (max-width:560px){.hero .check-note .btn{width:100%;justify-content:center}}
 /* websites-99 compact quote under hero */
 .w99-quote{padding:8px 0 48px}
 .w99-quote-grid{display:grid;gap:24px;align-items:start}
