@@ -25,6 +25,18 @@ try{var u=new URL(document.referrer);if(u.origin!==location.origin)notes.referre
 document.querySelectorAll('form.qform').forEach(function(f){
 K.concat(['landing_path','referrer']).forEach(function(k){var i=f.querySelector('input[name="'+k+'"]');if(i&&!i.value&&notes[k])i.value=notes[k]})})})();
 (function(){
+var q=new URLSearchParams(location.search);
+var content=(q.get('utm_content')||'').trim();
+var check=(q.get('check')||'').trim();
+function pick(job){
+document.querySelectorAll('input[name="job_type"]').forEach(function(r){if(r.type==='radio'&&r.value===job)r.checked=true});
+}
+if(content==='tpl_freecheck_v1'||check==='1') pick('Free website check');
+document.querySelectorAll('a[data-job]').forEach(function(a){
+a.addEventListener('click',function(){pick(a.getAttribute('data-job')||'')});
+});
+})();
+(function(){
 function val(f,n){var i=f.querySelector('[name="'+n+'"]');return i&&i.value?String(i.value).trim():''}
 function paidSrc(f){var c=val(f,'utm_campaign'),s=val(f,'utm_source'),m=val(f,'utm_medium').toLowerCase(),cl=c.toLowerCase(),sl=s.toLowerCase();
 var paid=/^(cpc|ppc|paid|paid_social|paidsocial)$/.test(m)||/^fbad/.test(cl)||/fbad|fbads|meta.?ad/.test(cl)||((/^(facebook|fb|instagram|ig|meta)$/.test(sl))&&(!!c||/^(cpc|ppc|paid|paid_social|paidsocial)$/.test(m)));
@@ -44,7 +56,8 @@ var guides={
 'One-page website':'Guide price £99, confirmed in a written quote before any work. That guide includes one mobile-first page, your services, prices, photos and contact details, basic SEO, a favicon, a share image, the revisions named in the quote, and every file. Prices as stated. VAT is not charged. Payment is 50% to start and 50% after you sign off, by UK bank transfer. You own the files.',
 'Website fix':'Guide price from £19, confirmed in a written quote before any work. That guide includes the change and a plain-English note of what changed. Prices as stated. VAT is not charged. A fix at this size is paid once, by UK bank transfer, after you approve it. You own the files.',
 'Spreadsheet or script':'Priced from £19 when it is a small fix, or as its own fixed quote if it is larger. The figure is confirmed in writing before any work. Prices as stated. VAT is not charged. You own the files.',
-'Multi-page website':'No guide price. You will get a fixed written quote for the pages you describe, within 24 hours. Prices as stated. VAT is not charged. Payment for a build is 50% to start and 50% after you sign off, by UK bank transfer. You own the files.'
+'Multi-page website':'No guide price. You will get a fixed written quote for the pages you describe, within 24 hours. Prices as stated. VAT is not charged. Payment for a build is 50% to start and 50% after you sign off, by UK bank transfer. You own the files.',
+'Free website check':'The check is free and there is no obligation. Add your website address in this brief. We reply in writing with what the site actually needs. If you want the work done, fixes start from £19 and a one-page website is £99, confirmed in writing before any work. Prices as stated. VAT is not charged.'
 };
 function buildScope(f){
 var job=valChecked(f,'job_type')||'Not chosen yet';
@@ -52,7 +65,8 @@ var assets=[];
 f.querySelectorAll('input[name^="asset_"]:checked').forEach(function(b){assets.push(b.value)});
 var deadline=valInput(f,'deadline');
 var date=valInput(f,'deadline_date');
-var lines=['Job: '+job, guides[job]||'The price is confirmed in a written quote. This preview is not a price.', 'Assets ready: '+(assets.length?assets.join(', '):'not stated'), 'Deadline: '+(deadline||'not stated')+(date?' ('+date+')':''), 'Please send a written fixed quote with the scope, the price and a delivery date. This note is the brief, not a price.'];
+var lines=['Job: '+job, guides[job]||'The price is confirmed in a written quote. This preview is not a price.', 'Assets ready: '+(assets.length?assets.join(', '):'not stated'), 'Deadline: '+(deadline||'not stated')+(date?' ('+date+')':''), job==='Free website check'?'Please reply in writing with what this site actually needs. No obligation. If any work is worth doing, include a fixed price. This note is the brief, not a price.':'Please send a written fixed quote with the scope, the price and a delivery date. This note is the brief, not a price.'];
+if(job==='Free website check') lines.splice(2,0,'Website address: (add the address here)');
 return lines.join('\n\n');
 }
 function valChecked(f,n){var i=f.querySelector('input[name="'+n+'"]:checked');return i?i.value:''}
