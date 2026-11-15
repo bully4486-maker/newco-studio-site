@@ -1,0 +1,91 @@
+{
+  "asset_id": "reel-2026-11-18-fix19",
+  "template_id": "tpl_fix19_phone_v1",
+  "date": "2026-11-18",
+  "weekday": "Wednesday",
+  "scenes": [
+    {
+      "id": "hook",
+      "hold_s": 4.6,
+      "layout": "hook_phone",
+      "lines": [
+        {
+          "text": "Broken button?",
+          "size": 78,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "From £19",
+          "size": 84,
+          "fill": "mint",
+          "weight": 800
+        }
+      ],
+      "phone": {
+        "title": "Your Business",
+        "subtitle": "Services · Prices · Contact",
+        "button": "Get in touch",
+        "rows": [
+          "Services",
+          "Prices",
+          "Contact"
+        ]
+      }
+    },
+    {
+      "id": "fixes",
+      "hold_s": 4.8,
+      "layout": "ticks",
+      "title": "What we fix, from £19",
+      "title_size": 50,
+      "items": [
+        "Broken links",
+        "Broken buttons",
+        "Details out of date",
+        "Layout on phones"
+      ],
+      "item_size": 44
+    },
+    {
+      "id": "quote",
+      "hold_s": 4.6,
+      "layout": "panel",
+      "lines": [
+        {
+          "text": "Written fixed quote",
+          "size": 56,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "within 24 hours",
+          "size": 56,
+          "fill": "white",
+          "weight": 800
+        }
+      ],
+      "panel": [
+        "No call.",
+        "No obligation.",
+        "Fixed price first."
+      ],
+      "footnote": "Prices as stated. VAT is not charged."
+    },
+    {
+      "id": "end",
+      "hold_s": 5.0,
+      "layout": "endcard",
+      "cta": "Tap Send Message below"
+    }
+  ],
+  "captions": {
+    "facebook": "Small website problems have a fixed price. A broken button, a broken link, details that are out of date, or a page that looks wrong on a phone. Website fixes from £19. You get the figure in writing first. No call, no obligation. Prices as stated. VAT is not charged.\n\nhttps://studio.newcopacks.co.uk/website-fixes/?utm_source=facebook&utm_medium=social&utm_content=tpl_fix19_phone_v1",
+    "instagram_tiktok": "Broken button on your website?\n\nWebsite fixes from £19: broken links, broken buttons, details that are out of date, and layout on phones. The figure comes in writing first. No call, no obligation. Prices as stated. VAT is not charged.\n\nLink in bio."
+  },
+  "links": {
+    "Facebook": "https://studio.newcopacks.co.uk/website-fixes/?utm_source=facebook&utm_medium=social&utm_content=tpl_fix19_phone_v1",
+    "Instagram": "https://studio.newcopacks.co.uk/website-fixes/?utm_source=instagram&utm_medium=social&utm_content=tpl_fix19_phone_v1",
+    "TikTok": "https://studio.newcopacks.co.uk/website-fixes/?utm_source=tiktok&utm_medium=social&utm_content=tpl_fix19_phone_v1"
+  }
+}

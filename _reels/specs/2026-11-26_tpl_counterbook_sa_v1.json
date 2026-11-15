@@ -1,0 +1,101 @@
+{
+  "asset_id": "reel-2026-11-26-counterbook",
+  "template_id": "tpl_counterbook_sa_v1",
+  "date": "2026-11-26",
+  "weekday": "Thursday",
+  "scenes": [
+    {
+      "id": "hook",
+      "hold_s": 5.0,
+      "layout": "hook_type",
+      "lines": [
+        {
+          "text": "Self Assessment",
+          "size": 64,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "Online deadline",
+          "size": 44,
+          "fill": "mint",
+          "weight": 700
+        },
+        {
+          "text": "31 January",
+          "size": 92,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "Each year",
+          "size": 40,
+          "fill": "white",
+          "weight": 600,
+          "font": "inter"
+        }
+      ]
+    },
+    {
+      "id": "sheet",
+      "hold_s": 5.2,
+      "layout": "ticks",
+      "title": "In the spreadsheet",
+      "title_size": 52,
+      "items": [
+        "Income",
+        "Expenses",
+        "Mileage",
+        "SA103 totals"
+      ],
+      "item_size": 48
+    },
+    {
+      "id": "price",
+      "hold_s": 5.0,
+      "layout": "hook_type",
+      "lines": [
+        {
+          "text": "The Counter Book",
+          "size": 56,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "2026/27 tax year",
+          "size": 40,
+          "fill": "mint",
+          "weight": 700
+        },
+        {
+          "text": "£11.99",
+          "size": 112,
+          "fill": "mint",
+          "weight": 800
+        },
+        {
+          "text": "including UK VAT",
+          "size": 44,
+          "fill": "white",
+          "weight": 700
+        }
+      ]
+    },
+    {
+      "id": "end",
+      "hold_s": 5.4,
+      "layout": "endcard",
+      "cta": "Shop on Etsy"
+    }
+  ],
+  "captions": {
+    "facebook": "Online Self Assessment is due on 31 January each year. The Counter Book is a spreadsheet for the 2026/27 tax year: income, expenses and mileage, totalled into the SA103 boxes. £11.99 including UK VAT. Excel and Google Sheets, instant download. It is a record-keeping spreadsheet, not tax advice.\n\nhttps://www.etsy.com/uk/listing/4610105594",
+    "instagram_tiktok": "Getting your records in shape for Self Assessment?\n\nOnline Self Assessment is due on 31 January each year. The Counter Book totals income, expenses and mileage into the SA103 boxes for the 2026/27 tax year. £11.99 including UK VAT. Excel and Google Sheets, instant download. A record-keeping spreadsheet, not tax advice.\n\nLink in bio."
+  },
+  "links": {
+    "Facebook": "https://www.etsy.com/uk/listing/4610105594",
+    "Instagram": "https://www.etsy.com/uk/listing/4610105594",
+    "TikTok": "https://www.etsy.com/uk/listing/4610105594",
+    "Note": "Etsy listing for The Counter Book 2026/27. No studio UTM. Buyers stay on Etsy."
+  }
+}
