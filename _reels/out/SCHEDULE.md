@@ -237,7 +237,7 @@ Link in bio.
 
 ### Facebook caption
 
-Online Self Assessment is due on 31 January each year. The Counter Book is a spreadsheet for the 2026/27 tax year that groups income, expenses and mileage by SA103 box. £11.99 including UK VAT. Excel and Google Sheets, instant download. It is a record-keeping spreadsheet, not tax advice.
+Online Self Assessment is due on 31 January each year. The Counter Book is a spreadsheet for the 2026/27 tax year: income, expenses and mileage, totalled into the SA103 boxes. £11.99 including UK VAT. Excel and Google Sheets, instant download. It is a record-keeping spreadsheet, not tax advice.
 
 https://www.etsy.com/uk/listing/4610105594
 
@@ -245,7 +245,7 @@ https://www.etsy.com/uk/listing/4610105594
 
 Getting your records in shape for Self Assessment?
 
-Online Self Assessment is due on 31 January each year. The Counter Book groups income, expenses and mileage by SA103 box for the 2026/27 tax year. £11.99 including UK VAT. Excel and Google Sheets, instant download. A record-keeping spreadsheet, not tax advice.
+Online Self Assessment is due on 31 January each year. The Counter Book totals income, expenses and mileage into the SA103 boxes for the 2026/27 tax year. £11.99 including UK VAT. Excel and Google Sheets, instant download. A record-keeping spreadsheet, not tax advice.
 
 Link in bio.
 
