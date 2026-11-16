@@ -1,0 +1,90 @@
+{
+  "asset_id": "reel-2026-12-10-freecheck",
+  "template_id": "tpl_freecheck_v1",
+  "date": "2026-12-10",
+  "weekday": "Thursday",
+  "required_phrases": [
+    "10 free checks at a time"
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "hold_s": 4.2,
+      "layout": "hook_type",
+      "lines": [
+        {
+          "text": "What is worth fixing?",
+          "size": 56,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "Free, in writing",
+          "size": 64,
+          "fill": "mint",
+          "weight": 800
+        },
+        {
+          "text": "10 free checks at a time",
+          "size": 44,
+          "fill": "mint",
+          "weight": 700
+        }
+      ]
+    },
+    {
+      "id": "steps",
+      "hold_s": 4.4,
+      "layout": "ticks",
+      "title": "How it works",
+      "title_size": 60,
+      "items": [
+        "Send the page address",
+        "We read the page",
+        "You get a written list",
+        "No call"
+      ],
+      "item_size": 42
+    },
+    {
+      "id": "panel",
+      "hold_s": 4.2,
+      "layout": "panel",
+      "lines": [
+        {
+          "text": "The list is free",
+          "size": 60,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "The work is priced",
+          "size": 60,
+          "fill": "white",
+          "weight": 800
+        }
+      ],
+      "panel": [
+        "No call.",
+        "No obligation.",
+        "No charge for the list."
+      ],
+      "footnote": "Fixes from £19 if you want them done."
+    },
+    {
+      "id": "end",
+      "hold_s": 4.6,
+      "layout": "endcard",
+      "cta": "Message us · link in bio"
+    }
+  ],
+  "captions": {
+    "facebook": "Not sure what to fix first? Send the page address and you get a short written list. Free, no call, no obligation. 10 free checks at a time. Website fixes are from £19 if you want them done. Prices as stated. VAT is not charged.\n\nhttps://studio.newcopacks.co.uk/website-fixes/?utm_source=facebook&utm_medium=social&utm_content=tpl_freecheck_v1",
+    "instagram_tiktok": "Not sure what is worth fixing?\n\nSend the page address. You get a short written list, free, with no call and no obligation. 10 free checks at a time. Fixes are from £19 if you want them done. Prices as stated. VAT is not charged.\n\nLink in bio."
+  },
+  "links": {
+    "Facebook": "https://studio.newcopacks.co.uk/website-fixes/?utm_source=facebook&utm_medium=social&utm_content=tpl_freecheck_v1",
+    "Instagram": "https://studio.newcopacks.co.uk/website-fixes/?utm_source=instagram&utm_medium=social&utm_content=tpl_freecheck_v1",
+    "TikTok": "https://studio.newcopacks.co.uk/website-fixes/?utm_source=tiktok&utm_medium=social&utm_content=tpl_freecheck_v1"
+  }
+}

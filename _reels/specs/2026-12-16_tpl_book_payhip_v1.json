@@ -1,0 +1,123 @@
+{
+  "asset_id": "reel-2026-12-16-receipt-log",
+  "template_id": "tpl_book_payhip_v1",
+  "date": "2026-12-16",
+  "weekday": "Wednesday",
+  "price": "3.59",
+  "compliance": "Compliance pre-check required before scheduling",
+  "required_phrases": [
+    "January's coming. Where are the receipts?",
+    "12 monthly income pages",
+    "12 monthly expenses pages",
+    "Quarterly and annual totals",
+    "Printable, A4 and US Letter",
+    "£3.59",
+    "payhip.com/b/0PYiQ"
+  ],
+  "scenes": [
+    {
+      "id": "cover",
+      "hold_s": 2.8,
+      "layout": "book_page",
+      "image": "assets/books/cover_receipt_and_accounts_log.png",
+      "lines": [
+        {
+          "text": "January's coming.",
+          "size": 48,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "Where are the receipts?",
+          "size": 44,
+          "fill": "mint",
+          "weight": 800
+        }
+      ]
+    },
+    {
+      "id": "income",
+      "hold_s": 2.8,
+      "layout": "book_page",
+      "image": "assets/books/receipt_page-05.png",
+      "lines": [
+        {
+          "text": "12 monthly income pages",
+          "size": 44,
+          "fill": "white",
+          "weight": 800
+        }
+      ]
+    },
+    {
+      "id": "expenses",
+      "hold_s": 2.4,
+      "layout": "hook_type",
+      "lines": [
+        {
+          "text": "12 monthly expenses pages",
+          "size": 48,
+          "fill": "white",
+          "weight": 800
+        }
+      ]
+    },
+    {
+      "id": "totals",
+      "hold_s": 2.4,
+      "layout": "hook_type",
+      "lines": [
+        {
+          "text": "Quarterly and annual totals",
+          "size": 44,
+          "fill": "white",
+          "weight": 800
+        }
+      ]
+    },
+    {
+      "id": "printable",
+      "hold_s": 2.4,
+      "layout": "book_page",
+      "image": "assets/books/receipt_page-06.png",
+      "lines": [
+        {
+          "text": "Printable, A4 and US Letter",
+          "size": 40,
+          "fill": "white",
+          "weight": 800
+        }
+      ]
+    },
+    {
+      "id": "price",
+      "hold_s": 2.6,
+      "layout": "hook_type",
+      "lines": [
+        {
+          "text": "£3.59",
+          "size": 132,
+          "fill": "mint",
+          "weight": 800
+        }
+      ]
+    },
+    {
+      "id": "end",
+      "hold_s": 2.8,
+      "layout": "endcard_payhip",
+      "url": "payhip.com/b/0PYiQ"
+    }
+  ],
+  "captions": {
+    "facebook": "A printable income and expenses log for UK sole traders, with monthly pages, quarterly totals and an annual summary, ready before the 31 January deadline. A record-keeping book, not tax advice. £3.59. https://payhip.com/b/0PYiQ",
+    "tiktok": "A printable income and expenses log for UK sole traders, with monthly pages, quarterly totals and an annual summary, ready before the 31 January deadline. A record-keeping book, not tax advice. £3.59. https://payhip.com/b/0PYiQ",
+    "instagram": "A printable income and expenses log for UK sole traders, with monthly pages, quarterly totals and an annual summary, ready before the 31 January deadline. A record-keeping book, not tax advice. £3.59. Link in bio."
+  },
+  "links": {
+    "Facebook": "https://payhip.com/b/0PYiQ",
+    "Instagram": "https://payhip.com/b/0PYiQ",
+    "TikTok": "https://payhip.com/b/0PYiQ",
+    "Note": "Payhip. No studio UTM. Compliance pre-check required before scheduling."
+  }
+}
