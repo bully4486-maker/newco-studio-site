@@ -21,7 +21,8 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont
+import numpy as np
+from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 HERE = Path(__file__).resolve().parent
 SPECS = HERE / 'specs'
@@ -64,7 +65,24 @@ ALLOWED_PRICES = {
     'tpl_freecheck_v1': {'99', '19'},
     'tpl_etsy_seller_fees_v1': {'99', '19', '9.59'},
     'tpl_counterbook_sa_v1': {'99', '19', '11.99'},
+    'tpl_landlord_tracker_v1': {'99', '19', '10.79'},
+    'tpl_maker_pricing_v1': {'99', '19', '7.19'},
+    # Payhip books show their own price. They do not use the studio end card.
+    'tpl_book_payhip_v1': {'4.99', '3.59'},
 }
+
+# Product price that must actually appear, in addition to the studio end card.
+MUST_SHOW_PRICE = {
+    'tpl_etsy_seller_fees_v1': '9.59',
+    'tpl_counterbook_sa_v1': '11.99',
+    'tpl_landlord_tracker_v1': '10.79',
+    'tpl_maker_pricing_v1': '7.19',
+}
+
+BOOK_BANNED = [
+    r'hmrc-approved', r'hmrc approved', r'everything you need', r'file for you',
+    r'\bvat\b',
+]
 
 BANNED = [
     r'\bartificial intelligence\b', r'\bchatgpt\b', r'\bai\b',
@@ -499,6 +517,97 @@ def layout_endcard(scene, jk, inn):
     return background(), layers, []
 
 
+def book_image(rel: str, outer_w: int, outer_h: int) -> Image.Image:
+    """Fit a real cover or page inside a panel. The artwork is not redrawn."""
+    root = (HERE / 'assets' / 'books').resolve()
+    path = (HERE / rel).resolve()
+    if path != root and root not in path.parents:
+        raise SystemExit(f'book image must live under assets/books: {rel}')
+    if not path.is_file():
+        raise SystemExit(f'missing book image {rel}')
+    pad = 12
+    src = ImageOps.exif_transpose(Image.open(path)).convert('RGB')
+    src.thumbnail((max(8, outer_w - pad * 2), max(8, outer_h - pad * 2)), Image.Resampling.LANCZOS)
+    canvas = Image.new('RGBA', (src.width + pad * 2, src.height + pad * 2), (0, 0, 0, 0))
+    ImageDraw.Draw(canvas).rounded_rectangle(
+        (0, 0, canvas.width - 1, canvas.height - 1), radius=26, fill=PANEL,
+    )
+    mask = Image.new('L', src.size, 0)
+    ImageDraw.Draw(mask).rounded_rectangle((0, 0, src.width - 1, src.height - 1), radius=16, fill=255)
+    framed = src.convert('RGBA')
+    framed.putalpha(mask)
+    canvas.paste(framed, (pad, pad), framed)
+    return canvas
+
+
+def layout_book_page(scene, jk, inn):
+    """Real cover or page, with the spec lines on the teal ground underneath."""
+    layers = [wordmark_layer(jk)]
+    images = list(scene.get('images') or [])
+    if scene.get('image'):
+        images.insert(0, scene['image'])
+    if not images:
+        raise SystemExit('book_page needs an image')
+    measured = []
+    for raw in scene.get('lines', []):
+        text, size, fill, weight, face_name = line_spec(raw, 48, 'white', 800, 'jakarta')
+        fnt = font(face(face_name, jk, inn), size, weight)
+        _, tw, th = _measure(text, fnt)
+        if tw > (W - 2 * SIDE):
+            raise SystemExit(f'book line is too wide: {text!r}')
+        measured.append((text, size, fill, weight, face_name, th))
+    gap = 8
+    text_gap = 20 if measured else 0
+    text_block = 0
+    if measured:
+        text_block = sum(m[5] for m in measured) + gap * (len(measured) - 1)
+    top = 368
+    room = INK_BOT - top - text_block - text_gap
+    if room < 360:
+        raise SystemExit('book image does not fit in the safe box')
+    n = len(images)
+    gutter = 20
+    outer_w = (W - 160 - gutter * (n - 1)) // n
+    ims = [book_image(p, outer_w, room) for p in images]
+    group_w = sum(im.width for im in ims) + gutter * (n - 1)
+    group_h = max(im.height for im in ims)
+    spare = room - group_h
+    img_y = top + max(0, spare // 5)
+    x = (W - group_w) // 2
+    if x < SIDE:
+        raise SystemExit('book image is wider than the safe box')
+    for i, im in enumerate(ims):
+        iy = img_y + (group_h - im.height) // 2
+        y_bot = iy + im.height - 1
+        x_right = x + im.width - 1
+        if x < SIDE or x_right > W - 1 - SIDE or iy < SAFE_TOP or y_bot > INK_BOT:
+            raise SystemExit('book image outside the safe box')
+        layers.append(Layer(
+            f'book_{i+1}', im, x, iy, 0.08, False,
+            iy, y_bot, x, x_right,
+        ))
+        x += im.width + gutter
+    y = img_y + group_h + text_gap
+    for i, (text, size, fill, weight, face_name, th) in enumerate(measured):
+        layers.append(centred(
+            f'book_line_{i+1}', text, y, size, fill_of(fill), weight,
+            face(face_name, jk, inn), 0.14 + i * 0.05,
+        ))
+        y += th + gap
+    return background(), layers, []
+
+
+def layout_endcard_payhip(scene, jk, inn):
+    """Payhip URL only. No studio prices and no studio.newcopacks.co.uk."""
+    url = scene.get('url', '').strip()
+    if not url.startswith('payhip.com/'):
+        raise SystemExit(f'Payhip end card needs a payhip.com URL, got {url!r}')
+    layers = [wordmark_layer(jk, 0.0)]
+    layers.append(logo_layer(460, 220, 0.06))
+    layers.append(centred('end_url', url, 730, 52, MINT, 700, inn, 0.16))
+    return background(), layers, []
+
+
 LAYOUTS = {
     'hook_phone': layout_hook_phone,
     'hook_type': layout_hook_type,
@@ -506,16 +615,26 @@ LAYOUTS = {
     'panel': layout_panel,
     'sheet': layout_sheet,
     'endcard': layout_endcard,
+    'book_page': layout_book_page,
+    'endcard_payhip': layout_endcard_payhip,
 }
 
 
 def on_screen_strings(spec) -> list[str]:
-    found = ['NEWCO STUDIO', 'NewCo Studio', 'Websites from £99', 'Fixes from £19', 'studio.newcopacks.co.uk', 'UK-wide & worldwide, fully remote']
+    layouts = [s['layout'] for s in spec['scenes']]
+    found = ['NEWCO STUDIO']
+    if 'endcard' in layouts:
+        found += [
+            'NewCo Studio', 'Websites from £99', 'Fixes from £19',
+            'studio.newcopacks.co.uk', 'UK-wide & worldwide, fully remote',
+        ]
     for scene in spec['scenes']:
         if scene.get('cta'):
             found.append(scene['cta'])
         elif scene['layout'] == 'endcard':
             found.append('Message us · link in bio')
+        if scene.get('url'):
+            found.append(scene['url'])
         for key in ('title', 'footnote', 'col_left', 'col_right'):
             if scene.get(key):
                 found.append(scene[key])
@@ -537,6 +656,7 @@ def lint_spec(spec):
         raise SystemExit(f'unknown template_id {tid}')
     strings = on_screen_strings(spec)
     blob = '\n'.join(strings)
+    prose = ' '.join(strings)
     for pat in BANNED:
         if re.search(pat, blob, flags=re.IGNORECASE):
             raise SystemExit(f'banned wording {pat!r} in {spec.get("asset_id")}')
@@ -545,11 +665,34 @@ def lint_spec(spec):
     extra = prices - allowed
     if extra:
         raise SystemExit(f'unexpected price {extra} on {tid}')
-    if '99' not in prices or '19' not in prices:
-        raise SystemExit('end card must show £99 and £19')
-    joined = ' '.join(s['layout'] for s in spec['scenes'])
-    if 'endcard' not in joined:
-        raise SystemExit('spec is missing an end card')
+    layouts = [s['layout'] for s in spec['scenes']]
+    if tid == 'tpl_book_payhip_v1':
+        if 'endcard' in layouts:
+            raise SystemExit('book reel uses the Payhip end card, not the studio end card')
+        if layouts.count('endcard_payhip') != 1:
+            raise SystemExit('book reel needs one Payhip end card')
+        captions = '\n'.join(spec.get('captions', {}).values())
+        for pat in BOOK_BANNED:
+            if re.search(pat, blob, flags=re.IGNORECASE) or re.search(pat, captions, flags=re.IGNORECASE):
+                raise SystemExit(f'book wording {pat!r} in {spec.get("asset_id")}')
+        expect = {str(spec.get('price', ''))}
+        if prices != expect:
+            raise SystemExit(f'book price shown {prices}, expected {expect}')
+        if 'studio.newcopacks.co.uk' in blob:
+            raise SystemExit('book end card must not show the studio URL')
+    else:
+        if 'endcard' not in layouts:
+            raise SystemExit('spec is missing an end card')
+        if 'endcard_payhip' in layouts:
+            raise SystemExit('Payhip end card is only for tpl_book_payhip_v1')
+        if '99' not in prices or '19' not in prices:
+            raise SystemExit('end card must show £99 and £19')
+        must = MUST_SHOW_PRICE.get(tid)
+        if must and must not in prices:
+            raise SystemExit(f'{tid} must show £{must}')
+    for phrase in spec.get('required_phrases', []):
+        if phrase not in prose and phrase not in blob:
+            raise SystemExit(f'missing required phrase {phrase!r} in {spec.get("asset_id")}')
 
 
 def build_scenes(spec, jk, inn):
@@ -586,6 +729,9 @@ def build_scenes(spec, jk, inn):
     duration = total / FPS
     if not (15.0 <= duration <= 26.0):
         raise SystemExit(f'duration {duration:.2f}s is outside 15–26s')
+    # This batch is posted at about 16–22 seconds. November files stay as rendered.
+    if spec.get('date', '') >= '2026-11-30' and not (16.0 <= duration <= 22.0):
+        raise SystemExit(f'duration {duration:.2f}s is outside 16–22s')
     return scenes, bounds, duration, total
 
 
@@ -619,6 +765,7 @@ def render_stills(spec, scenes, work: Path):
     paths = []
     for i, scene in enumerate(scenes, start=1):
         im = settled_frame(scene)
+        assert_text_contrast(im, scene['layers'], i)
         path = work / f'0{i}_settled.png'
         im.save(path)
         paths.append(path)
@@ -634,6 +781,90 @@ def contact_sheet(paths: list[Path]) -> Image.Image:
         im = Image.open(path).convert('RGB').resize((cell_w, cell_h), Image.Resampling.LANCZOS)
         sheet.paste(im, (i * cell_w, 0))
     return sheet
+
+
+def _channel(c):
+    c = c / 255.0
+    return c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
+
+
+def contrast_ratio(a, b) -> float:
+    la = 0.2126 * _channel(a[0]) + 0.7152 * _channel(a[1]) + 0.0722 * _channel(a[2])
+    lb = 0.2126 * _channel(b[0]) + 0.7152 * _channel(b[1]) + 0.0722 * _channel(b[2])
+    lighter, darker = max(la, lb), min(la, lb)
+    return (lighter + 0.05) / (darker + 0.05)
+
+
+def opaque_colour(im: Image.Image):
+    px = im.convert('RGBA').load()
+    w, h = im.size
+    best = None
+    best_a = 0
+    # Strokes are small. Step across and keep the most opaque pixel.
+    for y in range(0, h, 2):
+        for x in range(0, w, 2):
+            r, g, b, a = px[x, y]
+            if a > best_a:
+                best_a = a
+                best = (r, g, b)
+                if a == 255:
+                    return best
+    return best
+
+
+def assert_text_contrast(frame: Image.Image, layers, scene_no: int):
+    rgb = frame.convert('RGB')
+    pix = rgb.load()
+    for layer in layers:
+        if not layer.is_text:
+            continue
+        colour = opaque_colour(layer.im)
+        if colour is None:
+            continue
+        sx = max(0, layer.x - 8)
+        sy = min(H - 1, max(0, layer.y + layer.im.height // 2))
+        bg = pix[sx, sy]
+        ratio = contrast_ratio(colour, bg)
+        if ratio < 4.5:
+            raise SystemExit(
+                f'scene {scene_no} {layer.name} contrast {ratio:.2f} '
+                f'{colour} on {bg}'
+            )
+
+
+def ink_mask(arr: np.ndarray) -> np.ndarray:
+    r = arr[:, :, 0].astype(np.int16)
+    g = arr[:, :, 1].astype(np.int16)
+    b = arr[:, :, 2].astype(np.int16)
+    white = (r > 200) & (g > 200) & (b > 200)
+    mint = (
+        (np.abs(r - 0x9C) < 45) & (np.abs(g - 0xC4) < 45) & (np.abs(b - 0xB8) < 45)
+        & ((r + g + b) > 280)
+    )
+    dark = (r < 40) & (g < 50) & (b < 55)
+    bg = (np.abs(r) <= 8) & (np.abs(g - 0x29) <= 16) & (np.abs(b - 0x2D) <= 16)
+    return white | mint | (dark & ~bg)
+
+
+def ink_outside(im: Image.Image):
+    """Type-like pixels outside the safe box, or in the side margins."""
+    mask = ink_mask(np.asarray(im.convert('RGB')))
+    hits = []
+    bands = (
+        mask[:SAFE_TOP, :],
+        mask[SAFE_BOT + 1:, :],
+        mask[:, :SIDE],
+        mask[:, W - SIDE:],
+    )
+    origins = ((0, 0), (0, SAFE_BOT + 1), (0, 0), (W - SIDE, 0))
+    for band, (ox, oy) in zip(bands, origins):
+        if not band.any():
+            continue
+        ys, xs = np.where(band)
+        hits.append((int(ox + xs[0]), int(oy + ys[0])))
+        if len(hits) >= 3:
+            break
+    return hits
 
 
 def verify_frame(path: Path, scene_no: int):
@@ -688,6 +919,10 @@ def encode(spec, scenes, duration, out_mp4: Path):
 
     def write(im):
         nonlocal written
+        hits = ink_outside(im)
+        if hits:
+            proc.kill()
+            raise SystemExit(f'{out_mp4.name} frame {written} has ink outside the safe box, e.g. {hits}')
         proc.stdin.write(im.convert('RGB').tobytes())
         written += 1
 
@@ -785,6 +1020,9 @@ def render_one(spec_path: Path, jk: str, inn: str, stills_only: bool) -> dict:
         'frames': total,
         'elements': bounds,
     }, indent=2) + '\n')
+    hook_lines = []
+    for raw in spec['scenes'][0].get('lines', []):
+        hook_lines.append(raw['text'] if isinstance(raw, dict) else raw)
     info = {
         'asset_id': spec['asset_id'],
         'template_id': spec['template_id'],
@@ -795,6 +1033,9 @@ def render_one(spec_path: Path, jk: str, inn: str, stills_only: bool) -> dict:
         'frames': total,
         'captions': spec['captions'],
         'links': spec['links'],
+        'hook': ' / '.join(hook_lines),
+        'compliance': spec.get('compliance', ''),
+        'price': spec.get('price', ''),
     }
     if stills_only:
         print(f'stills {stem} {duration:.2f}s')
@@ -814,6 +1055,11 @@ def render_one(spec_path: Path, jk: str, inn: str, stills_only: bool) -> dict:
     # Cover is the settled hook, the frame people see as the thumbnail.
     Image.open(still_paths[0]).save(cover, optimize=True)
     contact_sheet(mid_paths).save(contact, optimize=True)
+    info['qa_frames'] = [
+        str(mid_paths[0]),
+        str(mid_paths[len(mid_paths) // 2]),
+        str(mid_paths[-1]),
+    ]
     write_licence(OUT_DIR / f'{stem}.LICENCE_PROOF.md', MUSIC)
     meta = probe(out_mp4)
     streams = meta['streams']
@@ -880,12 +1126,108 @@ def write_schedule(rows: list[dict]):
     (OUT_DIR / 'SCHEDULE.md').write_text('\n'.join(lines))
 
 
+DEC_DATES = {
+    '2026-11-30', '2026-12-01', '2026-12-02', '2026-12-03', '2026-12-04',
+    '2026-12-07', '2026-12-08', '2026-12-09', '2026-12-10', '2026-12-11',
+    '2026-12-14', '2026-12-15', '2026-12-16', '2026-12-17', '2026-12-18',
+}
+
+
+def write_dec_schedule(rows: list[dict]):
+    lines = [
+        '# Reel schedule — 30 November to 18 December 2026',
+        '',
+        'One music-only Reel per posting weekday. Post around 12:30 Europe/London.',
+        'Same master on Facebook, Instagram and TikTok; captions and links differ.',
+        'Do not publish from this file until the slot is confirmed empty.',
+        'The 17–27 November Reels are unchanged.',
+        '',
+        'Music on every file: City Loop by wipics, CC0. See each `*.LICENCE_PROOF.md` and `../licence/CITY_LOOP_LICENCE_PROOF.md`.',
+        '',
+        'Book Reels on 2 December (SA guide) and 16 December (Receipt and Accounts Log): Compliance pre-check required before scheduling.',
+        '',
+        'Contact sheet, hook / middle scene / end card: `CONTACT_2026-11-30_to_12-18.png`.',
+        '',
+        '| Date | template_id | asset_id | Length |',
+        '| --- | --- | --- | --- |',
+    ]
+    months = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    ordered = sorted(rows, key=lambda r: r['date'])
+    for row in ordered:
+        length = row.get('probed_duration_s', row['duration_s'])
+        lines.append(f'| {row["date"]} | `{row["template_id"]}` | `{row["asset_id"]}` | {length:.2f}s |')
+    lines.append('')
+    for row in ordered:
+        y, m, d = row['date'].split('-')
+        when = f"{row['weekday']} {int(d)} {months[int(m)]} {y}"
+        length = row.get('probed_duration_s', row['duration_s'])
+        lines += [
+            f'## {when}',
+            '',
+            f'- Date: {row["date"]}',
+            f'- template_id: `{row["template_id"]}`',
+            f'- asset_id: `{row["asset_id"]}`',
+            f'- File: `{row["file"]}`',
+            f'- Length: {length:.2f}s',
+            f'- Hook: {row.get("hook", "")}',
+            f'- Cover: `{Path(row["file"]).stem}.cover.png`',
+            f'- QA contact sheet: `{Path(row["file"]).stem}.contact.png`',
+            f'- Licence: `{Path(row["file"]).stem}.LICENCE_PROOF.md`',
+            '',
+        ]
+        if row.get('compliance'):
+            lines += [f'**{row["compliance"]}**', '']
+        captions = row['captions']
+        tiktok = captions.get('tiktok', '')
+        if tiktok and tiktok.strip() != captions['facebook'].strip():
+            lines += ['### Facebook caption', '', captions['facebook'].strip(), '', '### TikTok caption', '', tiktok.strip(), '']
+        elif tiktok:
+            lines += ['### Facebook and TikTok caption', '', captions['facebook'].strip(), '']
+        else:
+            lines += ['### Facebook caption', '', captions['facebook'].strip(), '']
+        ig = captions.get('instagram') or captions.get('instagram_tiktok', '')
+        heading = '### Instagram caption' if captions.get('instagram') else '### Instagram and TikTok caption'
+        lines += [heading, '', ig.strip(), '', '### Links', '']
+        for key, url in row['links'].items():
+            lines.append(f'- {key}: {url}')
+        lines.append('')
+    path = OUT_DIR / 'SCHEDULE_2026-11-30_to_12-18.md'
+    path.write_text('\n'.join(lines))
+    print(f'wrote {path.name}')
+
+
+def write_batch_contact(rows: list[dict]):
+    """One sheet: hook, middle scene and end card for each Reel in this batch."""
+    ordered = sorted(rows, key=lambda r: r['date'])
+    cell_w, cell_h = 270, 480
+    label_h = 52
+    sheet = Image.new('RGB', (cell_w * 3, (cell_h + label_h) * len(ordered)), BG)
+    draw = ImageDraw.Draw(sheet)
+    fnt = font(str(JK_FILE), 22, 700)
+    small = font(str(IN_FILE), 18, 600)
+    for i, row in enumerate(ordered):
+        frames = row.get('qa_frames') or []
+        if len(frames) != 3:
+            raise SystemExit(f'{row["file"]} is missing first/middle/last frames')
+        y0 = i * (cell_h + label_h)
+        draw.text((16, y0 + 8), f"{row['date']}  {row['weekday']}", font=fnt, fill=MINT)
+        draw.text((16, y0 + 30), row['template_id'], font=small, fill=WHITE)
+        for c, src in enumerate(frames):
+            im = Image.open(src).convert('RGB').resize((cell_w, cell_h), Image.Resampling.LANCZOS)
+            sheet.paste(im, (c * cell_w, y0 + label_h))
+    out = OUT_DIR / 'CONTACT_2026-11-30_to_12-18.png'
+    sheet.save(out, optimize=True)
+    print(f'wrote {out.name} {sheet.size[0]}x{sheet.size[1]}')
+
+
 def main(argv: list[str]):
     stills_only = '--stills' in argv
     args = [a for a in argv if a != '--stills']
     jk, inn = ensure_fonts()
+    # The 17–27 November Reels are finished. A bare run must not rewrite them.
+    protected = {f'2026-11-{d:02d}' for d in (17, 18, 19, 20, 23, 24, 25, 26, 27)}
     if not args:
-        spec_paths = sorted(SPECS.glob('*.json'))
+        spec_paths = [p for p in sorted(SPECS.glob('*.json')) if p.name[:10] not in protected]
     else:
         spec_paths = [Path(a) if Path(a).is_absolute() else HERE / a for a in args]
     if not spec_paths:
@@ -895,9 +1237,23 @@ def main(argv: list[str]):
     rows = []
     for path in spec_paths:
         rows.append(render_one(path, jk, inn, stills_only))
-    if not stills_only and len(spec_paths) == len(list(SPECS.glob('*.json'))):
+    if stills_only:
+        return
+    nov_dates = {f'2026-11-{d:02d}' for d in (17, 18, 19, 20, 23, 24, 25, 26, 27)}
+    got_dates = {r['date'] for r in rows}
+    # A full run now includes both batches. Do not fold December into the
+    # November schedule, and do not rewrite November when only December was rendered.
+    if got_dates == nov_dates:
         write_schedule(rows)
         print(f'wrote {OUT_DIR / "SCHEDULE.md"}')
+    elif got_dates == DEC_DATES:
+        write_dec_schedule(rows)
+        write_batch_contact(rows)
+    elif got_dates == nov_dates | DEC_DATES:
+        dec_rows = [r for r in rows if r['date'] in DEC_DATES]
+        write_dec_schedule(dec_rows)
+        write_batch_contact(dec_rows)
+        print('left SCHEDULE.md unchanged')
 
 
 if __name__ == '__main__':

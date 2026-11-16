@@ -1,0 +1,96 @@
+{
+  "asset_id": "reel-2026-12-04-landlord",
+  "template_id": "tpl_landlord_tracker_v1",
+  "date": "2026-12-04",
+  "weekday": "Friday",
+  "scenes": [
+    {
+      "id": "hook",
+      "hold_s": 4.6,
+      "layout": "hook_type",
+      "lines": [
+        {
+          "text": "Rent by property",
+          "size": 72,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "In one sheet",
+          "size": 64,
+          "fill": "mint",
+          "weight": 800
+        }
+      ]
+    },
+    {
+      "id": "sheet",
+      "hold_s": 4.8,
+      "layout": "ticks",
+      "title": "In the spreadsheet",
+      "title_size": 48,
+      "items": [
+        "Rent received",
+        "Property expenses",
+        "SA105 totals",
+        "Ownership shares"
+      ],
+      "item_size": 44
+    },
+    {
+      "id": "price",
+      "hold_s": 4.6,
+      "layout": "hook_type",
+      "lines": [
+        {
+          "text": "UK Landlord Tracker",
+          "size": 48,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "£10.79",
+          "size": 112,
+          "fill": "mint",
+          "weight": 800
+        },
+        {
+          "text": "including UK VAT",
+          "size": 44,
+          "fill": "white",
+          "weight": 700
+        },
+        {
+          "text": "Excel and Google Sheets",
+          "size": 36,
+          "fill": "white",
+          "weight": 600,
+          "font": "inter"
+        },
+        {
+          "text": "Instant download",
+          "size": 32,
+          "fill": "white",
+          "weight": 600,
+          "font": "inter"
+        }
+      ]
+    },
+    {
+      "id": "end",
+      "hold_s": 5.0,
+      "layout": "endcard",
+      "cta": "Shop on Etsy"
+    }
+  ],
+  "captions": {
+    "facebook": "UK Landlord Tracker keeps rent and property expenses by property, with totals by SA105 box, joint ownership shares and quarterly totals. £10.79 including UK VAT. Excel and Google Sheets, instant download. A record-keeping spreadsheet, not tax advice.\n\nhttps://www.etsy.com/uk/listing/4610124144",
+    "instagram_tiktok": "Keeping rent and property bills in one place?\n\nUK Landlord Tracker keeps rent and property expenses by property, with totals by SA105 box, joint ownership shares and quarterly totals. £10.79 including UK VAT. Excel and Google Sheets, instant download. A record-keeping spreadsheet, not tax advice.\n\nLink in bio."
+  },
+  "links": {
+    "Facebook": "https://www.etsy.com/uk/listing/4610124144",
+    "Instagram": "https://www.etsy.com/uk/listing/4610124144",
+    "TikTok": "https://www.etsy.com/uk/listing/4610124144",
+    "Note": "Etsy listing for UK Landlord Tracker. No studio UTM. Buyers stay on Etsy."
+  }
+}

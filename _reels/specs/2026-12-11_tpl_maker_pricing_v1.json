@@ -1,0 +1,97 @@
+{
+  "asset_id": "reel-2026-12-11-maker",
+  "template_id": "tpl_maker_pricing_v1",
+  "date": "2026-12-11",
+  "weekday": "Friday",
+  "scenes": [
+    {
+      "id": "hook",
+      "hold_s": 4.6,
+      "layout": "hook_type",
+      "lines": [
+        {
+          "text": "Price the work",
+          "size": 72,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "See what you keep",
+          "size": 56,
+          "fill": "mint",
+          "weight": 800
+        }
+      ]
+    },
+    {
+      "id": "sheet",
+      "hold_s": 4.8,
+      "layout": "ticks",
+      "title": "In the spreadsheet",
+      "title_size": 48,
+      "items": [
+        "Etsy and eBay",
+        "Craft fairs",
+        "Target margin",
+        "Reorder alerts",
+        "VAT threshold"
+      ],
+      "item_size": 42
+    },
+    {
+      "id": "price",
+      "hold_s": 4.4,
+      "layout": "hook_type",
+      "lines": [
+        {
+          "text": "UK Maker Pricing",
+          "size": 48,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "£7.19",
+          "size": 112,
+          "fill": "mint",
+          "weight": 800
+        },
+        {
+          "text": "including UK VAT",
+          "size": 44,
+          "fill": "white",
+          "weight": 700
+        },
+        {
+          "text": "Excel and Google Sheets",
+          "size": 36,
+          "fill": "white",
+          "weight": 600,
+          "font": "inter"
+        },
+        {
+          "text": "Instant download",
+          "size": 32,
+          "fill": "white",
+          "weight": 600,
+          "font": "inter"
+        }
+      ]
+    },
+    {
+      "id": "end",
+      "hold_s": 4.8,
+      "layout": "endcard",
+      "cta": "Shop on Etsy"
+    }
+  ],
+  "captions": {
+    "facebook": "UK Maker Pricing compares what you keep on Etsy, eBay and at craft fairs, gives the price for a target margin, tracks stock with reorder alerts and watches the VAT threshold. £7.19 including UK VAT. Excel and Google Sheets, instant download. A pricing and stock spreadsheet, not tax advice.\n\nhttps://www.etsy.com/uk/listing/4610103839",
+    "instagram_tiktok": "What do you keep from a sale?\n\nUK Maker Pricing compares Etsy, eBay and craft fairs, prices for a target margin, and flags stock to reorder. It watches the VAT threshold. £7.19 including UK VAT. Excel and Google Sheets, instant download. A pricing and stock spreadsheet, not tax advice.\n\nLink in bio."
+  },
+  "links": {
+    "Facebook": "https://www.etsy.com/uk/listing/4610103839",
+    "Instagram": "https://www.etsy.com/uk/listing/4610103839",
+    "TikTok": "https://www.etsy.com/uk/listing/4610103839",
+    "Note": "Etsy listing for UK Maker Pricing and Stock. No studio UTM. Buyers stay on Etsy."
+  }
+}

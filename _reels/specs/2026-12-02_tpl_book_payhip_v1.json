@@ -1,0 +1,136 @@
+{
+  "asset_id": "reel-2026-12-02-sa-guide",
+  "template_id": "tpl_book_payhip_v1",
+  "date": "2026-12-02",
+  "weekday": "Wednesday",
+  "price": "4.99",
+  "compliance": "Compliance pre-check required before scheduling",
+  "required_phrases": [
+    "Self Assessment 2025/26",
+    "Online return due 11:59pm, 31 January 2027",
+    "11:59pm, 31 January 2027",
+    "Which records to keep",
+    "Mileage, receipts, simplified expenses",
+    "A plain-English guide. Not tax advice.",
+    "£4.99",
+    "payhip.com/b/y5MCx"
+  ],
+  "scenes": [
+    {
+      "id": "cover",
+      "hold_s": 2.4,
+      "layout": "book_page",
+      "image": "assets/books/sa_guide_cover_1600x2560.jpg",
+      "lines": [
+        {
+          "text": "Self Assessment 2025/26",
+          "size": 52,
+          "fill": "white",
+          "weight": 800
+        }
+      ]
+    },
+    {
+      "id": "deadline",
+      "hold_s": 3.0,
+      "layout": "hook_type",
+      "lines": [
+        {
+          "text": "Online return due",
+          "size": 44,
+          "fill": "mint",
+          "weight": 700
+        },
+        {
+          "text": "11:59pm, 31 January 2027",
+          "size": 56,
+          "fill": "white",
+          "weight": 800
+        }
+      ]
+    },
+    {
+      "id": "records",
+      "hold_s": 2.4,
+      "layout": "book_page",
+      "image": "assets/books/sa_page-04.png",
+      "lines": [
+        {
+          "text": "Which records to keep",
+          "size": 48,
+          "fill": "white",
+          "weight": 800
+        }
+      ]
+    },
+    {
+      "id": "mileage",
+      "hold_s": 2.4,
+      "layout": "hook_type",
+      "lines": [
+        {
+          "text": "Mileage, receipts,",
+          "size": 52,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "simplified expenses",
+          "size": 52,
+          "fill": "mint",
+          "weight": 800
+        }
+      ]
+    },
+    {
+      "id": "advice",
+      "hold_s": 2.6,
+      "layout": "book_page",
+      "image": "assets/books/sa_page-03.png",
+      "lines": [
+        {
+          "text": "A plain-English guide.",
+          "size": 44,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "Not tax advice.",
+          "size": 44,
+          "fill": "mint",
+          "weight": 800
+        }
+      ]
+    },
+    {
+      "id": "price",
+      "hold_s": 2.4,
+      "layout": "hook_type",
+      "lines": [
+        {
+          "text": "£4.99",
+          "size": 132,
+          "fill": "mint",
+          "weight": 800
+        }
+      ]
+    },
+    {
+      "id": "end",
+      "hold_s": 2.8,
+      "layout": "endcard_payhip",
+      "url": "payhip.com/b/y5MCx"
+    }
+  ],
+  "captions": {
+    "facebook": "The online Self Assessment return for the 2025/26 tax year is due by 11:59pm on 31 January 2027. Our plain-English guide for UK sole traders and online sellers covers the records to keep and what the deadline means. It's a guide, not tax advice. £4.99. https://payhip.com/b/y5MCx",
+    "tiktok": "The online Self Assessment return for the 2025/26 tax year is due by 11:59pm on 31 January 2027. Our plain-English guide for UK sole traders and online sellers covers the records to keep and what the deadline means. It's a guide, not tax advice. £4.99. https://payhip.com/b/y5MCx",
+    "instagram": "The online Self Assessment return for the 2025/26 tax year is due by 11:59pm on 31 January 2027. Our plain-English guide for UK sole traders and online sellers covers the records to keep and what the deadline means. It's a guide, not tax advice. £4.99. Link in bio."
+  },
+  "links": {
+    "Facebook": "https://payhip.com/b/y5MCx",
+    "Instagram": "https://payhip.com/b/y5MCx",
+    "TikTok": "https://payhip.com/b/y5MCx",
+    "Note": "Payhip. No studio UTM. Compliance pre-check required before scheduling."
+  }
+}
