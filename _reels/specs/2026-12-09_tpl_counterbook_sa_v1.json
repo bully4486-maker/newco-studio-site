@@ -16,7 +16,13 @@
           "weight": 800
         },
         {
-          "text": "Totals for SA103",
+          "text": "Totals grouped by",
+          "size": 56,
+          "fill": "mint",
+          "weight": 800
+        },
+        {
+          "text": "SA103 expense box",
           "size": 56,
           "fill": "mint",
           "weight": 800
