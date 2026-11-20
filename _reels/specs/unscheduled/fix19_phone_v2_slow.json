@@ -1,0 +1,96 @@
+{
+  "asset_id": "reel-fix19-slow-v2",
+  "template_id": "tpl_fix19_phone_v1",
+  "date": "unscheduled",
+  "weekday": "",
+  "scenes": [
+    {
+      "id": "hook",
+      "hold_s": 4.6,
+      "layout": "hook_phone",
+      "lines": [
+        {
+          "text": "Page too slow?",
+          "size": 78,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "From £19",
+          "size": 84,
+          "fill": "mint",
+          "weight": 800
+        }
+      ],
+      "phone": {
+        "title": "Your Business",
+        "subtitle": "Still loading…",
+        "button": "Loading…",
+        "rows": [
+          "Loading…",
+          "Loading…",
+          "Loading…"
+        ]
+      }
+    },
+    {
+      "id": "fixes",
+      "hold_s": 4.8,
+      "layout": "ticks",
+      "title": "What we fix, from £19",
+      "title_size": 50,
+      "items": [
+        "Slow pages",
+        "Broken buttons",
+        "Broken links",
+        "Layout on phones"
+      ],
+      "item_size": 44
+    },
+    {
+      "id": "quote",
+      "hold_s": 4.6,
+      "layout": "panel",
+      "lines": [
+        {
+          "text": "Written fixed quote",
+          "size": 56,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "within 24 hours",
+          "size": 56,
+          "fill": "white",
+          "weight": 800
+        }
+      ],
+      "panel": [
+        "No call.",
+        "No obligation.",
+        "Fixed price first."
+      ],
+      "footnote": "Prices as stated. VAT is not charged."
+    },
+    {
+      "id": "end",
+      "hold_s": 5.0,
+      "layout": "endcard",
+      "cta": "Message us · link in bio"
+    }
+  ],
+  "captions": {
+    "facebook": "Website fixes from £19, including pages that are slow to load. Written quote first. Prices as stated. VAT is not charged. Not sure what needs fixing? Send us the address and we'll reply with a short written list of what we'd fix. Free, no obligation.\n\nhttps://studio.newcopacks.co.uk/website-fixes/?utm_source=facebook&utm_medium=social&utm_content=tpl_fix19_phone_v1_slow",
+    "instagram_tiktok": "Website fixes from £19.\n\nPage too slow to load? You get a written quote first. Prices as stated. VAT is not charged. Not sure what needs fixing? Send us the address and we'll reply with a short written list of what we'd fix. Free, no obligation.\n\nLink in bio."
+  },
+  "links": {
+    "Facebook": "https://studio.newcopacks.co.uk/website-fixes/?utm_source=facebook&utm_medium=social&utm_content=tpl_fix19_phone_v1_slow",
+    "Instagram": "https://studio.newcopacks.co.uk/website-fixes/?utm_source=instagram&utm_medium=social&utm_content=tpl_fix19_phone_v1_slow",
+    "TikTok": "https://studio.newcopacks.co.uk/website-fixes/?utm_source=tiktok&utm_medium=social&utm_content=tpl_fix19_phone_v1_slow"
+  },
+  "required_phrases": [
+    "From £19",
+    "Written fixed quote",
+    "within 24 hours"
+  ]
+}
