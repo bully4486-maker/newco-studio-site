@@ -83,7 +83,7 @@ section{scroll-margin-top:72px}.sec{padding:104px 0}.sec-sand{background:var(--s
 @media (max-width:960px){.card-w,.card-w.wide{grid-column:span 3}}
 @media (max-width:640px){.work{grid-template-columns:1fr}.card-w,.card-w.wide{grid-column:auto}}
 /* pricing */
-.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+.prices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;align-items:stretch}
 .price{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px 28px;display:flex;flex-direction:column}
 .price.feat{background:var(--deep);color:#fff;border-color:var(--deep);position:relative}
 .price.feat h3{color:#fff}.price.feat .from,.price.feat li{color:#D5E4DF}.price.feat .amt{color:#fff}
@@ -101,7 +101,15 @@ section{scroll-margin-top:72px}.sec{padding:104px 0}.sec-sand{background:var(--s
 .extra{border:1px dashed #C9C2B4;border-radius:12px;padding:18px 20px;background:rgba(255,255,255,.6)}
 .extra b{display:block;font-family:Jakarta,sans-serif;color:var(--deep)}.extra span{font-size:.93rem;color:var(--muted)}
 .fineprint{font-size:.88rem;color:var(--muted);margin-top:26px}
-@media (max-width:900px){.prices,.extras{grid-template-columns:1fr}.price.feat{order:-1}}
+.price-ic{width:42px;height:42px;border-radius:12px;background:#9CC4B8;color:#00292D;display:grid;place-items:center;margin:0 0 16px}
+.price-ic svg{width:22px;height:22px}
+.review-ask{margin:16px 0 0;font-size:.95rem}
+.review-ask a{font-weight:600;color:var(--teal)}
+.ftr .review-ask{grid-column:1/-1;margin:4px 0 0}
+.quote-side{min-width:0}
+@media (max-width:1100px){.prices{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.extras{grid-template-columns:1fr}.price.feat{order:-1}}
+@media (max-width:640px){.prices{grid-template-columns:1fr}}
 /* steps */
 .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
 .steps li{counter-increment:s;padding:26px 24px;border-radius:var(--r);background:#fff;border:1px solid var(--line);position:relative}
