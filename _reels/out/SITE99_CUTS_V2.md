@@ -17,7 +17,7 @@ Render: `cd _reels && python3 build_reel.py specs/unscheduled/site99_phone_v2_<h
 
 ### Facebook caption
 
-One page for your café, £99. Services, prices and contact details, laid out to read on a phone. Written fixed quote within 24 hours. No call, no obligation. Prices as stated. VAT is not charged.
+One page for your café, £99. Services, prices and contact details, laid out to read on a phone. Written fixed quote within 24 hours. No call, no obligation. Prices as stated. VAT is not charged. Example site shown.
 
 https://studio.newcopacks.co.uk/websites-99/?utm_source=facebook&utm_medium=social&utm_content=tpl_site99_phone_v1_hearth
 
@@ -25,7 +25,7 @@ https://studio.newcopacks.co.uk/websites-99/?utm_source=facebook&utm_medium=soci
 
 Need one page for your café?
 
-A one-page website is £99, with your services, prices and contact details, built to work on phones. Written fixed quote within 24 hours. No call, no obligation. Prices as stated. VAT is not charged.
+A one-page website is £99, with your services, prices and contact details, built to work on phones. Written fixed quote within 24 hours. No call, no obligation. Prices as stated. VAT is not charged. Example site shown.
 
 Link in bio.
 
@@ -48,7 +48,7 @@ Link in bio.
 
 ### Facebook caption
 
-One page for your grooming business, £99. Services, prices and contact details, laid out to read on a phone. Written fixed quote within 24 hours. No call, no obligation. Prices as stated. VAT is not charged.
+One page for your grooming business, £99. Services, prices and contact details, laid out to read on a phone. Written fixed quote within 24 hours. No call, no obligation. Prices as stated. VAT is not charged. Example site shown.
 
 https://studio.newcopacks.co.uk/websites-99/?utm_source=facebook&utm_medium=social&utm_content=tpl_site99_phone_v1_paws
 
@@ -56,7 +56,7 @@ https://studio.newcopacks.co.uk/websites-99/?utm_source=facebook&utm_medium=soci
 
 Need one page for your grooming business?
 
-A one-page website is £99, with your services, prices and contact details, built to work on phones. Written fixed quote within 24 hours. No call, no obligation. Prices as stated. VAT is not charged.
+A one-page website is £99, with your services, prices and contact details, built to work on phones. Written fixed quote within 24 hours. No call, no obligation. Prices as stated. VAT is not charged. Example site shown.
 
 Link in bio.
 
@@ -79,7 +79,7 @@ Link in bio.
 
 ### Facebook caption
 
-One page for your electrical work, £99. Services, prices and contact details, laid out to read on a phone. Written fixed quote within 24 hours. No call, no obligation. Prices as stated. VAT is not charged.
+One page for your electrical work, £99. Services, prices and contact details, laid out to read on a phone. Written fixed quote within 24 hours. No call, no obligation. Prices as stated. VAT is not charged. Example site shown.
 
 https://studio.newcopacks.co.uk/websites-99/?utm_source=facebook&utm_medium=social&utm_content=tpl_site99_phone_v1_halvercroft
 
@@ -87,7 +87,7 @@ https://studio.newcopacks.co.uk/websites-99/?utm_source=facebook&utm_medium=soci
 
 Need one page for your electrical work?
 
-A one-page website is £99, with your services, prices and contact details, built to work on phones. Written fixed quote within 24 hours. No call, no obligation. Prices as stated. VAT is not charged.
+A one-page website is £99, with your services, prices and contact details, built to work on phones. Written fixed quote within 24 hours. No call, no obligation. Prices as stated. VAT is not charged. Example site shown.
 
 Link in bio.
 
