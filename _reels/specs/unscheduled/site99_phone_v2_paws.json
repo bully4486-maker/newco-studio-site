@@ -1,0 +1,91 @@
+{
+  "asset_id": "reel-site99-paws-v2",
+  "template_id": "tpl_site99_phone_v1",
+  "date": "unscheduled",
+  "weekday": "",
+  "scenes": [
+    {
+      "id": "hook",
+      "hold_s": 4.6,
+      "layout": "hook_phone",
+      "lines": [
+        {
+          "text": "One page for dog groomers",
+          "size": 64,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "£99",
+          "size": 100,
+          "fill": "mint",
+          "weight": 800
+        }
+      ],
+      "phone": {
+        "title": "Paws Parlour",
+        "subtitle": "Example site · Grooming",
+        "button": "Book a groom",
+        "rows": [
+          "Services",
+          "Prices",
+          "Contact"
+        ]
+      }
+    },
+    {
+      "id": "page",
+      "hold_s": 4.8,
+      "layout": "ticks",
+      "title": "On the page",
+      "title_size": 60,
+      "items": [
+        "Services",
+        "Prices",
+        "Contact details",
+        "Works on phones"
+      ],
+      "item_size": 46
+    },
+    {
+      "id": "quote",
+      "hold_s": 4.6,
+      "layout": "panel",
+      "lines": [
+        {
+          "text": "Written fixed quote",
+          "size": 56,
+          "fill": "white",
+          "weight": 800
+        },
+        {
+          "text": "within 24 hours",
+          "size": 56,
+          "fill": "white",
+          "weight": 800
+        }
+      ],
+      "panel": [
+        "No call.",
+        "No obligation.",
+        "Fixed price first."
+      ],
+      "footnote": "Prices as stated. VAT is not charged."
+    },
+    {
+      "id": "end",
+      "hold_s": 5.0,
+      "layout": "endcard",
+      "cta": "Message us · link in bio"
+    }
+  ],
+  "captions": {
+    "facebook": "One page for your grooming business, £99. Services, prices and contact details, laid out to read on a phone. Written fixed quote within 24 hours. No call, no obligation. Prices as stated. VAT is not charged.\n\nhttps://studio.newcopacks.co.uk/websites-99/?utm_source=facebook&utm_medium=social&utm_content=tpl_site99_phone_v1_paws",
+    "instagram_tiktok": "Need one page for your grooming business?\n\nA one-page website is £99, with your services, prices and contact details, built to work on phones. Written fixed quote within 24 hours. No call, no obligation. Prices as stated. VAT is not charged.\n\nLink in bio."
+  },
+  "links": {
+    "Facebook": "https://studio.newcopacks.co.uk/websites-99/?utm_source=facebook&utm_medium=social&utm_content=tpl_site99_phone_v1_paws",
+    "Instagram": "https://studio.newcopacks.co.uk/websites-99/?utm_source=instagram&utm_medium=social&utm_content=tpl_site99_phone_v1_paws",
+    "TikTok": "https://studio.newcopacks.co.uk/websites-99/?utm_source=tiktok&utm_medium=social&utm_content=tpl_site99_phone_v1_paws"
+  }
+}
