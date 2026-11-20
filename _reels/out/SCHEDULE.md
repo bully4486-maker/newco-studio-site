@@ -81,7 +81,7 @@ Link in bio.
 
 ### Facebook caption
 
-Send a page address and get a short written list of what to fix. Free, no call, no obligation. 10 free checks at a time. If you want the work done, website fixes are from £19. Prices as stated. VAT is not charged.
+Send a page address and get a short written list of what to fix. Free, no call, no obligation. If you want the work done, website fixes are from £19. Prices as stated. VAT is not charged.
 
 https://studio.newcopacks.co.uk/website-fixes/?utm_source=facebook&utm_medium=social&utm_content=tpl_freecheck_v1
 
@@ -89,7 +89,7 @@ https://studio.newcopacks.co.uk/website-fixes/?utm_source=facebook&utm_medium=so
 
 Want a written list of what to fix on your website?
 
-Send the page address. You get a short written list, free, with no call and no obligation. 10 free checks at a time. If you want the work done, fixes are from £19. Prices as stated. VAT is not charged.
+Send the page address. You get a short written list, free, with no call and no obligation. If you want the work done, fixes are from £19. Prices as stated. VAT is not charged.
 
 Link in bio.
 
