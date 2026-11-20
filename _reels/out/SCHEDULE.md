@@ -143,15 +143,15 @@ Link in bio.
 
 ### Facebook caption
 
-A broken link is a small job with a fixed price. Website fixes from £19, including broken buttons, details that are out of date, and layout on phones. Written quote first. No call, no obligation. Prices as stated. VAT is not charged.
+Website fixes from £19: broken links, broken buttons, details that are out of date, and layout on phones. Written quote first. Prices as stated. VAT is not charged. Not sure what needs fixing? Send us the address and we'll reply with a short written list of what we'd fix. Free, no obligation.
 
 https://studio.newcopacks.co.uk/website-fixes/?utm_source=facebook&utm_medium=social&utm_content=tpl_fix19_phone_v1
 
 ### Instagram and TikTok caption
 
-Broken link on your website?
+Website fixes from £19.
 
-Website fixes from £19 cover broken links, broken buttons, details that are out of date, and layout on phones. You get a written quote first. No call, no obligation. Prices as stated. VAT is not charged.
+Broken links, broken buttons, details that are out of date, and layout on phones. You get a written quote first. Prices as stated. VAT is not charged. Not sure what needs fixing? Send us the address and we'll reply with a short written list of what we'd fix. Free, no obligation.
 
 Link in bio.
 
@@ -269,15 +269,15 @@ Link in bio.
 
 ### Facebook caption
 
-If a page looks wrong on a phone, that is a fix with a price. Website fixes from £19. You get the figure in writing before any work starts. No call, no obligation. Prices as stated. VAT is not charged.
+Website fixes from £19, including pages that look wrong on a phone. You get the figure in writing before any work starts. Prices as stated. VAT is not charged. Not sure what needs fixing? Send us the address and we'll reply with a short written list of what we'd fix. Free, no obligation.
 
 https://studio.newcopacks.co.uk/website-fixes/?utm_source=facebook&utm_medium=social&utm_content=tpl_fix19_phone_v1
 
 ### Instagram and TikTok caption
 
-Does your page look wrong on a phone?
+Website fixes from £19.
 
-That is a website fix from £19, with the figure in writing before any work starts. No call, no obligation. Prices as stated. VAT is not charged.
+Page looks wrong on a phone? You get the figure in writing before any work starts. Prices as stated. VAT is not charged. Not sure what needs fixing? Send us the address and we'll reply with a short written list of what we'd fix. Free, no obligation.
 
 Link in bio.
 
