@@ -2,7 +2,7 @@
 
 Three new `tpl_fix19_phone_v1` cuts, same phone-mockup style as the 18 November Reel. Music only (City Loop, CC0). No dates: Marketing owns the schedule. Not for posting until Compliance passes the PR.
 
-Render: `cd _reels && python3 build_reel.py specs/unscheduled/fix19_phone_v2_<form|menu|slow>.json`. The specs sit in `specs/unscheduled/` so a bare run still only rebuilds the dated batches.
+Render: `cd _reels && python3 build_reel.py specs/unscheduled/fix19_phone_v2_<form|menu|bugs>.json`. The specs sit in `specs/unscheduled/` so a bare run still only rebuilds the dated batches.
 
 ## Contact form that does not send
 
@@ -64,32 +64,32 @@ Link in bio.
 - Instagram: https://studio.newcopacks.co.uk/website-fixes/?utm_source=instagram&utm_medium=social&utm_content=tpl_fix19_phone_v1_menu
 - TikTok: https://studio.newcopacks.co.uk/website-fixes/?utm_source=tiktok&utm_medium=social&utm_content=tpl_fix19_phone_v1_menu
 
-## Slow page
+## Small code bugs
 
-- asset_id: `reel-fix19-slow-v2`
-- Spec: `specs/unscheduled/fix19_phone_v2_slow.json`
-- File: `fix19_phone_v2_slow.mp4` (20.00s)
-- Cover: `fix19_phone_v2_slow.cover.png`
-- QA contact sheet: `fix19_phone_v2_slow.contact.png`
-- Licence: `fix19_phone_v2_slow.LICENCE_PROOF.md`
-- Hook: Page too slow? / From £19
+- asset_id: `reel-fix19-bugs-v2`
+- Spec: `specs/unscheduled/fix19_phone_v2_bugs.json`
+- File: `fix19_phone_v2_bugs.mp4` (20.00s)
+- Cover: `fix19_phone_v2_bugs.cover.png`
+- QA contact sheet: `fix19_phone_v2_bugs.contact.png`
+- Licence: `fix19_phone_v2_bugs.LICENCE_PROOF.md`
+- Hook: Page broken by a bug? / From £19
 
 ### Facebook caption
 
-Website fixes from £19, including pages that are slow to load. Written quote first. Prices as stated. VAT is not charged. Not sure what needs fixing? Send us the address and we'll reply with a short written list of what we'd fix. Free, no obligation.
+Website fixes from £19, including small code bugs that break a page. Written quote first. Prices as stated. VAT is not charged. Not sure what needs fixing? Send us the address and we'll reply with a short written list of what we'd fix. Free, no obligation.
 
-https://studio.newcopacks.co.uk/website-fixes/?utm_source=facebook&utm_medium=social&utm_content=tpl_fix19_phone_v1_slow
+https://studio.newcopacks.co.uk/website-fixes/?utm_source=facebook&utm_medium=social&utm_content=tpl_fix19_phone_v1_bugs
 
 ### Instagram and TikTok caption
 
 Website fixes from £19.
 
-Page too slow to load? You get a written quote first. Prices as stated. VAT is not charged. Not sure what needs fixing? Send us the address and we'll reply with a short written list of what we'd fix. Free, no obligation.
+Small code bug breaking your page? You get a written quote first. Prices as stated. VAT is not charged. Not sure what needs fixing? Send us the address and we'll reply with a short written list of what we'd fix. Free, no obligation.
 
 Link in bio.
 
 ### Links
 
-- Facebook: https://studio.newcopacks.co.uk/website-fixes/?utm_source=facebook&utm_medium=social&utm_content=tpl_fix19_phone_v1_slow
-- Instagram: https://studio.newcopacks.co.uk/website-fixes/?utm_source=instagram&utm_medium=social&utm_content=tpl_fix19_phone_v1_slow
-- TikTok: https://studio.newcopacks.co.uk/website-fixes/?utm_source=tiktok&utm_medium=social&utm_content=tpl_fix19_phone_v1_slow
+- Facebook: https://studio.newcopacks.co.uk/website-fixes/?utm_source=facebook&utm_medium=social&utm_content=tpl_fix19_phone_v1_bugs
+- Instagram: https://studio.newcopacks.co.uk/website-fixes/?utm_source=instagram&utm_medium=social&utm_content=tpl_fix19_phone_v1_bugs
+- TikTok: https://studio.newcopacks.co.uk/website-fixes/?utm_source=tiktok&utm_medium=social&utm_content=tpl_fix19_phone_v1_bugs
