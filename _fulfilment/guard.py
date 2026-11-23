@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import os
 import sys
 from datetime import date
 from pathlib import Path
@@ -20,6 +21,16 @@ MAX_RUNS_PER_ORDER = 2
 MAX_RUNS_PER_DAY = 3
 MAX_QA_FAILS = 2
 USAGE_STOP_PERCENT = 80
+DEFAULT_ORDERS_PATH = Path("/workspace/pivot/orders.csv")
+ORDERS_ENV = "NEWCO_ORDERS_CSV"
+
+
+def default_orders_path() -> Path:
+    """Live log path: --orders, else $NEWCO_ORDERS_CSV, else /workspace/pivot/orders.csv."""
+    override = (os.environ.get(ORDERS_ENV) or "").strip()
+    if override:
+        return Path(override)
+    return DEFAULT_ORDERS_PATH
 
 
 def refuse(message: str) -> int:
@@ -107,7 +118,15 @@ def check(rows: list[dict[str, str]], order_id: str, usage_percent: float, today
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Payment and limit gate for a website build.")
-    parser.add_argument("--orders", type=Path, help="Private orders CSV. Not the header template, unless you are testing.")
+    parser.add_argument(
+        "--orders",
+        type=Path,
+        default=None,
+        help=(
+            "Private orders CSV, outside the repository. "
+            f"Defaults to ${ORDERS_ENV} or {DEFAULT_ORDERS_PATH}."
+        ),
+    )
     parser.add_argument("--order-id", default="", help="Order id to start.")
     parser.add_argument("--usage-percent", type=float, default=None, help="Current Cursor usage allowance used, 0 to 100.")
     parser.add_argument("--today", default="", help="Override today's date, YYYY-MM-DD. For tests.")
@@ -115,10 +134,11 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if args.self_test:
         return self_test()
-    if args.orders is None or not args.order_id or args.usage_percent is None:
-        return refuse("pass --orders, --order-id and --usage-percent. A missing usage figure is a refusal.")
+    orders_path = args.orders if args.orders is not None else default_orders_path()
+    if not args.order_id or args.usage_percent is None:
+        return refuse("pass --order-id and --usage-percent. A missing usage figure is a refusal.")
     today = date.fromisoformat(args.today) if args.today else date.today()
-    reason = check(load_rows(args.orders), args.order_id.strip(), args.usage_percent, today)
+    reason = check(load_rows(orders_path), args.order_id.strip(), args.usage_percent, today)
     if reason:
         return refuse(reason)
     print(f"OK: {args.order_id.strip()} may start one build.")
@@ -170,6 +190,31 @@ def self_test() -> int:
     rows = load_rows(repo_header)
     if rows:
         raise SystemExit("self-test: the repo orders.csv must stay header-only")
+
+    saved = os.environ.get(ORDERS_ENV)
+    try:
+        if default_orders_path() != DEFAULT_ORDERS_PATH and not saved:
+            raise SystemExit("self-test: default path should be /workspace/pivot/orders.csv")
+        os.environ[ORDERS_ENV] = "/tmp/example-orders.csv"
+        if default_orders_path() != Path("/tmp/example-orders.csv"):
+            raise SystemExit("self-test: $NEWCO_ORDERS_CSV should override the default path")
+        os.environ.pop(ORDERS_ENV, None)
+        if default_orders_path() != DEFAULT_ORDERS_PATH:
+            raise SystemExit("self-test: clearing the env var should restore the default path")
+        # A missing --order-id or --usage-percent is still a refusal, even with a default path.
+        code = main(["--orders", str(repo_header)])
+        if code != 2:
+            raise SystemExit("self-test: missing --order-id and --usage-percent should refuse")
+        # An empty log (header only) refuses any build.
+        code = main(["--orders", str(repo_header), "--order-id", "NCS-1", "--usage-percent", "10"])
+        if code != 2:
+            raise SystemExit("self-test: an empty log should refuse a build")
+    finally:
+        if saved is None:
+            os.environ.pop(ORDERS_ENV, None)
+        else:
+            os.environ[ORDERS_ENV] = saved
+
     print("guard.py self-test passed")
     return 0
 
