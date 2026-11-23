@@ -1,0 +1,21 @@
+{
+  "note": "Worked example for the quote generator. Not a customer. Do not publish this as a page.",
+  "offer": "Small-business website, up to 5 pages, £299 fixed",
+  "business_name": "North Lane Flowers",
+  "contact_name": "A. Owner",
+  "email": "owner@example.com",
+  "what_you_do": "A flower shop selling bunches and wreaths to order.",
+  "services": "Hand-tied bunches\nSeasonal wreaths\nWedding flowers by arrangement",
+  "area": "Wallingford and nearby villages",
+  "tone": "Warm, plain and specific.",
+  "home_offer": "Fresh flowers, tied to order, collected from the shop.",
+  "about_facts": "Family-run since 1998. The shop is on the High Street.",
+  "contact_details": "Email hello@northlaneflowers.example. The enquiry form is enough.",
+  "fifth_page": "faq",
+  "fifth_page_notes": "Do you deliver? We deliver in Wallingford. How do I order? Email or the form on the contact page.",
+  "domain": "none yet",
+  "hosting": "cloudflare-pages",
+  "photo_notes": "Photos will be emailed after the quote. No image links yet.",
+  "must_not_claim": "Do not say the shop is award-winning. Do not invent reviews.",
+  "early_start": false
+}

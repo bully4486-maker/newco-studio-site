@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{HOME_TITLE}}</title>
+<meta name="description" content="{{HOME_DESCRIPTION}}">
+<link rel="canonical" href="{{SITE_ORIGIN}}/">
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "{{BUSINESS_NAME}}",
+  "url": "{{SITE_ORIGIN}}/",
+  "email": "{{PUBLIC_EMAIL}}",
+  "description": "{{HOME_DESCRIPTION}}",
+  "areaServed": "{{AREA}}",
+  "address": { "@type": "PostalAddress", "addressCountry": "{{ADDRESS_COUNTRY}}" }
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="wrap bar">
+<a class="brand" href="./">{{BUSINESS_NAME}}</a>
+<nav aria-label="Pages">
+<a href="./" aria-current="page">Home</a>
+<a href="services/">Services</a>
+<a href="about/">About</a>
+<a href="contact/">Contact</a>
+<a href="{{FIFTH_PATH}}">{{FIFTH_LABEL}}</a>
+</nav>
+</div></header>
+<main id="main">
+<section><div class="wrap">
+<h1>{{HOME_OFFER}}</h1>
+<p class="lead">{{WHAT_YOU_DO}}</p>
+<p><a class="btn" href="contact/">Contact {{BUSINESS_NAME}}</a></p>
+</div></section>
+<section><div class="wrap">
+<h2>Services</h2>
+<div class="pre">{{SERVICES}}</div>
+<p><a href="services/">All services</a></p>
+</div></section>
+<section><div class="wrap">
+<h2>{{AREA}}</h2>
+<p>{{AREA_SENTENCE}}</p>
+</div></section>
+</main>
+<footer><div class="wrap">
+<p>{{BUSINESS_NAME}}. {{AREA}}.</p>
+<p><a href="contact/">Contact</a></p>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+:root { color-scheme: light; --ink: #14221c; --muted: #3d4a44; --paper: #f7f4ee; --card: #fff; --line: #d7ddd8; --accent: #0c5c4c; }
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); background: var(--paper); font: 1.0625rem/1.55 Georgia, "Iowan Old Style", serif; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.skip { position: absolute; left: 0.5rem; top: -3rem; background: #fff; padding: 0.4rem 0.7rem; }
+.skip:focus { top: 0.5rem; }
+.wrap { width: min(68rem, calc(100% - 2rem)); margin-inline: auto; }
+header { background: #fff; border-bottom: 1px solid var(--line); }
+.bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem 1.25rem; padding: 0.9rem 0; }
+.brand { color: var(--ink); font-weight: 700; text-decoration: none; font-size: 1.15rem; }
+nav { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; }
+nav a { text-decoration: none; padding: 0.55rem 0; }
+h1 { font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.15; margin: 0 0 0.6rem; }
+h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); line-height: 1.25; margin: 0 0 0.5rem; }
+p { margin: 0 0 0.9rem; }
+.lead { font-size: 1.15rem; max-width: 40rem; }
+main section { padding: 2.2rem 0; }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 1.1rem 1.15rem; }
+.grid { display: grid; gap: 0.9rem; }
+@media (min-width: 720px) { .grid.two { grid-template-columns: 1fr 1fr; } .grid.three { grid-template-columns: repeat(3, 1fr); } }
+ul.clean { padding: 0; margin: 0; list-style: none; display: grid; gap: 0.7rem; }
+ul.clean li { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 0.9rem 1rem; }
+form { display: grid; gap: 0.85rem; }
+label { display: grid; gap: 0.3rem; font-weight: 700; }
+input, textarea { font: inherit; width: 100%; padding: 0.7rem 0.75rem; border: 1px solid #8d988f; border-radius: 10px; background: #fff; color: var(--ink); }
+button, .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0.6rem 1rem; border-radius: 999px; background: var(--accent); color: #fff; text-decoration: none; border: 0; font: inherit; }
+.faq details { border-bottom: 1px solid var(--line); padding: 0.7rem 0; }
+.faq summary { cursor: pointer; font-weight: 700; }
+footer { border-top: 1px solid var(--line); padding: 1.4rem 0 2rem; color: var(--muted); }
+.pre { white-space: pre-wrap; }

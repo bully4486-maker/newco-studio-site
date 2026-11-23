@@ -83,7 +83,7 @@ section{scroll-margin-top:72px}.sec{padding:104px 0}.sec-sand{background:var(--s
 @media (max-width:960px){.card-w,.card-w.wide{grid-column:span 3}}
 @media (max-width:640px){.work{grid-template-columns:1fr}.card-w,.card-w.wide{grid-column:auto}}
 /* pricing */
-.prices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;align-items:stretch}
+.prices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
 .price{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px 28px;display:flex;flex-direction:column}
 .price.feat{background:var(--deep);color:#fff;border-color:var(--deep);position:relative}
 .price.feat h3{color:#fff}.price.feat .from,.price.feat li{color:#D5E4DF}.price.feat .amt{color:#fff}

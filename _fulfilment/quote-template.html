@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Quote and invoice {{INVOICE_NUMBER}} · NewCo Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { color-scheme: light; }
+  body { margin: 0 auto; max-width: 42rem; padding: 2rem 1.25rem 3rem; color: #14221c; background: #fff; font: 16px/1.5 Georgia, "Iowan Old Style", serif; }
+  h1, h2 { font-family: "Palatino Linotype", Palatino, Georgia, serif; line-height: 1.2; }
+  h1 { font-size: 1.6rem; margin: 0 0 0.25rem; }
+  h2 { font-size: 1.15rem; margin: 1.6rem 0 0.4rem; }
+  p, dd { margin: 0.3rem 0; }
+  dl { margin: 0.4rem 0 0; }
+  dt { font-weight: 700; margin-top: 0.6rem; }
+  table { width: 100%; border-collapse: collapse; margin: 0.6rem 0 0.2rem; }
+  th, td { text-align: left; padding: 0.45rem 0.3rem; border-bottom: 1px solid #d5ddd8; vertical-align: top; }
+  td.num, th.num { text-align: right; white-space: nowrap; }
+  .meta { color: #24312c; }
+  .pre { white-space: pre-wrap; }
+  .sign { margin-top: 2rem; }
+  @media print {
+    body { padding: 0; max-width: none; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+<p class="meta">Quote and invoice</p>
+<h1>{{INVOICE_NUMBER}}</h1>
+<p><strong>Keith Bullock, trading as NewCo Studio</strong></p>
+<p>Email: <a href="mailto:keith@newcopacks.co.uk">keith@newcopacks.co.uk</a></p>
+<p>Date: {{INVOICE_DATE}}</p>
+<p>Deposit due: {{DUE_DATE}}</p>
+<p>Prepared for: {{CONTACT_NAME}}, {{BUSINESS_NAME}}<br>
+<a href="mailto:{{EMAIL}}">{{EMAIL}}</a></p>
+
+<h2>Price</h2>
+<table>
+<thead><tr><th>Item</th><th class="num">Amount</th></tr></thead>
+<tbody>
+<tr><td>Small-business website, up to 5 pages, £299 fixed. Prices as stated. VAT is not charged.</td><td class="num">£299.00</td></tr>
+<tr><td>To start (50%), by UK bank transfer, due {{DUE_DATE}}</td><td class="num">£149.50</td></tr>
+<tr><td>After sign-off (50%), by UK bank transfer</td><td class="num">£149.50</td></tr>
+</tbody>
+</table>
+<p>The total is £299 fixed. £149.50 to start, and £149.50 after you sign the site off. VAT is not charged.</p>
+
+<h2>Scope</h2>
+<p>Up to five pages: Home, Services, About, Contact, and {{FIFTH_PAGE_LABEL}}. One revision round is included. A preview link by working day 3, and the site live by working day 5, counting from the working day the £149.50 deposit clears. Copy is taken from the answers below and from nothing else.</p>
+<dl>
+<dt>What the business does</dt><dd class="pre">{{WHAT_YOU_DO}}</dd>
+<dt>Services</dt><dd class="pre">{{SERVICES}}</dd>
+<dt>Area served</dt><dd class="pre">{{AREA}}</dd>
+<dt>Tone</dt><dd class="pre">{{TONE}}</dd>
+<dt>Home page</dt><dd class="pre">{{HOME_OFFER}}</dd>
+<dt>About page</dt><dd class="pre">{{ABOUT_FACTS}}</dd>
+<dt>Contact page</dt><dd class="pre">{{CONTACT_DETAILS}}</dd>
+<dt>{{FIFTH_PAGE_LABEL}}</dt><dd class="pre">{{FIFTH_PAGE_NOTES}}</dd>
+<dt>Photos</dt><dd class="pre">{{PHOTO_NOTES}}</dd>
+<dt>Domain</dt><dd class="pre">{{DOMAIN}}</dd>
+<dt>Handover</dt><dd class="pre">{{HOSTING_LABEL}}</dd>
+<dt>Do not claim</dt><dd class="pre">{{MUST_NOT_CLAIM}}</dd>
+</dl>
+
+<h2>Out of scope</h2>
+<p>An online shop, a booking system beyond an embed you already have, logins, logo design, more than five pages, more than one revision round, and speed-only fixes. Those are quoted separately or declined. Hosting stays on your own account. There is no ongoing fee from NewCo Studio.</p>
+
+<h2>Bank transfer</h2>
+<p>Pay the £149.50 deposit by UK bank transfer. Use the invoice number as the payment reference. The balance of £149.50 is due after sign-off, against this same written invoice.</p>
+<dl>
+<dt>Account name</dt><dd>{{BANK_ACCOUNT_NAME}}</dd>
+<dt>Sort code</dt><dd>{{BANK_SORT_CODE}}</dd>
+<dt>Account number</dt><dd>{{BANK_ACCOUNT_NUMBER}}</dd>
+</dl>
+
+<h2>Cancellation</h2>
+<p>If you are a consumer, you may cancel this contract within 14 days of accepting this written quote, without giving a reason. If you cancel before work has started, we refund what you have paid. Work starts once the first payment has cleared, not when you send the enquiry form.</p>
+<p>{{EARLY_START_NOTE}}</p>
+<p>If you are buying for your business, you may cancel before work has started for a refund of the deposit. After work has started, you pay for the work done up to cancellation. The one included revision round is the only change round in this price. Later changes are a new fixed-price job.</p>
+
+<p class="sign">Signed</p>
+<p><strong>Keith Bullock, trading as NewCo Studio</strong></p>
+<p>Email: <a href="mailto:keith@newcopacks.co.uk">keith@newcopacks.co.uk</a></p>
+</body>
+</html>
