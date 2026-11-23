@@ -2,7 +2,7 @@
 
 This folder is not published. GitHub Pages builds the studio site with Jekyll, and Jekyll does not publish a folder whose name starts with an underscore. `_config.yml` also lists `_fulfilment` under `exclude`. Do not add a `.nojekyll` file to the studio repository root. That file would turn Jekyll off and this folder would go live.
 
-The live order log is not this folder's `orders.csv`. That file is a header template only. Keep the working log outside the repository, for example on CoS's own machine. Never commit a row from a real order.
+The live order log is not this folder's `orders.csv`. That file is a header template only. The working log lives outside the repository at `/workspace/pivot/orders.csv`. Override the path with `--orders` or the `NEWCO_ORDERS_CSV` environment variable. Never commit a row from a real order.
 
 Public pages must not mention agents, automation, or software writing the sites. This runbook is internal.
 
@@ -39,7 +39,7 @@ Leave them braced in git. Do not put a trader address, a home address, or a phon
 
 ## Private orders log
 
-Copy the header from `orders.csv` and keep the working file off git.
+Copy the header from `orders.csv` into `/workspace/pivot/orders.csv` if that file does not already exist, and keep the working file off git.
 
 ```text
 order_id,business_name,payment_cleared,payment_cleared_by,agent_runs,run_dates,qa_fails,status,preview_url
@@ -55,10 +55,12 @@ After a run, CoS updates `agent_runs`, `run_dates`, `qa_fails`, `status` and `pr
 
 ## Gate
 
-Run this against the private log, not against the header template:
+Run this against the private log, not against the header template. If you omit `--orders`, the guard reads `$NEWCO_ORDERS_CSV` or `/workspace/pivot/orders.csv`:
 
 ```bash
-python3 _fulfilment/guard.py --orders /secure/orders.csv --order-id NCS-299-20261123 --usage-percent 42
+python3 _fulfilment/guard.py --order-id NCS-299-20261123 --usage-percent 42
+# or, to override the default path:
+python3 _fulfilment/guard.py --orders /workspace/pivot/orders.csv --order-id NCS-299-20261123 --usage-percent 42
 ```
 
 `--usage-percent` is the percentage of the Cursor usage allowance already used, read from the Cursor usage meter before the run. The guard refuses when the figure is omitted.
