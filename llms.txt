@@ -1,14 +1,15 @@
 # NewCo Studio
 
-> NewCo Studio is a UK-based web studio that builds fixed-price one-page websites for small businesses for £99 and fixes problems on existing websites, spreadsheets and scripts from £19. It works remotely with clients across the UK and worldwide, sends a written fixed quote within 24 hours, and takes payment by UK bank transfer: 50% to start and 50% after sign-off. Prices are in GBP (£). Prices as stated. VAT is not charged.
+> NewCo Studio is a UK-based web studio that builds a small-business website of up to 5 pages for £299 fixed, a one-page website for £99, and fixes problems on existing websites, spreadsheets and scripts from £19. It works remotely with clients across the UK and worldwide, sends a written fixed quote within 24 hours, and takes payment by UK bank transfer: 50% to start and 50% after sign-off. Prices are in GBP (£). Prices as stated. VAT is not charged.
 
 ## Key facts
 - Name: NewCo Studio (UK). Website: https://studio.newcopacks.co.uk/
 - Run by: Keith Bullock
 - Based in: United Kingdom. Serves: small businesses across the UK and worldwide, remotely.
+- Small-business website: £299 fixed (up to 5 pages: Home, Services, About, Contact, and one of Gallery, FAQ or Pricing; copy from the client's answers; one revision; preview by working day 3 and live by working day 5 after the deposit clears; £149.50 to start and £149.50 after sign-off). Prices as stated. VAT is not charged. See https://studio.newcopacks.co.uk/website-299/
 - One-page website: £99 (services, prices, photos and contact details on one mobile-friendly page; basic SEO, favicon, share image; all files handed over). Prices as stated. VAT is not charged.
 - Website fix: from £19 (broken links, wrong contact details, buttons or forms that don't work, pages that look wrong on phones; spreadsheet and script fixes too). Prices as stated. VAT is not charged. A fix request can include a page address and an optional screenshot.
-- Bigger sites: fixed quote in writing
+- Payment for the £299 fixed website: £149.50 to start and £149.50 after sign-off, by UK bank transfer. Work starts once the first payment has cleared.
 - Payment: UK bank transfer, 50% to start and 50% after sign-off. £19 fixes are paid once approved.
 - Delivery: website and fix work is files and a preview link, not a parcel, with no shipping charge. The published window is one to five days, and the written quote names the date. Finished website and fix work is not returned; further edits after delivery are new fixed-price jobs from £19. Spreadsheet files are instant downloads on Etsy, with no physical shipping from the studio. Etsy handles any refund on those downloads. See https://studio.newcopacks.co.uk/delivery/
 - Quotes: written fixed quote within 24 hours via https://studio.newcopacks.co.uk/#quote
@@ -19,7 +20,8 @@
 
 ## Pages
 - [Home](https://studio.newcopacks.co.uk/): overview, example sites, FAQ, quote form
-- [Pricing](https://studio.newcopacks.co.uk/pricing/): £99 one-page website, £19 website fix, with the quote form on the page
+- [Pricing](https://studio.newcopacks.co.uk/pricing/): £299 fixed, £99 one-page website, website fix from £19, with the quote form on the page
+- [Small-business website, £299 fixed](https://studio.newcopacks.co.uk/website-299/): up to 5 pages, live in 5 working days
 - [One-page websites £99](https://studio.newcopacks.co.uk/websites-99/)
 - [Website fixes from £19](https://studio.newcopacks.co.uk/website-fixes/): quote form on the page, including an optional screenshot
 - [Wallingford businesses](https://studio.newcopacks.co.uk/oxfordshire/wallingford/): remote one-page sites and fixes. No Wallingford office.

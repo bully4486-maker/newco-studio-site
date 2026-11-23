@@ -2,7 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <!-- Indexable studio pages only. Omitted on purpose: thanks.html and 404.html (noindex); /demos/ (noindex, Disallow in robots.txt). -->
 <url><loc>https://studio.newcopacks.co.uk/</loc><lastmod>2026-11-06</lastmod></url>
-<url><loc>https://studio.newcopacks.co.uk/pricing/</loc><lastmod>2026-11-06</lastmod></url>
+<url><loc>https://studio.newcopacks.co.uk/pricing/</loc><lastmod>2026-11-23</lastmod></url>
+<url><loc>https://studio.newcopacks.co.uk/website-299/</loc><lastmod>2026-11-23</lastmod></url>
 <url><loc>https://studio.newcopacks.co.uk/websites-99/</loc><lastmod>2026-11-15</lastmod></url>
 <url><loc>https://studio.newcopacks.co.uk/website-fixes/</loc><lastmod>2026-11-16</lastmod></url>
 <url><loc>https://studio.newcopacks.co.uk/oxfordshire/wallingford/</loc><lastmod>2026-11-15</lastmod></url>

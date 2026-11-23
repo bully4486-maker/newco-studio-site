@@ -18,7 +18,7 @@ Provenance: pass. Log at the bottom.
 | Layout | 8.6 | The three cards fill the column beside the phone. |
 | Trust | 8.8 | 24 hours, a few days, date in the quote. Demo labelled. |
 | Mobile | 8.6 | 1080×1350. Secondary type holds up. |
-| Call to action | 8.7 | URL and “Get a fixed quote”. |
+| Call to action | 8.7 | URL and “Get a free quote”. |
 | Originality | 8.0 | Same phone-and-column system as the rest of the pack. The hook is its own. |
 | Speed | n/a | |
 | **Overall** | **8.5** | PASS. Weakest: Originality. Author had scored this higher. The review stands. |

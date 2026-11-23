@@ -1,0 +1,13 @@
+# GitHub Pages builds this site with Jekyll because there is no .nojekyll file.
+# HTML here has no front matter, so Jekyll copies it unchanged.
+# A folder whose name starts with an underscore is not published.
+# The exclude list is a second lock on the fulfilment kit.
+title: NewCo Studio
+exclude:
+  - _fulfilment
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - tools

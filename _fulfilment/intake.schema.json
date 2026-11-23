@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://studio.newcopacks.co.uk/website-299/intake.schema.json",
+  "title": "Small-business website intake",
+  "description": "Fields collected by the /website-299/ form and consumed by the quote generator and the build. Extra mail-system fields are allowed and ignored.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "business_name",
+    "email",
+    "what_you_do",
+    "services",
+    "area",
+    "tone",
+    "home_offer",
+    "about_facts",
+    "contact_details",
+    "fifth_page",
+    "fifth_page_notes",
+    "domain",
+    "hosting",
+    "photo_notes"
+  ],
+  "properties": {
+    "offer": {
+      "type": "string",
+      "const": "Small-business website, up to 5 pages, £299 fixed"
+    },
+    "business_name": { "type": "string", "minLength": 1 },
+    "contact_name": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "description": "Form alias for contact_name. Web3Forms uses this as the sender name." },
+    "email": { "type": "string", "minLength": 3 },
+    "what_you_do": { "type": "string", "minLength": 1 },
+    "services": { "type": "string", "minLength": 1 },
+    "area": { "type": "string", "minLength": 1 },
+    "tone": { "type": "string", "minLength": 1 },
+    "home_offer": { "type": "string", "minLength": 1 },
+    "about_facts": { "type": "string", "minLength": 1 },
+    "contact_details": { "type": "string", "minLength": 1 },
+    "fifth_page": { "enum": ["gallery", "faq", "pricing"] },
+    "fifth_page_notes": { "type": "string", "minLength": 1 },
+    "domain": { "type": "string", "minLength": 1 },
+    "hosting": { "enum": ["cloudflare-pages", "github-pages", "zip"] },
+    "photo_notes": { "type": "string", "minLength": 1 },
+    "must_not_claim": { "type": "string" },
+    "early_start": {
+      "description": "True only when the optional 14-day early-start box was ticked. Absent or false means it was left unticked.",
+      "type": ["boolean", "string"]
+    }
+  }
+}

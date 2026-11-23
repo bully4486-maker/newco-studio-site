@@ -46,7 +46,7 @@ You own the files. We don’t sell hosting.
 
 The electrician on the image, Halvercroft Electrical, is an example of our work, not a client.
 
-Get a fixed quote:
+Get a free quote:
 https://studio.newcopacks.co.uk/#quote
 
 ### LinkedIn
@@ -100,7 +100,7 @@ File: `how-1080x1350.png`
 
 Halvercroft Electrical, in the phone, is an example of our work, not a client.
 
-Get a fixed quote:
+Get a free quote:
 https://studio.newcopacks.co.uk/#quote
 
 ### LinkedIn
