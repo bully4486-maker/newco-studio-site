@@ -1,3 +1,15 @@
+User-agent: *
+Allow: /
+Disallow: /demos/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /demos/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /demos/
+
 User-agent: GPTBot
 Allow: /
 Disallow: /demos/
@@ -6,7 +18,7 @@ User-agent: OAI-SearchBot
 Allow: /
 Disallow: /demos/
 
-User-agent: ChatGPT-User
+User-agent: PerplexityBot
 Allow: /
 Disallow: /demos/
 
@@ -14,55 +26,7 @@ User-agent: ClaudeBot
 Allow: /
 Disallow: /demos/
 
-User-agent: PerplexityBot
-Allow: /
-Disallow: /demos/
-
 User-agent: Google-Extended
-Allow: /
-Disallow: /demos/
-
-User-agent: Applebot-Extended
-Allow: /
-Disallow: /demos/
-
-User-agent: CCBot
-Allow: /
-Disallow: /demos/
-
-User-agent: Bingbot
-Allow: /
-Disallow: /demos/
-
-User-agent: Claude-SearchBot
-Allow: /
-Disallow: /demos/
-
-User-agent: Claude-User
-Allow: /
-Disallow: /demos/
-
-User-agent: Perplexity-User
-Allow: /
-Disallow: /demos/
-
-User-agent: Googlebot
-Allow: /
-Disallow: /demos/
-
-User-agent: Applebot
-Allow: /
-Disallow: /demos/
-
-User-agent: DuckAssistBot
-Allow: /
-Disallow: /demos/
-
-User-agent: Meta-ExternalAgent
-Allow: /
-Disallow: /demos/
-
-User-agent: *
 Allow: /
 Disallow: /demos/
 

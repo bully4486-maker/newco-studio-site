@@ -1,45 +1,33 @@
 # NewCo Studio
 
-> NewCo Studio is a UK-based web studio that builds a small-business website of up to 5 pages for £299 fixed, a one-page website for £99, and fixes problems on existing websites, spreadsheets and scripts from £19. It works remotely with clients across the UK and worldwide, sends a written fixed quote within 24 hours, and takes payment by UK bank transfer: 50% to start and 50% after sign-off. Prices are in GBP (£). Prices as stated. VAT is not charged.
+> NewCo Studio is a UK web studio run by Keith Bullock. The work is done remotely, UK-wide and online only. A small-business website of up to 5 pages is £299 fixed. A one-page website is £99. Website fixes are from £19. For a new website you pay half to start and half on sign-off, by UK bank transfer. A fix from £19 is paid once you have approved it. Prices as stated. VAT is not charged.
 
-## Key facts
-- Name: NewCo Studio (UK). Website: https://studio.newcopacks.co.uk/
-- Run by: Keith Bullock
-- Based in: United Kingdom. Serves: small businesses across the UK and worldwide, remotely.
-- Small-business website: £299 fixed (up to 5 pages: Home, Services, About, Contact, and one of Gallery, FAQ or Pricing; copy from the client's answers; one revision; preview by working day 3 and live by working day 5 after the deposit clears; £149.50 to start and £149.50 after sign-off). Prices as stated. VAT is not charged. See https://studio.newcopacks.co.uk/website-299/
-- One-page website: £99 (services, prices, photos and contact details on one mobile-friendly page; basic SEO, favicon, share image; all files handed over). Prices as stated. VAT is not charged.
-- Website fix: from £19 (broken links, wrong contact details, buttons or forms that don't work, pages that look wrong on phones; spreadsheet and script fixes too). Prices as stated. VAT is not charged. A fix request can include a page address and an optional screenshot.
-- Payment for the £299 fixed website: £149.50 to start and £149.50 after sign-off, by UK bank transfer. Work starts once the first payment has cleared.
-- Payment: UK bank transfer, 50% to start and 50% after sign-off. £19 fixes are paid once approved.
-- Delivery: website and fix work is files and a preview link, not a parcel, with no shipping charge. The published window is one to five days, and the written quote names the date. Finished website and fix work is not returned; further edits after delivery are new fixed-price jobs from £19. Spreadsheet files are instant downloads on Etsy, with no physical shipping from the studio. Etsy handles any refund on those downloads. See https://studio.newcopacks.co.uk/delivery/
-- Quotes: written fixed quote within 24 hours via https://studio.newcopacks.co.uk/#quote
-- Ownership: clients own all files; domain and hosting stay in the client's name. No hosting sold, no subscription.
-- Contact: keith@newcopacks.co.uk
-- Spreadsheets: UK bookkeeping and tax spreadsheets for Excel and Google Sheets, sold on Etsy (https://counterbookuk.etsy.com). UK listing prices, including UK VAT: The Counter Book 2026/27 for sole traders £11.99 (seller price before UK VAT £9.99), UK Etsy Seller Bookkeeping £9.59 (seller price £7.99), UK Maker Pricing and Stock £7.19 (seller price £5.99), UK Landlord Tracker £10.79 (seller price £8.99). Etsy prices may vary by buyer location. That VAT is Etsy's charge, not the studio's.
-- Printable record books (PDF, sold through Payhip, https://payhip.com/NewCoPacks): Mileage and Expenses Log £3.59, Online Seller Shop Planner £4.79, Receipt and Accounts Log £3.59, Landlord Rent Log £3.59, Self Assessment for UK Sole Traders and Online Sellers 2025/26 £4.99, Sole Trader Records Bundle £11.99. Prices include VAT where it applies; Payhip collects and pays it as the reseller.
+## Prices
+- Small-business website: £299 fixed. Up to 5 pages (Home, Services, About, Contact, and one of Gallery, FAQ or Pricing). 1 revision round. Preview by working day 3 and live by working day 5 after the deposit clears. Half to start and half on sign-off, by UK bank transfer (£149.50, then £149.50). You buy the domain yourself. https://studio.newcopacks.co.uk/website-299/
+- One-page website: £99. One page with services, prices, photos and contact details. Usually a few days once we have your text and photos. Half to start and half on sign-off, by UK bank transfer. https://studio.newcopacks.co.uk/websites-99/
+- Website fix: from £19. Send the page address or a screenshot. Often a day or two. Paid once you have approved the fix, by UK bank transfer. https://studio.newcopacks.co.uk/website-fixes/
+- Prices as stated. VAT is not charged.
+- Quote form: https://studio.newcopacks.co.uk/quote/ . Written fixed quote within 24 hours.
+- The £299 clock starts once the deposit has cleared, not when the text and photos arrive. A one-page site is usually a few days once we have the text and photos.
 
 ## Pages
-- [Home](https://studio.newcopacks.co.uk/): overview, example sites, FAQ, quote form
-- [Pricing](https://studio.newcopacks.co.uk/pricing/): £299 fixed, £99 one-page website, website fix from £19, with the quote form on the page
-- [Small-business website, £299 fixed](https://studio.newcopacks.co.uk/website-299/): up to 5 pages, live in 5 working days
-- [One-page websites £99](https://studio.newcopacks.co.uk/websites-99/)
-- [Website fixes from £19](https://studio.newcopacks.co.uk/website-fixes/): quote form on the page, including an optional screenshot
-- [Wallingford businesses](https://studio.newcopacks.co.uk/oxfordshire/wallingford/): remote one-page sites and fixes. No Wallingford office.
-- [Didcot businesses](https://studio.newcopacks.co.uk/oxfordshire/didcot/): remote one-page sites and fixes. No Didcot office.
-- [Oxford businesses](https://studio.newcopacks.co.uk/oxfordshire/oxford/): remote one-page sites and fixes. No Oxford office.
-- [Example sites, annotated](https://studio.newcopacks.co.uk/standards/): examples of our work, not a client list
-- [About NewCo Studio](https://studio.newcopacks.co.uk/about/): business facts
-- [Delivery and returns](https://studio.newcopacks.co.uk/delivery/): files and preview links for studio work; instant Etsy downloads for spreadsheets
-- [Privacy notice](https://studio.newcopacks.co.uk/privacy.html)
-- [UK bookkeeping and tax spreadsheets](https://studio.newcopacks.co.uk/spreadsheets/): sole trader, Etsy seller, maker and landlord spreadsheets
-- [Free UK tax dates 2026/27 PDF](https://studio.newcopacks.co.uk/uk-tax-dates-2026-27.pdf)
-- [Full text for language models](https://studio.newcopacks.co.uk/llms-full.txt)
+- Home: https://studio.newcopacks.co.uk/
+- Websites: https://studio.newcopacks.co.uk/websites/
+- Pricing: https://studio.newcopacks.co.uk/pricing/
+- Work (example sites, not customer businesses): https://studio.newcopacks.co.uk/work/
+- FAQ: https://studio.newcopacks.co.uk/faq/
+- About: https://studio.newcopacks.co.uk/about/
+- Quote: https://studio.newcopacks.co.uk/quote/
+- Cost guide: https://studio.newcopacks.co.uk/guides/small-business-website-cost-uk/
+- Standards: https://studio.newcopacks.co.uk/standards/
+- Delivery and returns: https://studio.newcopacks.co.uk/delivery/
+- Privacy: https://studio.newcopacks.co.uk/privacy.html
+- Spreadsheets (separate Etsy shop, UK prices including UK VAT where Etsy charges it): https://studio.newcopacks.co.uk/spreadsheets/
+- Oxford, Didcot and Wallingford notes: remote, UK-wide and online only. No office. https://studio.newcopacks.co.uk/oxfordshire/oxford/ https://studio.newcopacks.co.uk/oxfordshire/didcot/ https://studio.newcopacks.co.uk/oxfordshire/wallingford/
 
-## Profiles
-- Facebook: https://www.facebook.com/1474290995761850
+## Contact
+- keith@newcopacks.co.uk
+- Run by Keith Bullock, United Kingdom
 - Instagram: https://www.instagram.com/newcostudio.uk/
+- Facebook: https://www.facebook.com/1474290995761850
 - GitHub: https://github.com/bully4486-maker
-- Etsy: https://counterbookuk.etsy.com
-
-## Disambiguation
-NewCo Studio at studio.newcopacks.co.uk is a UK small-business web studio. It is not connected to other organisations using the name "NewCo Studio".
